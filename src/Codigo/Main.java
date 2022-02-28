@@ -6,7 +6,6 @@
 package Codigo;
 
 import Interfaz.JFEmpleados;
-import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import javax.swing.UIManager;
 
 /**
@@ -19,14 +18,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    try { 
-    UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel"); 
-    } catch (Exception ex) { 
-        ex.printStackTrace(); 
-    }
+    
        
         JFEmpleados emp =new JFEmpleados();
-        
+        emp.setVisible(true);
     }
-    
 }

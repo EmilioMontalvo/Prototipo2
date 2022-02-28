@@ -52,6 +52,7 @@ public class JFMenu extends javax.swing.JFrame {
         jBAgendamiento = new javax.swing.JButton();
         jBAdministracion = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
+        jBEmpleados1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("S-Brush");
@@ -137,6 +138,16 @@ public class JFMenu extends javax.swing.JFrame {
             }
         });
 
+        jBEmpleados1.setBackground(new java.awt.Color(255, 204, 204));
+        jBEmpleados1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        jBEmpleados1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/tijeras_mid.png"))); // NOI18N
+        jBEmpleados1.setText("Servicios");
+        jBEmpleados1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEmpleados1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -151,16 +162,19 @@ public class JFMenu extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(106, 106, 106)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBEmpleados)
-                            .addComponent(jBClientes)
-                            .addComponent(jBAgendamiento)
-                            .addComponent(jBFacturacion)
-                            .addComponent(jBAdministracion))
-                        .addContainerGap(420, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton12)
-                        .addGap(101, 101, 101))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jBAdministracion)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 346, Short.MAX_VALUE)
+                                .addComponent(jButton12)
+                                .addGap(101, 101, 101))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jBAgendamiento)
+                                    .addComponent(jBFacturacion)
+                                    .addComponent(jBClientes)
+                                    .addComponent(jBEmpleados)
+                                    .addComponent(jBEmpleados1))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,16 +184,22 @@ public class JFMenu extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
                 .addComponent(jBClientes)
-                .addGap(39, 39, 39)
-                .addComponent(jBEmpleados)
-                .addGap(38, 38, 38)
-                .addComponent(jBAgendamiento)
-                .addGap(33, 33, 33)
-                .addComponent(jBFacturacion)
-                .addGap(34, 34, 34)
-                .addComponent(jBAdministracion)
-                .addGap(7, 7, 7)
-                .addComponent(jButton12)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(387, 387, 387)
+                        .addComponent(jButton12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBEmpleados1)
+                        .addGap(26, 26, 26)
+                        .addComponent(jBEmpleados)
+                        .addGap(28, 28, 28)
+                        .addComponent(jBAgendamiento)
+                        .addGap(30, 30, 30)
+                        .addComponent(jBFacturacion)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBAdministracion)
+                        .addGap(25, 25, 25)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -187,9 +207,7 @@ public class JFMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,6 +251,12 @@ public class JFMenu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jBAdministracionActionPerformed
 
+    private void jBEmpleados1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEmpleados1ActionPerformed
+        JFServicios jf= new JFServicios();
+        jf.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jBEmpleados1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -273,6 +297,7 @@ public class JFMenu extends javax.swing.JFrame {
     private javax.swing.JButton jBAgendamiento;
     private javax.swing.JButton jBClientes;
     private javax.swing.JButton jBEmpleados;
+    private javax.swing.JButton jBEmpleados1;
     private javax.swing.JButton jBFacturacion;
     private javax.swing.JButton jButton12;
     private javax.swing.JLabel jLabel6;
