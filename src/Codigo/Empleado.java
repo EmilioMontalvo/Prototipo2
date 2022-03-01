@@ -40,7 +40,7 @@ public class Empleado {
     public boolean Registrar(){
         Conexion conn=new Conexion();
         PreparedStatement ps;
-        ResultSet rs;
+        //ResultSet rs;
         try{
             ps=conn.con.prepareStatement("INSERT INTO empleado (cedula,nombres,apellidos,ciudadTrabajo,jornadaTrabajo,especialidad,salario,habilitado) values(?,?,?,?,?,?,?,?)");
             
