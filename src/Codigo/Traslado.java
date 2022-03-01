@@ -5,9 +5,9 @@
  */
 package Codigo;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Date;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
@@ -15,13 +15,17 @@ import javax.swing.JOptionPane;
  *
  * @author HP
  */
-public class DiaLibre {
-    private String cedulaEmpleado;
-    private Date diaLibre;
+public class Traslado {
+    private String cedula;
+    private String ciudad;
+    private Date ida;
+    private Date regreso;
 
-    public DiaLibre(String cedulaEmpleado, Date diaLibre) {
-        this.cedulaEmpleado = cedulaEmpleado;
-        this.diaLibre = diaLibre;
+    public Traslado(String cedula, String ciudad, Date ida, Date regreso) {
+        this.cedula = cedula;
+        this.ciudad = ciudad;
+        this.ida = ida;
+        this.regreso = regreso;
     }
     
      public boolean Registrar(){
@@ -29,18 +33,19 @@ public class DiaLibre {
         PreparedStatement ps;
         //ResultSet rs;
         try{
-            ps=conn.con.prepareStatement("INSERT INTO dia_libre values(?,?)");
+            ps=conn.con.prepareStatement("INSERT INTO traslado values(?,?,?,?)");
             
-            ps.setDate(1,diaLibre);
-            ps.setString(2,cedulaEmpleado);
+            ps.setDate(1,ida);
+            ps.setDate(2,regreso);
+            ps.setString(3,ciudad);
+            ps.setString(4,cedula);
             
                     
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se ha registrado un día libre para el empleado");
+            JOptionPane.showMessageDialog(null, "Traslado registrado con éxito");
         }catch(SQLException e){
-            
-            if(Pattern.matches("^Duplicate entry.*", e.getMessage())){
-                JOptionPane.showMessageDialog(null, "Ya existe este día libre");
+           if(Pattern.matches("^Duplicate entry.*", e.getMessage())){
+                JOptionPane.showMessageDialog(null, "Ya existe el registro de este traslado");
             }else{
                 JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
            
@@ -59,22 +64,5 @@ public class DiaLibre {
         
         return true;
     }
-
-    public String getCedulaEmpleado() {
-        return cedulaEmpleado;
-    }
-
-    public void setCedulaEmpleado(String cedulaEmpleado) {
-        this.cedulaEmpleado = cedulaEmpleado;
-    }
-
-    public Date getDiaLibre() {
-        return diaLibre;
-    }
-
-    public void setDiaLibre(Date diaLibre) {
-        this.diaLibre = diaLibre;
-    }
-     
-     
+    
 }

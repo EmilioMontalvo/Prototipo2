@@ -5,6 +5,7 @@
  */
 package Codigo;
 
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -112,4 +113,12 @@ public class Validar {
         return empleado;
         
     }
+    
+    public boolean validarFechasInicioFin(Date inicio,Date fin){
+        
+        
+        return inicio.before(fin);
+    }
+    
+   
 }

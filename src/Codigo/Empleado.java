@@ -25,6 +25,7 @@ public class Empleado {
     private String ciudad;
     private String especialidad;
     private float salario;
+    private String habilitado;
 
     public Empleado(String cedula, String nombres, String apellidos, String jornada, String ciudad, float salario,String especialidad) {
         this.cedula = cedula;
@@ -34,8 +35,52 @@ public class Empleado {
         this.jornada = jornada;
         this.especialidad=especialidad;
         this.salario = salario;
+        this.habilitado="A";
     }
     
+    public Empleado(String cedula) {
+        Conexion conn=new Conexion();
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        
+        try{
+           ps=conn.getCon().prepareStatement("SELECT * FROM empleado WHERE cedula='"+cedula+"';");
+                
+            
+            rs=ps.executeQuery();
+            
+            while (rs.next())
+            {
+                this.cedula=rs.getString(1); 
+                this.nombres = rs.getString(2);
+                this.apellidos = rs.getString(3);
+                this.ciudad = rs.getString(4);
+                this.jornada = rs.getString(5);
+                this.especialidad=rs.getString(6);
+                this.salario = rs.getFloat(7);
+                this.habilitado=rs.getString(8);
+            }
+            
+           
+            
+        }catch(SQLException e){
+           JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+           
+        }finally{
+            try{
+                if(conn!=null){
+                    conn.getCon().close();
+                }
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Error, reinicie el sistema"); 
+               
+            }
+        }
+        
+        
+       
+    }
     
     public boolean Registrar(){
         Conexion conn=new Conexion();
@@ -118,6 +163,22 @@ public class Empleado {
 
     public void setSalario(float salario) {
         this.salario = salario;
+    }
+
+    public String getEspecialidad() {
+        return especialidad;
+    }
+
+    public void setEspecialidad(String especialidad) {
+        this.especialidad = especialidad;
+    }
+
+    public String getHabilitado() {
+        return habilitado;
+    }
+
+    public void setHabilitado(String habilitado) {
+        this.habilitado = habilitado;
     }
     
     
