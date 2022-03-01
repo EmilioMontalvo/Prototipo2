@@ -5,7 +5,12 @@
  */
 package Codigo;
 
+import java.util.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -69,4 +74,51 @@ public class Validar {
         
         return cifras && tamanio;
     }
+    
+    public boolean cedulaPerteneceEmpleado(String cedula){
+         Conexion conn=new Conexion();
+        PreparedStatement ps;
+        ResultSet rs;
+        boolean empleado=false;
+      
+        
+        try{
+           ps=conn.getCon().prepareStatement("SELECT cedula FROM empleado;");
+                
+            
+            rs=ps.executeQuery();
+            
+            while(rs.next()){
+                 if(rs.getString("cedula").equals(cedula)){
+                     empleado=true;
+                 }
+            }
+            
+           
+            
+        }catch(SQLException e){
+           JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+           
+        }finally{
+            try{
+                if(conn!=null){
+                    conn.getCon().close();
+                    return empleado;
+                }
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Error, problema con la base de datos"); 
+               return empleado;
+            }
+        }
+        return empleado;
+        
+    }
+    
+    public boolean validarFechasInicioFin(Date inicio,Date fin){
+        
+        
+        return inicio.before(fin);
+    }
+    
+   
 }
