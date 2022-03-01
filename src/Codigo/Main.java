@@ -19,8 +19,13 @@ public class Main {
      */
     public static void main(String[] args) {
     
-       
+       /*
         JFEmpleados emp =new JFEmpleados();
         emp.setVisible(true);
+        */
+        Validar val=new Validar();
+        //System.out.print(val.validarSalario((float)));
+        
+        
     }
 }

@@ -41,5 +41,11 @@ public class Conexion {
         }
         
     }
+
+    public Connection getCon() {
+        return con;
+    }
+    
+    
 }
 
