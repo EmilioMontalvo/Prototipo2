@@ -7,8 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
 public class JFClientes extends javax.swing.JFrame {
@@ -17,7 +20,7 @@ public class JFClientes extends javax.swing.JFrame {
     Connection connet;
     Statement st;
     ResultSet rs;
-    
+    PreparedStatement ps;
 
     /**
      * Creates new form JFClientes
@@ -39,18 +42,15 @@ public class JFClientes extends javax.swing.JFrame {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Conexion conn = new Conexion();
-        //Connection con=conn.getConexion();
-       // try {
-           // String sql = "SELECT *FROM cliente";
-            //ps = con.prepareStatement(sql);
-            //rs = ps.executeQuery();
-          //  while (rs.next()) {
-          //      jCBNumeroCedulaCliente.addItem(rs.getString("cedula"));
-         //   }
-         //   rs.close();
-        //} catch (SQLException ex) {
-           // System.err.println(ex.toString());
-       // }
+        LlenarClientes(jCBNumeroCedulaCliente);
+        LlenarClientes(jCBNumeroCedulaClienteCitasC);
+        LlenarClientes(jCBNumeroCedulaClienteDescuentos);
+        LlenarClientes(jCBActualizarCliente);
+        LlenarClientes(jCBNumeroCedulaEliminarCliente);
+        LlenarClientes(jCBNumCedEliminarDescuentoCliente);
+        LlenarServicios(jCBCodServEliminarDescuentoCliente);
+        LlenarClientes(jCBNumCedAsigDesc);
+        LlenarServicios(jCBCodServAsigDesc);
     }
 
     /**
@@ -87,7 +87,7 @@ public class JFClientes extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txaClienteInfo = new javax.swing.JTextArea();
         jCBNumeroCedulaCliente = new javax.swing.JComboBox<>();
         jLabel21 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
@@ -213,8 +213,13 @@ public class JFClientes extends javax.swing.JFrame {
 
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
         jButton10.setText(" Cancelar");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
-        dtcBday.setDateFormatString("dd/MM/yyyy");
+        dtcBday.setDateFormatString("yyyy-MM-dd");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -232,7 +237,7 @@ public class JFClientes extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 290, Short.MAX_VALUE)
+                        .addGap(0, 340, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton10))
@@ -287,7 +292,9 @@ public class JFClientes extends javax.swing.JFrame {
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -300,10 +307,21 @@ public class JFClientes extends javax.swing.JFrame {
 
         jLabel7.setText("Número de Cédula:");
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txaClienteInfo.setEditable(false);
+        txaClienteInfo.setColumns(20);
+        txaClienteInfo.setRows(5);
+        jScrollPane1.setViewportView(txaClienteInfo);
+
+        jCBNumeroCedulaCliente.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBNumeroCedulaClienteItemStateChanged(evt);
+            }
+        });
+        jCBNumeroCedulaCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBNumeroCedulaClienteActionPerformed(evt);
+            }
+        });
 
         jLabel21.setText("Información del Cliente:");
 
@@ -322,8 +340,8 @@ public class JFClientes extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jCBNumeroCedulaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel21))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(436, 436, 436))
+                        .addGap(0, 467, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,7 +383,7 @@ public class JFClientes extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
@@ -416,7 +434,7 @@ public class JFClientes extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
@@ -447,7 +465,7 @@ public class JFClientes extends javax.swing.JFrame {
         jPanel13.setLayout(jPanel13Layout);
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jCBNumeroCedulaClienteCitas, javax.swing.GroupLayout.PREFERRED_SIZE, 707, Short.MAX_VALUE)
+            .addComponent(jCBNumeroCedulaClienteCitas, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE)
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -484,7 +502,7 @@ public class JFClientes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField9)
-                    .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                    .addComponent(jTextField10, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton7)
@@ -533,9 +551,20 @@ public class JFClientes extends javax.swing.JFrame {
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png"))); // NOI18N
         jButton9.setText("Eliminar ");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
         jButton14.setText("Cancelar");
+
+        jCBNumeroCedulaEliminarCliente.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jCBNumeroCedulaEliminarClienteItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -548,7 +577,7 @@ public class JFClientes extends javax.swing.JFrame {
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jCBNumeroCedulaEliminarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 365, Short.MAX_VALUE))
+                        .addGap(0, 427, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton9)
@@ -599,7 +628,7 @@ public class JFClientes extends javax.swing.JFrame {
                             .addComponent(jCBCodServEliminarDescuentoCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                        .addGap(0, 430, Short.MAX_VALUE)
+                        .addGap(0, 492, Short.MAX_VALUE)
                         .addComponent(jButton6)
                         .addGap(18, 18, 18)
                         .addComponent(jButton13)))
@@ -669,7 +698,7 @@ public class JFClientes extends javax.swing.JFrame {
                     .addComponent(jCBCodServAsigDesc, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(430, Short.MAX_VALUE)
+                .addContainerGap(492, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton12)
@@ -718,24 +747,24 @@ public class JFClientes extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 712, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btnAtrasClientes)
-                        .addGap(184, 184, 184)
-                        .addComponent(jLabel20))))
+                        .addGap(152, 152, 152)
+                        .addComponent(jLabel20)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 774, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnAtrasClientes))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAtrasClientes)
+                    .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 503, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -746,7 +775,7 @@ public class JFClientes extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 807, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -790,7 +819,14 @@ public class JFClientes extends javax.swing.JFrame {
                             if (bday == null) {
                                 JOptionPane.showMessageDialog(null, "FechaDeCumpleaños no válida-repita ", "ERROR!", 0);
                             } else {
+                                Registrar();
                                 JOptionPane.showMessageDialog(null, "Cliente Registrado con Exito");
+                                txtCedula.setText("");
+                                txtNombres.setText("");
+                                txtApellidos.setText("");
+                                txtDireccion.setText("");
+                                txtTelefono.setText("");
+                                dtcBday.setCalendar(null);
                                 Cliente cliente = new Cliente(cedula, nombres, apellidos, direccion, telefono, bday);
                             }
                         }
@@ -876,6 +912,47 @@ public class JFClientes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidosActionPerformed
 
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        txtCedula.setText("");
+        txtNombres.setText("");
+        txtApellidos.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        dtcBday.setCalendar(null);
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jCBNumeroCedulaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBNumeroCedulaClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBNumeroCedulaClienteActionPerformed
+
+    private void jCBNumeroCedulaClienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNumeroCedulaClienteItemStateChanged
+        /* String cedula = (String) jCBNumeroCedulaCliente.getSelectedItem();
+        try {
+            String sql = "SELECT * FROM cliente where cedula= '"+cedula+"'";
+            connet = con1.getCon();
+            st = connet.createStatement();
+            rs = st.executeQuery(sql);
+            txaClienteInfo.setText(rs.getString("cedula"));
+            txaClienteInfo.setText(rs.getString("nombres"));
+            txaClienteInfo.setText(rs.getString("apellidos"));
+            txaClienteInfo.setText(rs.getString("direccion"));
+            txaClienteInfo.setText(rs.getString("telefono"));
+            txaClienteInfo.setText(rs.getString("cumpleanios"));
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error en la consulta" + e);
+        }*/
+
+
+    }//GEN-LAST:event_jCBNumeroCedulaClienteItemStateChanged
+
+    private void jCBNumeroCedulaEliminarClienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jCBNumeroCedulaEliminarClienteItemStateChanged
+
+    }//GEN-LAST:event_jCBNumeroCedulaEliminarClienteItemStateChanged
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        Eliminar();
+    }//GEN-LAST:event_jButton9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -917,31 +994,68 @@ public class JFClientes extends javax.swing.JFrame {
         String apellidos = txtApellidos.getText();
         String direccion = txtDireccion.getText();
         String telefono = txtTelefono.getText();
-        Date bday = dtcBday.getDate();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String bday = sdf.format(dtcBday.getDate());
+        System.out.println(bday);
         try {
+
             if (cedula.equals("") || nombres.equals("") || apellidos.equals("")
                     || direccion.equals("") || telefono.equals("") || bday.equals("")) {
                 JOptionPane.showMessageDialog(null, "Faltan ingresar datos");
             } else {
-                String sql = "insert into cliente(cedula, nombres, apellidos, "
-                        + "direccion, telefono, cumpleanios) values ('" + cedula + "','" + nombres + "','" + apellidos + "','" + direccion + "','" + telefono + "','" + bday + "')";
-                //connet = con1.getConnection();
+                String sql = "insert into cliente(cedula, nombres, apellidos,direccion, telefono, cumpleanios) values ('" + cedula + "','" + nombres + "','" + apellidos + "','" + direccion + "','" + telefono + "','" + bday + "')";
+                connet = con1.getCon();
                 st = connet.createStatement();
                 st.executeUpdate(sql);
             }
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error de registro" + e);
         }
     }
+
     void Eliminar() {
         String cedula;
-        cedula= jCBNumeroCedulaCliente.getItemAt(jCBNumeroCedulaCliente.getSelectedIndex());
+        cedula = jCBNumeroCedulaEliminarCliente.getItemAt(jCBNumeroCedulaEliminarCliente.getSelectedIndex());
         try {
-
+            String sql = "delete from cliente where cedula= '" + cedula + "'";
+            connet = con1.getCon();
+            st = connet.createStatement();
+            st.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Cliente eliminado");
         } catch (Exception e) {
-            String sql = "delete from clientes where codigo="+cedula;
+            JOptionPane.showMessageDialog(null, "Error en la eliminacion" + e);
         }
-    }   
+    }
+
+    public void LlenarClientes(JComboBox cliente) {
+        String sql = "SELECT cedula FROM cliente";
+        try {
+            connet = con1.getCon();
+            ps = connet.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                cliente.addItem(rs.getString("cedula"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+    }
+
+    public void LlenarServicios(JComboBox cliente) {
+        String sql = "SELECT codigo FROM servicio";
+        try {
+            connet = con1.getCon();
+            ps = connet.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                cliente.addItem(rs.getString("codigo"));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.toString());
+        }
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtrasClientes;
@@ -1013,9 +1127,9 @@ public class JFClientes extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane7;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField9;
+    private javax.swing.JTextArea txaClienteInfo;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtCedula;
     private javax.swing.JTextField txtDireccion;
