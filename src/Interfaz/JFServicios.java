@@ -1,4 +1,3 @@
-
 package Interfaz;
 
 import Codigo.Conexion;
@@ -9,7 +8,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
-
 
 public class JFServicios extends javax.swing.JFrame {
 
@@ -36,17 +34,17 @@ public class JFServicios extends javax.swing.JFrame {
         ResultSet rs = null;
         Conexion conn = new Conexion();
         //Connection con=conn.getConexion();
-        try {
-            String sql = "SELECT *FROM servicio";
-            //ps = con.prepareStatement(sql);
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                jCBCodServi.addItem(rs.getString("codigo"));
-            }
-            rs.close();
-        } catch (SQLException ex) {
-            System.err.println(ex.toString());
-        }
+        // try {
+        //   String sql = "SELECT *FROM servicio";
+        //ps = con.prepareStatement(sql);
+        //rs = ps.executeQuery();
+        // while (rs.next()) {
+        //     jCBCodServi.addItem(rs.getString("codigo"));
+        // }
+        // rs.close();
+        // } catch (SQLException ex) {
+        //   System.err.println(ex.toString());
+        // }
 
     }
 
@@ -162,6 +160,11 @@ public class JFServicios extends javax.swing.JFrame {
 
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
         jButton10.setText("Cancelar");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -743,7 +746,7 @@ public class JFServicios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        Registrar();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -761,6 +764,12 @@ public class JFServicios extends javax.swing.JFrame {
     private void jCBCodServiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBCodServiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCBCodServiActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        txtCodigo.setText("");
+        txtNombre.setText("");
+        txtPrecio.setText("");
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -809,14 +818,17 @@ public class JFServicios extends javax.swing.JFrame {
             if (codigo.equals("") || nombre.equals("") || precio.equals("")) {
                 JOptionPane.showMessageDialog(null, "Faltan ingresar datos");
             } else {
-                String sql = "insert into cliente(cedula, nombres, apellidos, "
-                        + "direccion, telefono, cumpleanios) values ('" + codigo + "','" + nombre + "','" + precio + "')";
-                //connet = con1.getConnection();
+                String sql = "insert into servicio(codigo, nombre, precio) values ('" + codigo + "','" + nombre + "','" + precio + "')";
+                connet = con1.getCon();
                 st = connet.createStatement();
                 st.executeUpdate(sql);
             }
-
+            JOptionPane.showMessageDialog(null, "Servicio Registrado con Exito");
+            txtCodigo.setText("");
+            txtNombre.setText("");
+            txtPrecio.setText("");
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error de registro" + e);
         }
     }
 
