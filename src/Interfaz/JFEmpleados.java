@@ -81,6 +81,9 @@ public class JFEmpleados extends javax.swing.JFrame {
         
         this.jTVacaciones.setModel(modelo);
         
+        
+        this.jBActualizarSalario.setEnabled(false);
+        this.jBCancelarSalario.setEnabled(false);
     }
 
     /**
@@ -201,11 +204,11 @@ public class JFEmpleados extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLSalario = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
+        jTFSalarioActualizar = new javax.swing.JTextField();
+        jBActualizarSalario = new javax.swing.JButton();
         jLabel54 = new javax.swing.JLabel();
-        jLSalario1 = new javax.swing.JLabel();
-        jButton26 = new javax.swing.JButton();
+        jLEmpleado = new javax.swing.JLabel();
+        jBCancelarSalario = new javax.swing.JButton();
         jButton29 = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -474,7 +477,7 @@ public class JFEmpleados extends javax.swing.JFrame {
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
-        jTabbedPane4.addTab("Empleados", new javax.swing.ImageIcon(getClass().getResource("/Iconos/perfil-del-usuario.png")), jPanel1); // NOI18N
+        jTabbedPane4.addTab("Empleado", new javax.swing.ImageIcon(getClass().getResource("/Iconos/perfil-del-usuario.png")), jPanel1); // NOI18N
 
         jPanel18.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -883,7 +886,7 @@ public class JFEmpleados extends javax.swing.JFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Datos de Empleado", new javax.swing.ImageIcon(getClass().getResource("/Iconos/perfil-del-usuario.png")), jPEmpleadoC); // NOI18N
+        jTabbedPane3.addTab("Empleado", new javax.swing.ImageIcon(getClass().getResource("/Iconos/perfil-del-usuario.png")), jPEmpleadoC); // NOI18N
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1013,7 +1016,7 @@ public class JFEmpleados extends javax.swing.JFrame {
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Días Libres", new javax.swing.ImageIcon(getClass().getResource("/Iconos/calendario.png")), jPanel10); // NOI18N
+        jTabbedPane3.addTab("Día Libre", new javax.swing.ImageIcon(getClass().getResource("/Iconos/calendario.png")), jPanel10); // NOI18N
 
         jPanel16.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1111,15 +1114,25 @@ public class JFEmpleados extends javax.swing.JFrame {
 
         jLSalario.setText("*****");
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/actualizar.png"))); // NOI18N
-        jButton3.setText("Actualizar");
+        jBActualizarSalario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/actualizar.png"))); // NOI18N
+        jBActualizarSalario.setText("Actualizar");
+        jBActualizarSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBActualizarSalarioActionPerformed(evt);
+            }
+        });
 
         jLabel54.setText("Empleado: ");
 
-        jLSalario1.setText("*****");
+        jLEmpleado.setText("*****");
 
-        jButton26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
-        jButton26.setText("Cancelar");
+        jBCancelarSalario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
+        jBCancelarSalario.setText("Cancelar");
+        jBCancelarSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarSalarioActionPerformed(evt);
+            }
+        });
 
         jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
         jButton29.setText("Buscar");
@@ -1146,8 +1159,8 @@ public class JFEmpleados extends javax.swing.JFrame {
                                 .addGap(32, 32, 32)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLSalario)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLSalario1))
+                                    .addComponent(jTFSalarioActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLEmpleado))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1157,9 +1170,9 @@ public class JFEmpleados extends javax.swing.JFrame {
                                 .addComponent(jButton29))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3)
+                        .addComponent(jBActualizarSalario)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton26)))
+                        .addComponent(jBCancelarSalario)))
                 .addGap(62, 62, 62))
         );
         jPanel4Layout.setVerticalGroup(
@@ -1174,7 +1187,7 @@ public class JFEmpleados extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel54)
-                    .addComponent(jLSalario1))
+                    .addComponent(jLEmpleado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -1182,11 +1195,11 @@ public class JFEmpleados extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFSalarioActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton26))
+                    .addComponent(jBActualizarSalario)
+                    .addComponent(jBCancelarSalario))
                 .addContainerGap(140, Short.MAX_VALUE))
         );
 
@@ -1394,7 +1407,7 @@ public class JFEmpleados extends javax.swing.JFrame {
                 .addContainerGap(88, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Días Libres", new javax.swing.ImageIcon(getClass().getResource("/Iconos/calendario.png")), jPanel12); // NOI18N
+        jTabbedPane2.addTab("Día Libre", new javax.swing.ImageIcon(getClass().getResource("/Iconos/calendario.png")), jPanel12); // NOI18N
 
         jPanel15.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1743,7 +1756,7 @@ public class JFEmpleados extends javax.swing.JFrame {
                 .addGap(43, 43, 43))
         );
 
-        jTabbedPane5.addTab("Días Libres", new javax.swing.ImageIcon(getClass().getResource("/Iconos/calendario.png")), jPanel19); // NOI18N
+        jTabbedPane5.addTab("Día Libre", new javax.swing.ImageIcon(getClass().getResource("/Iconos/calendario.png")), jPanel19); // NOI18N
 
         jPanel20.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1966,7 +1979,7 @@ public class JFEmpleados extends javax.swing.JFrame {
         
         if(!val.validarNombres(ciudad)){
             JOptionPane.showMessageDialog(null, "Ingrese una ciudad válida", "ERROR!", 0);
-            this.jTFApellidos.setText("");
+            this.jTFCiudad.setText("");
             return;
         }
         
@@ -1977,22 +1990,30 @@ public class JFEmpleados extends javax.swing.JFrame {
         
         if(!val.validarNombres(especialidad)){
             JOptionPane.showMessageDialog(null, "Ingrese una especialidad válida", "ERROR!", 0);
-            this.jTFApellidos.setText("");
+            this.jTFEspecialidad.setText("");
             return;
         }
 
+        try{
         float salario=Float.parseFloat(this.jTFSalario.getText());
         
         if(!val.validarSalario(salario)){
             JOptionPane.showMessageDialog(null, "Ingrese un salario válido", "ERROR!", 0);
-            this.jTFApellidos.setText("");
+            this.jTFSalario.setText("");
+            return;
+        }
+        
+        Empleado empleado=new Empleado(cedula, nombres, apellidos, jornada, ciudad, salario,especialidad);
+        empleado.Registrar();
+        
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ingrese un salario válido", "ERROR!", 0);
+            this.jTFSalario.setText("");
             return;
         }
         
         
         
-        Empleado empleado=new Empleado(cedula, nombres, apellidos, jornada, ciudad, salario,especialidad);
-        empleado.Registrar();
         
        this.jtfcedula.setText("");
        this.jTFNombres.setText("");
@@ -2315,7 +2336,25 @@ public class JFEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
-        // TODO add your handling code here:
+        Empleado emp=new Empleado(this.jCBCedulaSalario.getSelectedItem().toString());
+        
+        this.jLEmpleado.setText(emp.getNombres()+" "+emp.getApellidos());
+        this.jLSalario.setText(Float.toString(emp.getSalario()));
+        
+        this.jBActualizarSalario.setEnabled(true);
+        this.jBCancelarSalario.setEnabled(true);
+        
+        /*
+        float salario=Float.parseFloat(this.jTFSalario.getText());
+        
+        if(!val.validarSalario(salario)){
+            JOptionPane.showMessageDialog(null, "Ingrese un salario válido", "ERROR!", 0);
+            this.jTFApellidos.setText("");
+            return;
+        }
+        
+        
+        emp.atualizarSalario(salario);*/
     }//GEN-LAST:event_jButton29ActionPerformed
 
     private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
@@ -2329,6 +2368,45 @@ public class JFEmpleados extends javax.swing.JFrame {
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton32ActionPerformed
+
+    private void jBActualizarSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActualizarSalarioActionPerformed
+        Empleado emp=new Empleado(this.jCBCedulaSalario.getSelectedItem().toString());
+        Validar val=new Validar();
+        
+        Float salario=emp.getSalario();
+        try{
+            salario=Float.parseFloat(this.jTFSalarioActualizar.getText());
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Ingrese un salario válido", "ERROR!", 0);
+            System.out.println(e);
+            this.jTFSalarioActualizar.setText("");
+            return;
+        }
+        
+        
+        if(!val.validarSalario(salario)){
+            System.out.println("Hola");
+            JOptionPane.showMessageDialog(null, "Ingrese un salario válido", "ERROR!", 0);
+            this.jTFSalarioActualizar.setText("");
+            return;
+        }
+        
+        
+        emp.atualizarSalario(salario);
+        this.jBActualizarSalario.setEnabled(false);
+        this.jTFSalarioActualizar.setText("");
+        this.jBCancelarSalario.setEnabled(false);
+        this.jLEmpleado.setText("");
+        this.jLSalario.setText("");
+    }//GEN-LAST:event_jBActualizarSalarioActionPerformed
+
+    private void jBCancelarSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarSalarioActionPerformed
+        this.jBActualizarSalario.setEnabled(false);
+        this.jTFSalarioActualizar.setText("");
+        this.jBCancelarSalario.setEnabled(false);
+        this.jLEmpleado.setText("");
+        this.jLSalario.setText("");
+    }//GEN-LAST:event_jBCancelarSalarioActionPerformed
 
     
     public static void rellenarCedulas(JComboBox combox){
@@ -2402,6 +2480,8 @@ public class JFEmpleados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBActualizarSalario;
+    private javax.swing.JButton jBCancelarSalario;
     private javax.swing.JButton jBRegistrarDiaLibre;
     private javax.swing.JButton jBRegistrarVacacion;
     private javax.swing.JButton jButton1;
@@ -2422,11 +2502,9 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton30;
     private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton32;
@@ -2469,6 +2547,7 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLCedulaC1;
     private javax.swing.JLabel jLCiudadC;
     private javax.swing.JLabel jLCiudadC1;
+    private javax.swing.JLabel jLEmpleado;
     private javax.swing.JLabel jLEmpleadoC;
     private javax.swing.JLabel jLEmpleadoDiasLibresC;
     private javax.swing.JLabel jLEmpleadoVacacionesC;
@@ -2481,7 +2560,6 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLNombresC;
     private javax.swing.JLabel jLNombresC1;
     private javax.swing.JLabel jLSalario;
-    private javax.swing.JLabel jLSalario1;
     private javax.swing.JLabel jLSalarioC;
     private javax.swing.JLabel jLSalarioC1;
     private javax.swing.JLabel jLabel1;
@@ -2586,6 +2664,7 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JTextField jTFEspecialidad;
     private javax.swing.JTextField jTFNombres;
     private javax.swing.JTextField jTFSalario;
+    private javax.swing.JTextField jTFSalarioActualizar;
     private javax.swing.JTable jTVacaciones;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
@@ -2595,7 +2674,6 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jtfcedula;
     // End of variables declaration//GEN-END:variables
 }

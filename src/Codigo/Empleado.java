@@ -116,6 +116,64 @@ public class Empleado {
         
         return true;
     }
+    
+    public void atualizarSalario(Float salario){
+        Conexion conn=new Conexion();
+        PreparedStatement ps;
+        //ResultSet rs;
+        
+        
+        try{
+           ps=conn.getCon().prepareStatement("UPDATE empleado SET salario="+salario+" WHERE cedula='"+cedula+"';");
+                
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Salario actualizado exitosamente"); 
+                      
+            
+        }catch(SQLException e){
+           JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+           
+        }finally{
+            try{
+                if(conn!=null){
+                    conn.getCon().close();
+                }
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Error, reinicie el sistema"); 
+               
+            }
+        }
+    }
+    
+    public void atualizarJornada(String jornada){
+        Conexion conn=new Conexion();
+        PreparedStatement ps;
+        //ResultSet rs;
+        
+        
+        try{
+           ps=conn.getCon().prepareStatement("UPDATE empleado SET jornadaTrabajo="+jornada+" WHERE cedula='"+cedula+"';");
+                
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Jornada actualizada exitosamente"); 
+                      
+            
+        }catch(SQLException e){
+           JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+           
+        }finally{
+            try{
+                if(conn!=null){
+                    conn.getCon().close();
+                }
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Error, reinicie el sistema"); 
+               
+            }
+        }
+    }
 
     public String getCedula() {
         return cedula;

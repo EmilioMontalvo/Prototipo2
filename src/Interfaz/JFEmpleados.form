@@ -147,8 +147,8 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Empleados">
-                        <Property name="tabTitle" type="java.lang.String" value="Empleados"/>
+                      <JTabbedPaneConstraints tabName="Empleado">
+                        <Property name="tabTitle" type="java.lang.String" value="Empleado"/>
                         <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/Iconos/perfil-del-usuario.png"/>
                         </Property>
@@ -844,8 +844,8 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="Datos de Empleado">
-                        <Property name="tabTitle" type="java.lang.String" value="Datos de Empleado"/>
+                      <JTabbedPaneConstraints tabName="Empleado">
+                        <Property name="tabTitle" type="java.lang.String" value="Empleado"/>
                         <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/Iconos/perfil-del-usuario.png"/>
                         </Property>
@@ -1242,8 +1242,8 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="D&#xed;as Libres">
-                        <Property name="tabTitle" type="java.lang.String" value="D&#xed;as Libres"/>
+                      <JTabbedPaneConstraints tabName="D&#xed;a Libre">
+                        <Property name="tabTitle" type="java.lang.String" value="D&#xed;a Libre"/>
                         <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/Iconos/calendario.png"/>
                         </Property>
@@ -1564,8 +1564,8 @@
                                               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="jLSalario" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="jTextField7" min="-2" pref="80" max="-2" attributes="0"/>
-                                                  <Component id="jLSalario1" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="jTFSalarioActualizar" min="-2" pref="80" max="-2" attributes="0"/>
+                                                  <Component id="jLEmpleado" min="-2" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace pref="309" max="32767" attributes="0"/>
                                           </Group>
@@ -1581,9 +1581,9 @@
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jBActualizarSalario" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jButton26" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jBCancelarSalario" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
@@ -1603,7 +1603,7 @@
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel54" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLSalario1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -1613,12 +1613,12 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTextField7" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTFSalarioActualizar" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton26" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jBActualizarSalario" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jBCancelarSalario" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="140" max="32767" attributes="0"/>
                           </Group>
@@ -1661,33 +1661,39 @@
                         <Property name="text" type="java.lang.String" value="*****"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTextField7">
+                    <Component class="javax.swing.JTextField" name="jTFSalarioActualizar">
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton3">
+                    <Component class="javax.swing.JButton" name="jBActualizarSalario">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/Iconos/actualizar.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Actualizar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBActualizarSalarioActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel54">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Empleado: "/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLSalario1">
+                    <Component class="javax.swing.JLabel" name="jLEmpleado">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="*****"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton26">
+                    <Component class="javax.swing.JButton" name="jBCancelarSalario">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/Iconos/cancelar.png"/>
                         </Property>
                         <Property name="text" type="java.lang.String" value="Cancelar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBCancelarSalarioActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton29">
                       <Properties>
@@ -1895,8 +1901,8 @@
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                      <JTabbedPaneConstraints tabName="D&#xed;as Libres">
-                        <Property name="tabTitle" type="java.lang.String" value="D&#xed;as Libres"/>
+                      <JTabbedPaneConstraints tabName="D&#xed;a Libre">
+                        <Property name="tabTitle" type="java.lang.String" value="D&#xed;a Libre"/>
                         <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                           <Image iconType="3" name="/Iconos/calendario.png"/>
                         </Property>
@@ -2622,8 +2628,8 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                          <JTabbedPaneConstraints tabName="D&#xed;as Libres">
-                            <Property name="tabTitle" type="java.lang.String" value="D&#xed;as Libres"/>
+                          <JTabbedPaneConstraints tabName="D&#xed;a Libre">
+                            <Property name="tabTitle" type="java.lang.String" value="D&#xed;a Libre"/>
                             <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/Iconos/calendario.png"/>
                             </Property>
