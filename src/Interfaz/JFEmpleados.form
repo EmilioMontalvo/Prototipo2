@@ -1973,7 +1973,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jPanel2" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane2" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" pref="146" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace pref="88" max="32767" attributes="0"/>
                           </Group>
@@ -2003,7 +2003,7 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel15">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="D&#xed;as Libres"/>
+                        <Property name="text" type="java.lang.String" value="Seleccione el d&#xed;a libre:"/>
                       </Properties>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
@@ -2016,13 +2016,7 @@
                         <Component class="javax.swing.JList" name="jLDiasLibresActualizar">
                           <Properties>
                             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-                              <StringArray count="5">
-                                <StringItem index="0" value="Item 1"/>
-                                <StringItem index="1" value="Item 2"/>
-                                <StringItem index="2" value="Item 3"/>
-                                <StringItem index="3" value="Item 4"/>
-                                <StringItem index="4" value="Item 5"/>
-                              </StringArray>
+                              <StringArray count="0"/>
                             </Property>
                           </Properties>
                           <AuxValues>
@@ -2054,9 +2048,9 @@
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jBActualizarDia" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace pref="29" max="32767" attributes="0"/>
-                                          <Component id="jButton23" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jBCancelarDia" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -2073,8 +2067,8 @@
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jButton23" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jBActualizarDia" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jBCancelarDia" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -2091,15 +2085,18 @@
                             <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButton6">
+                        <Component class="javax.swing.JButton" name="jBActualizarDia">
                           <Properties>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/Iconos/actualizar.png"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Actualizar"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBActualizarDiaActionPerformed"/>
+                          </Events>
                         </Component>
-                        <Component class="javax.swing.JButton" name="jButton23">
+                        <Component class="javax.swing.JButton" name="jBCancelarDia">
                           <Properties>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/Iconos/cancelar.png"/>
