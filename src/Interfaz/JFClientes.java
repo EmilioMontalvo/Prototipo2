@@ -925,7 +925,6 @@ public class JFClientes extends javax.swing.JFrame {
         String cedula = txtCedula.getText();
 
         if (val.verificarCedula(cedula)) {
-
             String nombres = txtNombres.getText();
             if (!val.validarNombres(nombres)) {
                 JOptionPane.showMessageDialog(null, "Nombres no válidos-repita", "ERROR!", 0);
@@ -1006,10 +1005,6 @@ public class JFClientes extends javax.swing.JFrame {
         boolean minusculas = key >= 97 && key <= 122;
         boolean espacio = key == 32;
 
-        if (!(minusculas || mayusculas || espacio)) {
-            evt.consume();
-        }
-
         if (txtNombres.getText().length() >= 60) {
             evt.consume();
         }
@@ -1027,7 +1022,6 @@ public class JFClientes extends javax.swing.JFrame {
         /*if (espacio) {
             e++;
         }*/
-        
         if (txtNombres.getText().length() >= 60) {
             evt.consume();
         }
@@ -1202,6 +1196,7 @@ public class JFClientes extends javax.swing.JFrame {
             System.out.println(e.toString());
         }
     }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
