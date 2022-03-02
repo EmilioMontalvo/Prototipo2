@@ -59,6 +59,35 @@ public class DiaLibre {
         
         return true;
     }
+     
+     public void atualizarDia(Date dia){
+        Conexion conn=new Conexion();
+        PreparedStatement ps;
+        
+        
+        
+        try{
+           ps=conn.getCon().prepareStatement("UPDATE dia_libre SET dia_Libre="+dia+" WHERE Empleado_cedula='"+cedulaEmpleado+"' AND dia_Libre ='"+diaLibre+"';");
+                
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Día libre actualizado exitosamente"); 
+                      
+            
+        }catch(SQLException e){
+           JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+           
+        }finally{
+            try{
+                if(conn!=null){
+                    conn.getCon().close();
+                }
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Error, reinicie el sistema"); 
+               
+            }
+        }
+    }
 
     public String getCedulaEmpleado() {
         return cedulaEmpleado;

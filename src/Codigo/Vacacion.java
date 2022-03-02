@@ -62,4 +62,34 @@ public class Vacacion {
         
         return true;
     }
+    
+    
+    public void atualizarDia(Date dia,Date diaFin){
+        Conexion conn=new Conexion();
+        PreparedStatement ps;
+        
+        
+        
+        try{
+           ps=conn.getCon().prepareStatement("UPDATE vacaciones SET fechaInicio='"+dia+"',fechaFin='"+diaFin+"'WHERE Empleado_cedula1='"+cedula+"' AND fechaInicio='"+inicio+"',fechaFin='"+fin+"';");
+                
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Periodo de vacaciones actualizado exitosamente"); 
+                      
+            
+        }catch(SQLException e){
+           JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+           
+        }finally{
+            try{
+                if(conn!=null){
+                    conn.getCon().close();
+                }
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Error, reinicie el sistema"); 
+               
+            }
+        }
+    }
 }
