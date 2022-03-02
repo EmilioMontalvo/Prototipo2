@@ -139,7 +139,12 @@ public class Empleado {
                       
             
         }catch(SQLException e){
-           JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+            if(Pattern.matches("^Duplicate entry.*", e.getMessage())){
+                JOptionPane.showMessageDialog(null, "Ya existe este día libre");
+            }else{
+                JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+           
+            }
            
         }finally{
             try{
@@ -168,7 +173,12 @@ public class Empleado {
                       
             
         }catch(SQLException e){
-           JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+            if(Pattern.matches("^Duplicate entry.*", e.getMessage())){
+                JOptionPane.showMessageDialog(null, "Ya existe este día libre");
+            }else{
+                JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+           
+            }
            
         }finally{
             try{
