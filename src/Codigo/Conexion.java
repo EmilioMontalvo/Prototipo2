@@ -26,6 +26,11 @@ public class Conexion {
             System.err.println("Error:" +e);
         }
     }
+    
+    public Connection getConnection(){
+        return con;
+    }
+    
     public static void main(String[] args) {
         Conexion cn=new Conexion();
         Statement st;
