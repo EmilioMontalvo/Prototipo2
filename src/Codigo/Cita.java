@@ -28,7 +28,7 @@ public class Cita {
     private Time duracion;
     private String estado;
 
-    public Cita(int numero, Date fecha, Time hora, String cliente_cedula, String empleado_cedula, String servicio_codigo, Time duracion, String estado) {
+    public Cita(Date fecha, Time hora, String cliente_cedula, String empleado_cedula, String servicio_codigo, Time duracion) {
 
         Conexion conn = new Conexion();
         PreparedStatement ps;
@@ -61,6 +61,10 @@ public class Cita {
 
             }
         }
+    }
+
+    public Cita(Date fecha, Time tiempo, String cedulaC, String cedulaE, Time duracion) {
+        
     }
     
     public boolean Registrar(){
