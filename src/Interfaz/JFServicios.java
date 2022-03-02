@@ -1,21 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Interfaz;
 
+import Codigo.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 
-/**
- *
- * @author HP
- */
 public class JFServicios extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JFServicios
-     */
+    Conexion con1 = new Conexion();
+    Connection connet;
+    Statement st;
+    ResultSet rs;
+    int idc;
+
     public JFServicios() {
         initComponents();
         AutoCompleteDecorator.decorate(jCBCodAno);
@@ -28,8 +29,23 @@ public class JFServicios extends javax.swing.JFrame {
         AutoCompleteDecorator.decorate(jCBCodDescAsg);
         setLocationRelativeTo(null);
         this.setResizable(false);
-            
-        
+
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Conexion conn = new Conexion();
+        //Connection con=conn.getConexion();
+        // try {
+        //   String sql = "SELECT *FROM servicio";
+        //ps = con.prepareStatement(sql);
+        //rs = ps.executeQuery();
+        // while (rs.next()) {
+        //     jCBCodServi.addItem(rs.getString("codigo"));
+        // }
+        // rs.close();
+        // } catch (SQLException ex) {
+        //   System.err.println(ex.toString());
+        // }
+
     }
 
     /**
@@ -51,10 +67,10 @@ public class JFServicios extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
@@ -144,6 +160,11 @@ public class JFServicios extends javax.swing.JFrame {
 
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
         jButton10.setText("Cancelar");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -164,9 +185,9 @@ public class JFServicios extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField1))))
+                            .addComponent(txtPrecio)
+                            .addComponent(txtNombre)
+                            .addComponent(txtCodigo))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -175,15 +196,15 @@ public class JFServicios extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -214,8 +235,6 @@ public class JFServicios extends javax.swing.JFrame {
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane3.setViewportView(jTextArea1);
-
-        jCBCodAno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -252,8 +271,6 @@ public class JFServicios extends javax.swing.JFrame {
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane4.setViewportView(jTextArea2);
-
-        jCBCodTreinta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -306,7 +323,11 @@ public class JFServicios extends javax.swing.JFrame {
             }
         });
 
-        jCBCodServi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBCodServi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBCodServiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -371,8 +392,6 @@ public class JFServicios extends javax.swing.JFrame {
 
         jLabel11.setText("Código del servicio:");
 
-        jCBServDesc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jTextArea3.setEditable(false);
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
@@ -426,8 +445,6 @@ public class JFServicios extends javax.swing.JFrame {
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/actualizar.png"))); // NOI18N
         jButton5.setText("Actualizar");
-
-        jCBCodAct.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
         jButton4.setText("Cancelar");
@@ -496,8 +513,6 @@ public class JFServicios extends javax.swing.JFrame {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png"))); // NOI18N
         jButton2.setText("Eliminar");
 
-        jCBServEli.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
         jButton12.setText("Cancelar");
 
@@ -535,8 +550,6 @@ public class JFServicios extends javax.swing.JFrame {
         jTabbedPane7.addTab("Servicio", new javax.swing.ImageIcon(getClass().getResource("/Iconos/tijeras.png")), jPanel3); // NOI18N
 
         jLabel12.setText("Código del servicio:");
-
-        jCBDescEli.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png"))); // NOI18N
         jButton6.setText("Eliminar");
@@ -593,8 +606,6 @@ public class JFServicios extends javax.swing.JFrame {
         jTabbedPane3.addTab("Eliminar", new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png")), jPanel13); // NOI18N
 
         jLabel13.setText("Código del servicio:");
-
-        jCBCodDescAsg.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel14.setText("Porcentaje del descuento:");
 
@@ -735,6 +746,7 @@ public class JFServicios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Registrar();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -748,6 +760,16 @@ public class JFServicios extends javax.swing.JFrame {
         this.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jCBCodServiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBCodServiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBCodServiActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        txtCodigo.setText("");
+        txtNombre.setText("");
+        txtPrecio.setText("");
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -782,6 +804,42 @@ public class JFServicios extends javax.swing.JFrame {
                 new JFServicios().setVisible(true);
             }
         });
+    }
+
+    void Consultar() {
+
+    }
+
+    void Registrar() {
+        String codigo = txtCodigo.getText();
+        String nombre = txtNombre.getText();
+        String precio = txtPrecio.getText();
+        try {
+            if (codigo.equals("") || nombre.equals("") || precio.equals("")) {
+                JOptionPane.showMessageDialog(null, "Faltan ingresar datos");
+            } else {
+                String sql = "insert into servicio(codigo, nombre, precio) values ('" + codigo + "','" + nombre + "','" + precio + "')";
+                connet = con1.getCon();
+                st = connet.createStatement();
+                st.executeUpdate(sql);
+            }
+            JOptionPane.showMessageDialog(null, "Servicio Registrado con Exito");
+            txtCodigo.setText("");
+            txtNombre.setText("");
+            txtPrecio.setText("");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error de registro" + e);
+        }
+    }
+
+    void Eliminar() {
+        String codigo;
+        codigo = jCBCodServi.getItemAt(jCBCodServi.getSelectedIndex());
+        try {
+
+        } catch (Exception e) {
+            String sql = "delete from clientes where codigo=" + codigo;
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -855,9 +913,9 @@ public class JFServicios extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 }
