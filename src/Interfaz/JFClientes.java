@@ -324,7 +324,6 @@ public class JFClientes extends javax.swing.JFrame {
 
         jLabel7.setText("Número de Cédula:");
 
-        jCBNumeroCedulaCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
         jCBNumeroCedulaCliente.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCBNumeroCedulaClienteItemStateChanged(evt);
@@ -688,7 +687,6 @@ public class JFClientes extends javax.swing.JFrame {
         jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
         jButton14.setText("Cancelar");
 
-        jCBNumeroCedulaEliminarCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
         jCBNumeroCedulaEliminarCliente.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCBNumeroCedulaEliminarClienteItemStateChanged(evt);
@@ -956,6 +954,13 @@ public class JFClientes extends javax.swing.JFrame {
                                 txtDireccion.setText("");
                                 txtTelefono.setText("");
                                 dtcBday.setCalendar(null);
+                                jCBNumeroCedulaCliente.removeAllItems();
+                                jCBNumeroCedulaClienteCitasC.removeAllItems();
+                                jCBNumeroCedulaClienteDescuentos.removeAllItems();
+                                jCBActualizarCliente.removeAllItems();
+                                jCBNumeroCedulaEliminarCliente.removeAllItems();
+                                jCBNumCedEliminarDescuentoCliente.removeAllItems();
+                                jCBNumCedAsigDesc.removeAllItems();
                                 LlenarClientes(jCBNumeroCedulaCliente);
                                 LlenarClientes(jCBNumeroCedulaClienteCitasC);
                                 LlenarClientes(jCBNumeroCedulaClienteDescuentos);
@@ -1064,6 +1069,14 @@ public class JFClientes extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         Eliminar();
+        jCBNumeroCedulaCliente.removeAllItems();
+        jCBNumeroCedulaClienteCitasC.removeAllItems();
+        jCBNumeroCedulaClienteDescuentos.removeAllItems();
+        jCBActualizarCliente.removeAllItems();
+        jCBNumeroCedulaEliminarCliente.removeAllItems();
+        jCBNumCedEliminarDescuentoCliente.removeAllItems();
+        jCBNumCedAsigDesc.removeAllItems();
+
         LlenarClientes(jCBNumeroCedulaCliente);
         LlenarClientes(jCBNumeroCedulaClienteCitasC);
         LlenarClientes(jCBNumeroCedulaClienteDescuentos);
@@ -1075,27 +1088,37 @@ public class JFClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        jLabel30.setText("");
+        jLabel31.setText("");
+        jLabel32.setText("");
+        jLabel33.setText("");
+        jLabel34.setText("");
+        jLabel35.setText("");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String cedula = jCBNumeroCedulaCliente.getSelectedItem().toString();
-        try {
-            String sql = "SELECT * FROM cliente where cedula= '" + cedula + "';";
-            connet = con1.getCon();
-            st = connet.createStatement();
-            rs = st.executeQuery(sql);
-            rs.next();
-            jLabel30.setText(rs.getString("cedula"));
-            jLabel31.setText(rs.getString("nombres"));
-            jLabel32.setText(rs.getString("apellidos"));
-            jLabel33.setText(rs.getString("direccion"));
-            jLabel34.setText(rs.getString("telefono"));
-            jLabel35.setText(rs.getString("cumpleanios"));
-            JOptionPane.showMessageDialog(null, "Cliente encontrado con Exito");
-        } catch (SQLException e) {
+        if (cedula == "") {
             JOptionPane.showMessageDialog(null, "Error en la consulta ");
+        } else {
+            try {
+                String sql = "SELECT * FROM cliente where cedula= '" + cedula + "';";
+                connet = con1.getCon();
+                st = connet.createStatement();
+                rs = st.executeQuery(sql);
+                rs.next();
+                jLabel30.setText(rs.getString("cedula"));
+                jLabel31.setText(rs.getString("nombres"));
+                jLabel32.setText(rs.getString("apellidos"));
+                jLabel33.setText(rs.getString("direccion"));
+                jLabel34.setText(rs.getString("telefono"));
+                jLabel35.setText(rs.getString("cumpleanios"));
+                JOptionPane.showMessageDialog(null, "Cliente encontrado con Exito");
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error en la consulta ");
+            }
         }
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -1162,7 +1185,7 @@ public class JFClientes extends javax.swing.JFrame {
     void Eliminar() {
         String cedula;
         cedula = jCBNumeroCedulaEliminarCliente.getItemAt(jCBNumeroCedulaEliminarCliente.getSelectedIndex());
-        if (jCBNumeroCedulaEliminarCliente.getSelectedIndex()==0) {
+        if (jCBNumeroCedulaEliminarCliente.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Error en la eliminación");
         } else {
             try {
@@ -1178,6 +1201,7 @@ public class JFClientes extends javax.swing.JFrame {
     }
 
     public void LlenarClientes(JComboBox cliente) {
+        cliente.insertItemAt("", 0);
         String sql = "SELECT cedula FROM cliente";
         try {
             connet = con1.getCon();
@@ -1192,6 +1216,7 @@ public class JFClientes extends javax.swing.JFrame {
     }
 
     public void LlenarServicios(JComboBox cliente) {
+        cliente.insertItemAt("", 0);
         String sql = "SELECT codigo FROM servicio";
         try {
             connet = con1.getCon();
