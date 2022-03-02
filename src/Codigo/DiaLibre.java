@@ -8,6 +8,7 @@ package Codigo;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Date;
+import java.sql.ResultSet;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
@@ -24,7 +25,9 @@ public class DiaLibre {
         this.diaLibre = diaLibre;
     }
     
-     public boolean Registrar(){
+          
+    
+    public boolean Registrar(){
         Conexion conn=new Conexion();
         PreparedStatement ps;
         //ResultSet rs;
@@ -67,7 +70,7 @@ public class DiaLibre {
         
         
         try{
-           ps=conn.getCon().prepareStatement("UPDATE dia_libre SET dia_Libre="+dia+" WHERE Empleado_cedula='"+cedulaEmpleado+"' AND dia_Libre ='"+diaLibre+"';");
+           ps=conn.getCon().prepareStatement("UPDATE dia_libre SET dia_Libre='"+dia+"' WHERE Empleado_cedula='"+cedulaEmpleado+"' AND dia_Libre ='"+diaLibre+"';");
                 
             
             ps.executeUpdate();

@@ -5,6 +5,7 @@
  */
 package Codigo;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
@@ -159,7 +160,7 @@ public class Empleado {
         
         
         try{
-           ps=conn.getCon().prepareStatement("UPDATE empleado SET jornadaTrabajo="+jornada+" WHERE cedula='"+cedula+"';");
+           ps=conn.getCon().prepareStatement("UPDATE empleado SET jornadaTrabajo='"+jornada+"' WHERE cedula='"+cedula+"';");
                 
             
             ps.executeUpdate();
@@ -180,6 +181,7 @@ public class Empleado {
             }
         }
     }
+    
 
     public String getCedula() {
         return cedula;
