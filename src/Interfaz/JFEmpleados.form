@@ -2263,8 +2263,8 @@
                                           </Group>
                                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jDateChooser3" pref="149" max="32767" attributes="0"/>
-                                              <Component id="jDateChooser4" max="32767" attributes="0"/>
+                                              <Component id="jDateInicio" pref="149" max="32767" attributes="0"/>
+                                              <Component id="jDateChooserFin" max="32767" attributes="0"/>
                                           </Group>
                                           <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
                                       </Group>
@@ -2277,13 +2277,13 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jDateChooser3" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jDateInicio" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel21" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="24" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel22" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jDateChooser4" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jDateChooserFin" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -2301,7 +2301,7 @@
                             <Property name="text" type="java.lang.String" value="Inicio"/>
                           </Properties>
                         </Component>
-                        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser3">
+                        <Component class="com.toedter.calendar.JDateChooser" name="jDateInicio">
                           <Properties>
                             <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
                           </Properties>
@@ -2322,7 +2322,7 @@
                             <Property name="text" type="java.lang.String" value="Fin"/>
                           </Properties>
                         </Component>
-                        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser4">
+                        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooserFin">
                           <Properties>
                             <Property name="dateFormatString" type="java.lang.String" value="dd/MM/yyyy"/>
                           </Properties>

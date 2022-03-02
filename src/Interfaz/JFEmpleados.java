@@ -17,6 +17,8 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import javax.swing.JList;
@@ -248,10 +250,10 @@ public class JFEmpleados extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        jDateInicio = new com.toedter.calendar.JDateChooser();
         jBActualizarVacaciones = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
-        jDateChooser4 = new com.toedter.calendar.JDateChooser();
+        jDateChooserFin = new com.toedter.calendar.JDateChooser();
         jBCancelarVacaciones = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
         jTVacacionesA = new javax.swing.JTable();
@@ -1447,7 +1449,7 @@ public class JFEmpleados extends javax.swing.JFrame {
 
         jLabel21.setText("Inicio");
 
-        jDateChooser3.setDateFormatString("dd/MM/yyyy");
+        jDateInicio.setDateFormatString("dd/MM/yyyy");
 
         jBActualizarVacaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/actualizar.png"))); // NOI18N
         jBActualizarVacaciones.setText("Actualizar");
@@ -1459,7 +1461,7 @@ public class JFEmpleados extends javax.swing.JFrame {
 
         jLabel22.setText("Fin");
 
-        jDateChooser4.setDateFormatString("dd/MM/yyyy");
+        jDateChooserFin.setDateFormatString("dd/MM/yyyy");
 
         jBCancelarVacaciones.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
         jBCancelarVacaciones.setText("Cancelar");
@@ -1483,8 +1485,8 @@ public class JFEmpleados extends javax.swing.JFrame {
                             .addComponent(jLabel21))
                         .addGap(30, 30, 30)
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jDateChooser3, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                            .addComponent(jDateChooser4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jDateInicio, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                            .addComponent(jDateChooserFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(35, 35, 35))))
         );
         jPanel5Layout.setVerticalGroup(
@@ -1492,12 +1494,12 @@ public class JFEmpleados extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooser4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooserFin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBActualizarVacaciones)
@@ -2489,17 +2491,34 @@ public class JFEmpleados extends javax.swing.JFrame {
 
     private void jBActualizarVacacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActualizarVacacionesActionPerformed
           Empleado emp=new Empleado(this.jCBDiasVacacionesA.getSelectedItem().toString());
-          
+          Validar val=new Validar();
           int r=this.jTVacacionesA.getSelectedRow();
           if(r==-1){
               JOptionPane.showMessageDialog(null, "Seleccione un periodo de vacaciones válido", "ERROR!", 0);
+              return;
           }
           
           DefaultTableModel modelodatos = (DefaultTableModel) this.jTVacacionesA.getModel();
          
-          System.out.print(modelodatos.getValueAt(r, 1));
+         String diainicioviejoS=modelodatos.getValueAt(r, 1).toString();
           
-          System.out.print(modelodatos.getValueAt(r, 2));
+         String diafinviejoS=modelodatos.getValueAt(r, 2).toString();
+          
+          
+          SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        
+        try {
+            Date diainicioviejo=formato.parse(diainicioviejoS);
+            Date diaifinviejo=formato.parse(diafinviejoS);
+            
+        } catch (ParseException ex) {
+            Logger.getLogger(JFEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            Date diainicionuevo=this.jDCinicioVacacion.getDate();
+            Date diafinnuevo=this.jDCFinVacacion.getDate();
+            
+            
     }//GEN-LAST:event_jBActualizarVacacionesActionPerformed
 
     
@@ -2725,8 +2744,8 @@ public class JFEmpleados extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDCinicioVacacion;
     private com.toedter.calendar.JDateChooser jDCregreso;
     private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
-    private com.toedter.calendar.JDateChooser jDateChooser4;
+    private com.toedter.calendar.JDateChooser jDateChooserFin;
+    private com.toedter.calendar.JDateChooser jDateInicio;
     private javax.swing.JLabel jLApellidosC;
     private javax.swing.JLabel jLApellidosC1;
     private javax.swing.JLabel jLCantidadC;
