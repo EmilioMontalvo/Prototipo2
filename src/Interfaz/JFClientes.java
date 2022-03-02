@@ -324,6 +324,7 @@ public class JFClientes extends javax.swing.JFrame {
 
         jLabel7.setText("Número de Cédula:");
 
+        jCBNumeroCedulaCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
         jCBNumeroCedulaCliente.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCBNumeroCedulaClienteItemStateChanged(evt);
@@ -687,6 +688,7 @@ public class JFClientes extends javax.swing.JFrame {
         jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
         jButton14.setText("Cancelar");
 
+        jCBNumeroCedulaEliminarCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
         jCBNumeroCedulaEliminarCliente.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jCBNumeroCedulaEliminarClienteItemStateChanged(evt);
@@ -1069,6 +1071,7 @@ public class JFClientes extends javax.swing.JFrame {
         LlenarClientes(jCBNumeroCedulaEliminarCliente);
         LlenarClientes(jCBNumCedEliminarDescuentoCliente);
         LlenarClientes(jCBNumCedAsigDesc);
+
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -1089,8 +1092,9 @@ public class JFClientes extends javax.swing.JFrame {
             jLabel33.setText(rs.getString("direccion"));
             jLabel34.setText(rs.getString("telefono"));
             jLabel35.setText(rs.getString("cumpleanios"));
+            JOptionPane.showMessageDialog(null, "Cliente encontrado con Exito");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en la consulta " + e);
+            JOptionPane.showMessageDialog(null, "Error en la consulta ");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -1158,14 +1162,18 @@ public class JFClientes extends javax.swing.JFrame {
     void Eliminar() {
         String cedula;
         cedula = jCBNumeroCedulaEliminarCliente.getItemAt(jCBNumeroCedulaEliminarCliente.getSelectedIndex());
-        try {
-            String sql = "delete from cliente where cedula= '" + cedula + "'";
-            connet = con1.getCon();
-            st = connet.createStatement();
-            st.executeUpdate(sql);
-            JOptionPane.showMessageDialog(null, "Cliente eliminado");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en la eliminacion" + e);
+        if (jCBNumeroCedulaEliminarCliente.getSelectedIndex()==0) {
+            JOptionPane.showMessageDialog(null, "Error en la eliminación");
+        } else {
+            try {
+                String sql = "delete from cliente where cedula= '" + cedula + "'";
+                connet = con1.getCon();
+                st = connet.createStatement();
+                st.executeUpdate(sql);
+                JOptionPane.showMessageDialog(null, "Cliente eliminado");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error en la eliminación");
+            }
         }
     }
 
@@ -1196,7 +1204,6 @@ public class JFClientes extends javax.swing.JFrame {
             System.out.println(e.toString());
         }
     }
-    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
