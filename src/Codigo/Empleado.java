@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 
@@ -101,8 +102,13 @@ public class Empleado {
             ps.executeUpdate();
             JOptionPane.showMessageDialog(null, "Empleado registrado con exito");
         }catch(SQLException e){
-           JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
-           return false;
+           if(Pattern.matches("^Duplicate entry.*", e.getMessage())){
+                JOptionPane.showMessageDialog(null, "Ya existe este día libre");
+            }else{
+                JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+           
+            }
+            return false;
         }finally{
             try{
                 if(conn!=null){
