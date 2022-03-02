@@ -925,7 +925,6 @@ public class JFClientes extends javax.swing.JFrame {
         String cedula = txtCedula.getText();
 
         if (val.verificarCedula(cedula)) {
-
             String nombres = txtNombres.getText();
             if (!val.validarNombres(nombres)) {
                 JOptionPane.showMessageDialog(null, "Nombres no válidos-repita", "ERROR!", 0);
@@ -955,6 +954,13 @@ public class JFClientes extends javax.swing.JFrame {
                                 txtDireccion.setText("");
                                 txtTelefono.setText("");
                                 dtcBday.setCalendar(null);
+                                jCBNumeroCedulaCliente.removeAllItems();
+                                jCBNumeroCedulaClienteCitasC.removeAllItems();
+                                jCBNumeroCedulaClienteDescuentos.removeAllItems();
+                                jCBActualizarCliente.removeAllItems();
+                                jCBNumeroCedulaEliminarCliente.removeAllItems();
+                                jCBNumCedEliminarDescuentoCliente.removeAllItems();
+                                jCBNumCedAsigDesc.removeAllItems();
                                 LlenarClientes(jCBNumeroCedulaCliente);
                                 LlenarClientes(jCBNumeroCedulaClienteCitasC);
                                 LlenarClientes(jCBNumeroCedulaClienteDescuentos);
@@ -1006,10 +1012,6 @@ public class JFClientes extends javax.swing.JFrame {
         boolean minusculas = key >= 97 && key <= 122;
         boolean espacio = key == 32;
 
-        if (!(minusculas || mayusculas || espacio)) {
-            evt.consume();
-        }
-
         if (txtNombres.getText().length() >= 60) {
             evt.consume();
         }
@@ -1027,7 +1029,6 @@ public class JFClientes extends javax.swing.JFrame {
         /*if (espacio) {
             e++;
         }*/
-        
         if (txtNombres.getText().length() >= 60) {
             evt.consume();
         }
@@ -1068,6 +1069,14 @@ public class JFClientes extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         Eliminar();
+        jCBNumeroCedulaCliente.removeAllItems();
+        jCBNumeroCedulaClienteCitasC.removeAllItems();
+        jCBNumeroCedulaClienteDescuentos.removeAllItems();
+        jCBActualizarCliente.removeAllItems();
+        jCBNumeroCedulaEliminarCliente.removeAllItems();
+        jCBNumCedEliminarDescuentoCliente.removeAllItems();
+        jCBNumCedAsigDesc.removeAllItems();
+
         LlenarClientes(jCBNumeroCedulaCliente);
         LlenarClientes(jCBNumeroCedulaClienteCitasC);
         LlenarClientes(jCBNumeroCedulaClienteDescuentos);
@@ -1075,29 +1084,41 @@ public class JFClientes extends javax.swing.JFrame {
         LlenarClientes(jCBNumeroCedulaEliminarCliente);
         LlenarClientes(jCBNumCedEliminarDescuentoCliente);
         LlenarClientes(jCBNumCedAsigDesc);
+
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
+        jLabel30.setText("");
+        jLabel31.setText("");
+        jLabel32.setText("");
+        jLabel33.setText("");
+        jLabel34.setText("");
+        jLabel35.setText("");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         String cedula = jCBNumeroCedulaCliente.getSelectedItem().toString();
-        try {
-            String sql = "SELECT * FROM cliente where cedula= '" + cedula + "';";
-            connet = con1.getCon();
-            st = connet.createStatement();
-            rs = st.executeQuery(sql);
-            rs.next();
-            jLabel30.setText(rs.getString("cedula"));
-            jLabel31.setText(rs.getString("nombres"));
-            jLabel32.setText(rs.getString("apellidos"));
-            jLabel33.setText(rs.getString("direccion"));
-            jLabel34.setText(rs.getString("telefono"));
-            jLabel35.setText(rs.getString("cumpleanios"));
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en la consulta " + e);
+        if (cedula == "") {
+            JOptionPane.showMessageDialog(null, "Error en la consulta ");
+        } else {
+            try {
+                String sql = "SELECT * FROM cliente where cedula= '" + cedula + "';";
+                connet = con1.getCon();
+                st = connet.createStatement();
+                rs = st.executeQuery(sql);
+                rs.next();
+                jLabel30.setText(rs.getString("cedula"));
+                jLabel31.setText(rs.getString("nombres"));
+                jLabel32.setText(rs.getString("apellidos"));
+                jLabel33.setText(rs.getString("direccion"));
+                jLabel34.setText(rs.getString("telefono"));
+                jLabel35.setText(rs.getString("cumpleanios"));
+                JOptionPane.showMessageDialog(null, "Cliente encontrado con Exito");
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error en la consulta ");
+            }
         }
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
@@ -1164,18 +1185,23 @@ public class JFClientes extends javax.swing.JFrame {
     void Eliminar() {
         String cedula;
         cedula = jCBNumeroCedulaEliminarCliente.getItemAt(jCBNumeroCedulaEliminarCliente.getSelectedIndex());
-        try {
-            String sql = "delete from cliente where cedula= '" + cedula + "'";
-            connet = con1.getCon();
-            st = connet.createStatement();
-            st.executeUpdate(sql);
-            JOptionPane.showMessageDialog(null, "Cliente eliminado");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en la eliminacion" + e);
+        if (jCBNumeroCedulaEliminarCliente.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Error en la eliminación");
+        } else {
+            try {
+                String sql = "delete from cliente where cedula= '" + cedula + "'";
+                connet = con1.getCon();
+                st = connet.createStatement();
+                st.executeUpdate(sql);
+                JOptionPane.showMessageDialog(null, "Cliente eliminado");
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error en la eliminación");
+            }
         }
     }
 
     public void LlenarClientes(JComboBox cliente) {
+        cliente.insertItemAt("", 0);
         String sql = "SELECT cedula FROM cliente";
         try {
             connet = con1.getCon();
@@ -1190,6 +1216,7 @@ public class JFClientes extends javax.swing.JFrame {
     }
 
     public void LlenarServicios(JComboBox cliente) {
+        cliente.insertItemAt("", 0);
         String sql = "SELECT codigo FROM servicio";
         try {
             connet = con1.getCon();
