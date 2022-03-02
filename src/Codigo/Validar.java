@@ -17,13 +17,17 @@ import javax.swing.JOptionPane;
  * @author HP
  */
 public class Validar {
-    
-    public boolean validarNombres(String nombres){
-        
+
+    public boolean validarNombres(String nombres) {
+
         return Pattern.matches("^(?!.*\\s(?:\\s|$))[[A-Za-zäÄëËïÏöÖüÜáéíóúáéíóúÁÉÍÓÚÂÊÎÔÛâêîôûàèìòùÀÈÌÒÙñÑ]\\s]+$", nombres);
     }
-    
-    public  boolean verificarCedula(String cedula) {
+
+    public boolean validarTelefono(String numero) {
+        return Pattern.matches("[0-9]*", numero);
+    }
+
+    public boolean verificarCedula(String cedula) {
         int total = 0;
         int tamanoLongitudCedula = 10;
         int[] coeficientes = {2, 1, 2, 1, 2, 1, 2, 1, 2};
@@ -55,70 +59,62 @@ public class Validar {
         return false;
 
     }
-    
-    public boolean validarSalario(Float salario){
-        
-        boolean cifras=Pattern.matches("^[0-9]+([.][0-9]{0,2})?$", salario.toString());
-        
-        if(!cifras){
+
+    public boolean validarSalario(Float salario) {
+
+        boolean cifras = Pattern.matches("^[0-9]+([.][0-9]{0,2})?$", salario.toString());
+
+        if (!cifras) {
             return cifras;
         }
-        
-        
-        boolean tamanio=false;
-        
-        if (salario>=0 && salario<=9999.99) {
-            tamanio=true;
+
+        boolean tamanio = false;
+
+        if (salario >= 0 && salario <= 9999.99) {
+            tamanio = true;
         }
-        
-        
+
         return cifras && tamanio;
     }
-    
-    public boolean cedulaPerteneceEmpleado(String cedula){
-         Conexion conn=new Conexion();
+
+    public boolean cedulaPerteneceEmpleado(String cedula) {
+        Conexion conn = new Conexion();
         PreparedStatement ps;
         ResultSet rs;
-        boolean empleado=false;
-      
-        
-        try{
-           ps=conn.getCon().prepareStatement("SELECT cedula FROM empleado;");
-                
-            
-            rs=ps.executeQuery();
-            
-            while(rs.next()){
-                 if(rs.getString("cedula").equals(cedula)){
-                     empleado=true;
-                 }
+        boolean empleado = false;
+
+        try {
+            ps = conn.getCon().prepareStatement("SELECT cedula FROM empleado;");
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if (rs.getString("cedula").equals(cedula)) {
+                    empleado = true;
+                }
             }
-            
-           
-            
-        }catch(SQLException e){
-           JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
-           
-        }finally{
-            try{
-                if(conn!=null){
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+
+        } finally {
+            try {
+                if (conn != null) {
                     conn.getCon().close();
                     return empleado;
                 }
-            }catch(Exception e){
-               JOptionPane.showMessageDialog(null, "Error, problema con la base de datos"); 
-               return empleado;
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error, problema con la base de datos");
+                return empleado;
             }
         }
         return empleado;
-        
+
     }
-    
-    public boolean validarFechasInicioFin(Date inicio,Date fin){
-        
-        
+
+    public boolean validarFechasInicioFin(Date inicio, Date fin) {
+
         return inicio.before(fin);
     }
-    
-   
+
 }

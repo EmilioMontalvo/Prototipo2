@@ -33,18 +33,7 @@ public class JFServicios extends javax.swing.JFrame {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Conexion conn = new Conexion();
-        //Connection con=conn.getConexion();
-        // try {
-        //   String sql = "SELECT *FROM servicio";
-        //ps = con.prepareStatement(sql);
-        //rs = ps.executeQuery();
-        // while (rs.next()) {
-        //     jCBCodServi.addItem(rs.getString("codigo"));
-        // }
-        // rs.close();
-        // } catch (SQLException ex) {
-        //   System.err.println(ex.toString());
-        // }
+      
 
     }
 
