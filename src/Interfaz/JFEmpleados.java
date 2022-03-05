@@ -179,14 +179,17 @@ public class JFEmpleados extends javax.swing.JFrame {
         jLabel70 = new javax.swing.JLabel();
         jLEstadoC = new javax.swing.JLabel();
         jButton13 = new javax.swing.JButton();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel34 = new javax.swing.JLabel();
-        jCBCedulaServiciosC = new javax.swing.JComboBox<>();
-        jLabel35 = new javax.swing.JLabel();
-        jLCantidadC = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        jLEmpleadoC = new javax.swing.JLabel();
-        jButton14 = new javax.swing.JButton();
+        jPanel21 = new javax.swing.JPanel();
+        jLabel74 = new javax.swing.JLabel();
+        jCBCedulaTrasladoR1 = new javax.swing.JComboBox<>();
+        jButton36 = new javax.swing.JButton();
+        jLabel75 = new javax.swing.JLabel();
+        jLabel76 = new javax.swing.JLabel();
+        jDCida1 = new com.toedter.calendar.JDateChooser();
+        jDCregreso1 = new com.toedter.calendar.JDateChooser();
+        jButton37 = new javax.swing.JButton();
+        jLabel77 = new javax.swing.JLabel();
+        jCBciudadesR2 = new javax.swing.JComboBox<>();
         jPanel10 = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         jCBCedulaDiasLibresC = new javax.swing.JComboBox<>();
@@ -205,6 +208,14 @@ public class JFEmpleados extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         jTVacaciones = new javax.swing.JTable();
         jButton16 = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel34 = new javax.swing.JLabel();
+        jCBCedulaServiciosC = new javax.swing.JComboBox<>();
+        jLabel35 = new javax.swing.JLabel();
+        jLCantidadC = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
+        jLEmpleadoC = new javax.swing.JLabel();
+        jButton14 = new javax.swing.JButton();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
@@ -278,9 +289,13 @@ public class JFEmpleados extends javax.swing.JFrame {
         jLCiudadC1 = new javax.swing.JLabel();
         jLJornadaC1 = new javax.swing.JLabel();
         jLSalarioC1 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jLSalarioC2 = new javax.swing.JLabel();
         jButton21 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton33 = new javax.swing.JButton();
+        jButton23 = new javax.swing.JButton();
+        jLabel73 = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
         jLabel59 = new javax.swing.JLabel();
         jCBCedulaDiasLibresE = new javax.swing.JComboBox<>();
@@ -899,71 +914,100 @@ public class JFEmpleados extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("Empleado", new javax.swing.ImageIcon(getClass().getResource("/Iconos/perfil-del-usuario.png")), jPEmpleadoC); // NOI18N
 
-        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel21.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel34.setText("Cédula");
+        jLabel74.setText("Ingrese el número de cédula del empleado al que desea trasladar temporalmente");
 
-        jCBCedulaServiciosC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBCedulaTrasladoR1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel35.setText("Cantidad de Servicios del Día:");
-
-        jLCantidadC.setText("***");
-
-        jLabel38.setText("Empleado:");
-
-        jLEmpleadoC.setText("***");
-
-        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
-        jButton14.setText("Buscar");
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
+        jButton36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/salvar.png"))); // NOI18N
+        jButton36.setText("Registrar");
+        jButton36.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                jButton36ActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel38)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLEmpleadoC))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel35)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLCantidadC))
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(jLabel34)
-                        .addGap(27, 27, 27)
-                        .addComponent(jCBCedulaServiciosC, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(jButton14)))
-                .addContainerGap(99, Short.MAX_VALUE))
+        jLabel75.setText("Fecha de ida:");
+
+        jLabel76.setText("Fecha de regreso:");
+
+        jDCida1.setDateFormatString("dd/MM/yyyy");
+
+        jDCregreso1.setDateFormatString("dd/MM/yyyy");
+
+        jButton37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
+        jButton37.setText("Cancelar");
+        jButton37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton37ActionPerformed(evt);
+            }
+        });
+
+        jLabel77.setText("Ciudad de Traslado:");
+
+        jCBciudadesR2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuenca", "Latacunga" }));
+
+        javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
+        jPanel21.setLayout(jPanel21Layout);
+        jPanel21Layout.setHorizontalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addComponent(jLabel74, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(118, 118, 118))
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCBCedulaTrasladoR1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel75)
+                                    .addComponent(jLabel76))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jDCida1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
+                                    .addComponent(jDCregreso1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addComponent(jLabel77)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCBciudadesR2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton36)
+                .addGap(18, 18, 18)
+                .addComponent(jButton37)
+                .addGap(79, 79, 79))
         );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel34)
-                    .addComponent(jCBCedulaServiciosC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton14))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel38)
-                    .addComponent(jLEmpleadoC))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel35)
-                    .addComponent(jLCantidadC))
-                .addContainerGap(235, Short.MAX_VALUE))
+        jPanel21Layout.setVerticalGroup(
+            jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel21Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel74)
+                .addGap(18, 18, 18)
+                .addComponent(jCBCedulaTrasladoR1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel75)
+                    .addComponent(jDCida1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel76)
+                    .addComponent(jDCregreso1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel77)
+                    .addComponent(jCBciudadesR2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton36)
+                    .addComponent(jButton37))
+                .addGap(17, 17, 17))
         );
 
-        jTabbedPane3.addTab("Cantidad de Servicios", new javax.swing.ImageIcon(getClass().getResource("/Iconos/tijeras.png")), jPanel9); // NOI18N
+        jTabbedPane3.addTab("Traslado", new javax.swing.ImageIcon(getClass().getResource("/Iconos/destino.png")), jPanel21); // NOI18N
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1110,6 +1154,72 @@ public class JFEmpleados extends javax.swing.JFrame {
         );
 
         jTabbedPane3.addTab("Vacaciones", new javax.swing.ImageIcon(getClass().getResource("/Iconos/vacaciones-de-verano.png")), jPanel16); // NOI18N
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel34.setText("Cédula");
+
+        jCBCedulaServiciosC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel35.setText("Cantidad de Servicios del Día:");
+
+        jLCantidadC.setText("***");
+
+        jLabel38.setText("Empleado:");
+
+        jLEmpleadoC.setText("***");
+
+        jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
+        jButton14.setText("Buscar");
+        jButton14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton14ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(55, 55, 55)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jLabel38)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLEmpleadoC))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jLabel35)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLCantidadC))
+                    .addGroup(jPanel9Layout.createSequentialGroup()
+                        .addComponent(jLabel34)
+                        .addGap(27, 27, 27)
+                        .addComponent(jCBCedulaServiciosC, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(jButton14)))
+                .addContainerGap(99, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel34)
+                    .addComponent(jCBCedulaServiciosC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton14))
+                .addGap(31, 31, 31)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel38)
+                    .addComponent(jLEmpleadoC))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel35)
+                    .addComponent(jLCantidadC))
+                .addContainerGap(235, Short.MAX_VALUE))
+        );
+
+        jTabbedPane3.addTab("Cantidad de Servicios", new javax.swing.ImageIcon(getClass().getResource("/Iconos/tijeras.png")), jPanel9); // NOI18N
 
         jTabbedPane1.addTab("Consultar", new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar.png")), jTabbedPane3); // NOI18N
 
@@ -1617,6 +1727,10 @@ public class JFEmpleados extends javax.swing.JFrame {
 
         jLSalarioC1.setText("******");
 
+        jLabel36.setText("Estado: ");
+
+        jLSalarioC2.setText("******");
+
         javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
@@ -1624,6 +1738,10 @@ public class JFEmpleados extends javax.swing.JFrame {
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel17Layout.createSequentialGroup()
+                        .addComponent(jLabel36)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLSalarioC2))
                     .addGroup(jPanel17Layout.createSequentialGroup()
                         .addComponent(jLabel52)
                         .addGap(18, 18, 18)
@@ -1677,7 +1795,11 @@ public class JFEmpleados extends javax.swing.JFrame {
                 .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel52)
                     .addComponent(jLSalarioC1))
-                .addGap(112, 112, 112))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel36)
+                    .addComponent(jLSalarioC2))
+                .addGap(89, 89, 89))
         );
 
         jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
@@ -1693,6 +1815,11 @@ public class JFEmpleados extends javax.swing.JFrame {
                 jButton33ActionPerformed(evt);
             }
         });
+
+        jButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/prohibir-usuario.png"))); // NOI18N
+        jButton23.setText("Deshabilitar");
+
+        jLabel73.setText("Estado:");
 
         javax.swing.GroupLayout jPEmpleadoC1Layout = new javax.swing.GroupLayout(jPEmpleadoC1);
         jPEmpleadoC1.setLayout(jPEmpleadoC1Layout);
@@ -1710,14 +1837,22 @@ public class JFEmpleados extends javax.swing.JFrame {
                         .addComponent(jCBCedulaEmpleadoE, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton10)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton21))
-                    .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
                         .addGap(39, 39, 39)
-                        .addComponent(jButton33)))
+                        .addComponent(jButton33))
+                    .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton23)
+                            .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
+                                .addComponent(jButton10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton21)))))
                 .addContainerGap(13, Short.MAX_VALUE))
+            .addGroup(jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel73)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPEmpleadoC1Layout.setVerticalGroup(
             jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1731,10 +1866,18 @@ public class JFEmpleados extends javax.swing.JFrame {
                             .addComponent(jButton33))
                         .addGap(18, 18, 18)
                         .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton10)
-                        .addComponent(jButton21)))
+                    .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
+                        .addComponent(jButton23)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton10)
+                            .addComponent(jButton21))))
                 .addContainerGap(77, Short.MAX_VALUE))
+            .addGroup(jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel73)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         jTabbedPane5.addTab("Datos de Empleado", new javax.swing.ImageIcon(getClass().getResource("/Iconos/perfil-del-usuario.png")), jPEmpleadoC1); // NOI18N
@@ -2521,6 +2664,14 @@ public class JFEmpleados extends javax.swing.JFrame {
             
     }//GEN-LAST:event_jBActualizarVacacionesActionPerformed
 
+    private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton36ActionPerformed
+
+    private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton37ActionPerformed
+
     
     public static void rellenarCedulas(JComboBox combox){
         Conexion conn=new Conexion();
@@ -2707,6 +2858,7 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton jButton20;
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;
+    private javax.swing.JButton jButton23;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
@@ -2716,6 +2868,8 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton35;
+    private javax.swing.JButton jButton36;
+    private javax.swing.JButton jButton37;
     private javax.swing.JButton jButton8;
     private javax.swing.JComboBox<String> jCBCedulaDiasLibresC;
     private javax.swing.JComboBox<String> jCBCedulaDiasLibresE;
@@ -2725,6 +2879,7 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jCBCedulaSalario;
     private javax.swing.JComboBox<String> jCBCedulaServiciosC;
     private javax.swing.JComboBox<String> jCBCedulaTrasladoR;
+    private javax.swing.JComboBox<String> jCBCedulaTrasladoR1;
     private javax.swing.JComboBox<String> jCBCedulaVacacionesC;
     private javax.swing.JComboBox<String> jCBCedulaVacacionesE;
     private javax.swing.JComboBox<String> jCBCedulaVacacionesR;
@@ -2734,6 +2889,7 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jCBJornadaA;
     private javax.swing.JComboBox<String> jCBciudadesR;
     private javax.swing.JComboBox<String> jCBciudadesR1;
+    private javax.swing.JComboBox<String> jCBciudadesR2;
     private javax.swing.JComboBox<String> jCNuevaJornada;
     private com.toedter.calendar.JCalendar jCalendar1;
     private com.toedter.calendar.JCalendar jCalendar2;
@@ -2741,8 +2897,10 @@ public class JFEmpleados extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDCFinVacacion;
     private com.toedter.calendar.JDateChooser jDCdialibreA;
     private com.toedter.calendar.JDateChooser jDCida;
+    private com.toedter.calendar.JDateChooser jDCida1;
     private com.toedter.calendar.JDateChooser jDCinicioVacacion;
     private com.toedter.calendar.JDateChooser jDCregreso;
+    private com.toedter.calendar.JDateChooser jDCregreso1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooserFin;
     private com.toedter.calendar.JDateChooser jDateInicio;
@@ -2771,6 +2929,7 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLSalario;
     private javax.swing.JLabel jLSalarioC;
     private javax.swing.JLabel jLSalarioC1;
+    private javax.swing.JLabel jLSalarioC2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2800,6 +2959,7 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel4;
@@ -2837,6 +2997,11 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel70;
     private javax.swing.JLabel jLabel71;
     private javax.swing.JLabel jLabel72;
+    private javax.swing.JLabel jLabel73;
+    private javax.swing.JLabel jLabel74;
+    private javax.swing.JLabel jLabel75;
+    private javax.swing.JLabel jLabel76;
+    private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList4;
@@ -2856,6 +3021,7 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
+    private javax.swing.JPanel jPanel21;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
