@@ -242,7 +242,7 @@ public class JFEmpleados extends javax.swing.JFrame {
         jLabel54 = new javax.swing.JLabel();
         jLEmpleado = new javax.swing.JLabel();
         jBCancelarSalario = new javax.swing.JButton();
-        jButton29 = new javax.swing.JButton();
+        jButtonBuscarSalario = new javax.swing.JButton();
         jPanel11 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jCBJornadaA = new javax.swing.JComboBox<>();
@@ -254,19 +254,19 @@ public class JFEmpleados extends javax.swing.JFrame {
         jLabel55 = new javax.swing.JLabel();
         jLEmpleadoJornada = new javax.swing.JLabel();
         jBCancelarJornada = new javax.swing.JButton();
-        jButton30 = new javax.swing.JButton();
+        jBBuscarJornada = new javax.swing.JButton();
         jPanel22 = new javax.swing.JPanel();
         jLabel78 = new javax.swing.JLabel();
         jCBCedulaTrasladoA = new javax.swing.JComboBox<>();
-        jButton25 = new javax.swing.JButton();
+        jBBuscarTraslado = new javax.swing.JButton();
         jPanel23 = new javax.swing.JPanel();
         jLabel39 = new javax.swing.JLabel();
-        jDateInicio1 = new com.toedter.calendar.JDateChooser();
+        jDateIda = new com.toedter.calendar.JDateChooser();
         jBActualizaTraslado = new javax.swing.JButton();
         jLabel41 = new javax.swing.JLabel();
-        jDateChooserFin1 = new com.toedter.calendar.JDateChooser();
+        jDateRegreso = new com.toedter.calendar.JDateChooser();
         jBCancelarTraslado = new javax.swing.JButton();
-        jCBciudadesR2 = new javax.swing.JComboBox<>();
+        jCBciudadesA = new javax.swing.JComboBox<>();
         jLabel45 = new javax.swing.JLabel();
         jLabel81 = new javax.swing.JLabel();
         jLabeFecha1 = new javax.swing.JLabel();
@@ -287,7 +287,7 @@ public class JFEmpleados extends javax.swing.JFrame {
         jDCdialibreA = new com.toedter.calendar.JDateChooser();
         jBActualizarDia = new javax.swing.JButton();
         jBCancelarDia = new javax.swing.JButton();
-        jButton31 = new javax.swing.JButton();
+        jBBuscarDia = new javax.swing.JButton();
         jLabel71 = new javax.swing.JLabel();
         jLEmpleadoDiasLibres = new javax.swing.JLabel();
         jPanel15 = new javax.swing.JPanel();
@@ -335,17 +335,17 @@ public class JFEmpleados extends javax.swing.JFrame {
         jPanel24 = new javax.swing.JPanel();
         jLabel75 = new javax.swing.JLabel();
         jCBCedulaTrasladoE = new javax.swing.JComboBox<>();
-        jButton26 = new javax.swing.JButton();
+        jBBuscarTrasladoE = new javax.swing.JButton();
         jBEliminarTras = new javax.swing.JButton();
         jBCancelarTras = new javax.swing.JButton();
         jLabel85 = new javax.swing.JLabel();
-        jLEmpleadoVacacionesA1 = new javax.swing.JLabel();
-        jLabel86 = new javax.swing.JLabel();
-        jLabel87 = new javax.swing.JLabel();
-        jLEmpleadoTrasladoC8 = new javax.swing.JLabel();
-        jLEmpleadoTrasladoC9 = new javax.swing.JLabel();
-        jLabel88 = new javax.swing.JLabel();
-        jLEmpleadoTrasladoC10 = new javax.swing.JLabel();
+        jLEmpleadoTrasladoE = new javax.swing.JLabel();
+        jLabeFecha2 = new javax.swing.JLabel();
+        jLRegreso2 = new javax.swing.JLabel();
+        jLregreso2 = new javax.swing.JLabel();
+        jLida2 = new javax.swing.JLabel();
+        jLTraslado2 = new javax.swing.JLabel();
+        jLciudad2 = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
         jLabel59 = new javax.swing.JLabel();
         jCBCedulaDiasLibresE = new javax.swing.JComboBox<>();
@@ -1307,11 +1307,11 @@ public class JFEmpleados extends javax.swing.JFrame {
             }
         });
 
-        jButton29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
-        jButton29.setText("Buscar");
-        jButton29.addActionListener(new java.awt.event.ActionListener() {
+        jButtonBuscarSalario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
+        jButtonBuscarSalario.setText("Buscar");
+        jButtonBuscarSalario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton29ActionPerformed(evt);
+                jButtonBuscarSalarioActionPerformed(evt);
             }
         });
 
@@ -1340,7 +1340,7 @@ public class JFEmpleados extends javax.swing.JFrame {
                                     .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jCBCedulaSalario, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton29))))
+                                .addComponent(jButtonBuscarSalario))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBActualizarSalario)
@@ -1356,7 +1356,7 @@ public class JFEmpleados extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCBCedulaSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton29))
+                    .addComponent(jButtonBuscarSalario))
                 .addGap(10, 10, 10)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel54)
@@ -1412,11 +1412,11 @@ public class JFEmpleados extends javax.swing.JFrame {
             }
         });
 
-        jButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
-        jButton30.setText("Buscar");
-        jButton30.addActionListener(new java.awt.event.ActionListener() {
+        jBBuscarJornada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
+        jBBuscarJornada.setText("Buscar");
+        jBBuscarJornada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton30ActionPerformed(evt);
+                jBBuscarJornadaActionPerformed(evt);
             }
         });
 
@@ -1451,7 +1451,7 @@ public class JFEmpleados extends javax.swing.JFrame {
                     .addComponent(jBCancelarJornada)
                     .addGroup(jPanel11Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jButton30)))
+                        .addComponent(jBBuscarJornada)))
                 .addGap(50, 50, 50))
         );
         jPanel11Layout.setVerticalGroup(
@@ -1462,7 +1462,7 @@ public class JFEmpleados extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCBJornadaA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton30))
+                    .addComponent(jBBuscarJornada))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel55)
@@ -1490,11 +1490,11 @@ public class JFEmpleados extends javax.swing.JFrame {
 
         jCBCedulaTrasladoA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
-        jButton25.setText("Buscar");
-        jButton25.addActionListener(new java.awt.event.ActionListener() {
+        jBBuscarTraslado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
+        jBBuscarTraslado.setText("Buscar");
+        jBBuscarTraslado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton25ActionPerformed(evt);
+                jBBuscarTrasladoActionPerformed(evt);
             }
         });
 
@@ -1502,7 +1502,7 @@ public class JFEmpleados extends javax.swing.JFrame {
 
         jLabel39.setText("Ida");
 
-        jDateInicio1.setDateFormatString("dd/MM/yyyy");
+        jDateIda.setDateFormatString("dd/MM/yyyy");
 
         jBActualizaTraslado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/actualizar.png"))); // NOI18N
         jBActualizaTraslado.setText("Actualizar");
@@ -1514,12 +1514,17 @@ public class JFEmpleados extends javax.swing.JFrame {
 
         jLabel41.setText("Ciudad");
 
-        jDateChooserFin1.setDateFormatString("dd/MM/yyyy");
+        jDateRegreso.setDateFormatString("dd/MM/yyyy");
 
         jBCancelarTraslado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
         jBCancelarTraslado.setText("Cancelar");
+        jBCancelarTraslado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarTrasladoActionPerformed(evt);
+            }
+        });
 
-        jCBciudadesR2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuenca", "Latacunga" }));
+        jCBciudadesA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuenca", "Latacunga" }));
 
         jLabel45.setText("Regreso");
 
@@ -1548,10 +1553,10 @@ public class JFEmpleados extends javax.swing.JFrame {
                                 .addComponent(jLabel45)
                                 .addGap(18, 18, 18)))
                         .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCBciudadesR2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jCBciudadesA, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jDateInicio1, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                                .addComponent(jDateChooserFin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jDateIda, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                                .addComponent(jDateRegreso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(35, 35, 35))))
         );
         jPanel23Layout.setVerticalGroup(
@@ -1559,15 +1564,15 @@ public class JFEmpleados extends javax.swing.JFrame {
             .addGroup(jPanel23Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateInicio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateIda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel39))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jDateChooserFin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateRegreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel45))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCBciudadesR2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCBciudadesA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel41))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1605,7 +1610,7 @@ public class JFEmpleados extends javax.swing.JFrame {
                     .addGroup(jPanel22Layout.createSequentialGroup()
                         .addComponent(jCBCedulaTrasladoA, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton25)
+                        .addComponent(jBBuscarTraslado)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel22Layout.createSequentialGroup()
                         .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1637,7 +1642,7 @@ public class JFEmpleados extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCBCedulaTrasladoA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton25))
+                    .addComponent(jBBuscarTraslado))
                 .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel22Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1728,11 +1733,11 @@ public class JFEmpleados extends javax.swing.JFrame {
                     .addComponent(jBCancelarDia)))
         );
 
-        jButton31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
-        jButton31.setText("Buscar");
-        jButton31.addActionListener(new java.awt.event.ActionListener() {
+        jBBuscarDia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
+        jBBuscarDia.setText("Buscar");
+        jBBuscarDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton31ActionPerformed(evt);
+                jBBuscarDiaActionPerformed(evt);
             }
         });
 
@@ -1758,7 +1763,7 @@ public class JFEmpleados extends javax.swing.JFrame {
                                 .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jCBDiasLibreasA, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton31))
+                            .addComponent(jBBuscarDia))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel12Layout.createSequentialGroup()
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(18, 18, 18)
@@ -1773,7 +1778,7 @@ public class JFEmpleados extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCBDiasLibreasA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton31))
+                    .addComponent(jBBuscarDia))
                 .addGap(1, 1, 1)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel71)
@@ -2144,35 +2149,45 @@ public class JFEmpleados extends javax.swing.JFrame {
 
         jCBCedulaTrasladoE.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
-        jButton26.setText("Buscar");
-        jButton26.addActionListener(new java.awt.event.ActionListener() {
+        jBBuscarTrasladoE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
+        jBBuscarTrasladoE.setText("Buscar");
+        jBBuscarTrasladoE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton26ActionPerformed(evt);
+                jBBuscarTrasladoEActionPerformed(evt);
             }
         });
 
         jBEliminarTras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png"))); // NOI18N
         jBEliminarTras.setText("Eliminar");
+        jBEliminarTras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarTrasActionPerformed(evt);
+            }
+        });
 
         jBCancelarTras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
         jBCancelarTras.setText("Cancelar");
+        jBCancelarTras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarTrasActionPerformed(evt);
+            }
+        });
 
         jLabel85.setText("Empleado: ");
 
-        jLEmpleadoVacacionesA1.setText("*****");
+        jLEmpleadoTrasladoE.setText("*****");
 
-        jLabel86.setText("Fecha de ida:");
+        jLabeFecha2.setText("Fecha de ida:");
 
-        jLabel87.setText("Fecha de regreso:");
+        jLRegreso2.setText("Fecha de regreso:");
 
-        jLEmpleadoTrasladoC8.setText("****");
+        jLregreso2.setText("****");
 
-        jLEmpleadoTrasladoC9.setText("****");
+        jLida2.setText("****");
 
-        jLabel88.setText("Ciudad de Traslado:");
+        jLTraslado2.setText("Ciudad de Traslado:");
 
-        jLEmpleadoTrasladoC10.setText("****");
+        jLciudad2.setText("****");
 
         javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
         jPanel24.setLayout(jPanel24Layout);
@@ -2192,27 +2207,27 @@ public class JFEmpleados extends javax.swing.JFrame {
                                     .addComponent(jCBCedulaTrasladoE, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton26)
+                                    .addComponent(jBBuscarTrasladoE)
                                     .addComponent(jBCancelarTras)))
                             .addGroup(jPanel24Layout.createSequentialGroup()
                                 .addComponent(jLabel85)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLEmpleadoVacacionesA1)))
+                                .addComponent(jLEmpleadoTrasladoE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel24Layout.createSequentialGroup()
                         .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel24Layout.createSequentialGroup()
-                                .addComponent(jLabel88)
+                                .addComponent(jLTraslado2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLEmpleadoTrasladoC10))
+                                .addComponent(jLciudad2))
                             .addGroup(jPanel24Layout.createSequentialGroup()
-                                .addComponent(jLabel87)
+                                .addComponent(jLRegreso2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLEmpleadoTrasladoC8))
+                                .addComponent(jLregreso2))
                             .addGroup(jPanel24Layout.createSequentialGroup()
-                                .addComponent(jLabel86)
+                                .addComponent(jLabeFecha2)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLEmpleadoTrasladoC9)))
+                                .addComponent(jLida2)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel24Layout.setVerticalGroup(
@@ -2223,23 +2238,23 @@ public class JFEmpleados extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCBCedulaTrasladoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton26))
+                    .addComponent(jBBuscarTrasladoE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel85)
-                    .addComponent(jLEmpleadoVacacionesA1))
+                    .addComponent(jLEmpleadoTrasladoE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel86)
-                    .addComponent(jLEmpleadoTrasladoC9))
+                    .addComponent(jLabeFecha2)
+                    .addComponent(jLida2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel87)
-                    .addComponent(jLEmpleadoTrasladoC8))
+                    .addComponent(jLRegreso2)
+                    .addComponent(jLregreso2))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel88)
-                    .addComponent(jLEmpleadoTrasladoC10))
+                    .addComponent(jLTraslado2)
+                    .addComponent(jLciudad2))
                 .addGap(64, 64, 64)
                 .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBEliminarTras)
@@ -2841,7 +2856,7 @@ public class JFEmpleados extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton16ActionPerformed
 
-    private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
+    private void jButtonBuscarSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarSalarioActionPerformed
         Empleado emp=new Empleado(this.jCBCedulaSalario.getSelectedItem().toString());
         
         this.jLEmpleado.setText(emp.getNombres()+" "+emp.getApellidos());
@@ -2850,6 +2865,9 @@ public class JFEmpleados extends javax.swing.JFrame {
         this.jBActualizarSalario.setEnabled(true);
         this.jBCancelarSalario.setEnabled(true);
         
+        
+        jCBCedulaSalario.setEnabled(false);
+        jButtonBuscarSalario.setEnabled(false);
         /*
         float salario=Float.parseFloat(this.jTFSalario.getText());
         
@@ -2861,9 +2879,9 @@ public class JFEmpleados extends javax.swing.JFrame {
         
         
         emp.atualizarSalario(salario);*/
-    }//GEN-LAST:event_jButton29ActionPerformed
+    }//GEN-LAST:event_jButtonBuscarSalarioActionPerformed
 
-    private void jButton30ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton30ActionPerformed
+    private void jBBuscarJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarJornadaActionPerformed
           Empleado emp=new Empleado(this.jCBJornadaA.getSelectedItem().toString());
         
         this.jLEmpleadoJornada.setText(emp.getNombres()+" "+emp.getApellidos());
@@ -2871,10 +2889,11 @@ public class JFEmpleados extends javax.swing.JFrame {
         
         this.jBActualizarJornada.setEnabled(true);
         this.jBCancelarJornada.setEnabled(true);
+        jBBuscarJornada.setEnabled(false);
         
-    }//GEN-LAST:event_jButton30ActionPerformed
+    }//GEN-LAST:event_jBBuscarJornadaActionPerformed
 
-    private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
+    private void jBBuscarDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarDiaActionPerformed
         Empleado emp=new Empleado(this.jCBDiasLibreasA.getSelectedItem().toString());
         
         this.jLEmpleadoDiasLibres.setText(emp.getNombres()+" "+emp.getApellidos());
@@ -2887,9 +2906,9 @@ public class JFEmpleados extends javax.swing.JFrame {
         this.jBActualizarDia.setEnabled(false);
         this.jBCancelarDia.setEnabled(false);
         }
-        
+        jBBuscarDia.setEnabled(false); 
      
-    }//GEN-LAST:event_jButton31ActionPerformed
+    }//GEN-LAST:event_jBBuscarDiaActionPerformed
 
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
         Empleado emp=new Empleado(this.jCBDiasVacacionesA.getSelectedItem().toString());
@@ -2936,6 +2955,8 @@ public class JFEmpleados extends javax.swing.JFrame {
         this.jBCancelarSalario.setEnabled(false);
         this.jLEmpleado.setText("");
         this.jLSalario.setText("");
+        this.jCBCedulaSalario.setEnabled(true);
+        jButtonBuscarSalario.setEnabled(true);
     }//GEN-LAST:event_jBActualizarSalarioActionPerformed
 
     private void jBCancelarSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarSalarioActionPerformed
@@ -2944,6 +2965,8 @@ public class JFEmpleados extends javax.swing.JFrame {
         this.jBCancelarSalario.setEnabled(false);
         this.jLEmpleado.setText("");
         this.jLSalario.setText("");
+        this.jCBCedulaSalario.setEnabled(true);
+        jButtonBuscarSalario.setEnabled(true);
     }//GEN-LAST:event_jBCancelarSalarioActionPerformed
 
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
@@ -2993,6 +3016,7 @@ public class JFEmpleados extends javax.swing.JFrame {
         
         this.jBActualizarJornada.setEnabled(false);
         this.jBCancelarJornada.setEnabled(false);
+        jBBuscarJornada.setEnabled(true);
     }//GEN-LAST:event_jBActualizarJornadaActionPerformed
 
     private void jBActualizarDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActualizarDiaActionPerformed
@@ -3002,6 +3026,7 @@ public class JFEmpleados extends javax.swing.JFrame {
         
         if(dia==null){
             JOptionPane.showMessageDialog(null, "Debe seleccionar un día primero", "ERROR!", 0);
+           
             return;
         }
         
@@ -3013,11 +3038,18 @@ public class JFEmpleados extends javax.swing.JFrame {
         
         if(dianuevo==null){
             JOptionPane.showMessageDialog(null, "Seleccione una fecha válida", "ERROR!", 0);
+            this.jDCdialibreA.setDate(null);
             return;
         }
             DiaLibre day=new DiaLibre(emp.getCedula(),new java.sql.Date(diaviejo.getTime()));
             day.atualizarDia(new java.sql.Date(dianuevo.getTime()));
             rellenarLista(this.jLDiasLibresActualizar, emp);
+            this.jDCdialibreA.setDate(null);
+        
+        this.jBActualizarDia.setEnabled(false);
+        this.jBCancelarDia.setEnabled(false);
+        jLEmpleadoDiasLibres.setText("");
+        jBBuscarDia.setEnabled(true);    
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un día primero", "ERROR!", 0);
             return;
@@ -3118,7 +3150,7 @@ public class JFEmpleados extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton24ActionPerformed
 
-    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+    private void jBBuscarTrasladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarTrasladoActionPerformed
         jLida1.setText("");
         jLregreso1.setText("");
         jLciudad1.setText("");
@@ -3146,21 +3178,86 @@ public class JFEmpleados extends javax.swing.JFrame {
             jBActualizaTraslado.setEnabled(false);
             jBCancelarTraslado.setEnabled(false);
         }
-    }//GEN-LAST:event_jButton25ActionPerformed
+        
+        jBBuscarTraslado.setEnabled(false);
+    }//GEN-LAST:event_jBBuscarTrasladoActionPerformed
 
     private void jBActualizaTrasladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActualizaTrasladoActionPerformed
-        // TODO add your handling code here:
+        
+        Empleado emp=new Empleado(this.jCBCedulaTrasladoA.getSelectedItem().toString());
+        Validar val=new Validar();
+        Date ida=jDateIda.getDate();
+        Date regreso=jDateRegreso.getDate();
+        String ciudad=this.jCBciudadesA.getSelectedItem().toString();
+        
+        if(ida==null){
+            JOptionPane.showMessageDialog(null, "Seleccione una fecha válida", "ERROR!", 0);
+            this.jDateIda.setDate(null);
+            return;
+        }
+            
+        if(regreso==null || !val.validarFechasInicioFin(ida, regreso)){
+             JOptionPane.showMessageDialog(null, "Seleccione una fecha final válida", "ERROR!", 0);
+             this.jDateRegreso.setDate(null);
+             return;
+        }
+        
+        Traslado tras=new Traslado(emp.getCedula());
+        
+        tras.atualizar(ciudad, new java.sql.Date(ida.getTime()), new java.sql.Date(regreso.getTime()));
+        jLida1.setText(tras.getIda().toString());
+        jLregreso1.setText(tras.getRegreso().toString());
+        jLciudad1.setText(tras.getCiudad());
+        
+        jBBuscarTraslado.setEnabled(true);
+        jBActualizaTraslado.setEnabled(false);
+            jBCancelarTraslado.setEnabled(false);
     }//GEN-LAST:event_jBActualizaTrasladoActionPerformed
 
-    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton26ActionPerformed
+    private void jBBuscarTrasladoEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarTrasladoEActionPerformed
+        jLida2.setText("");
+        jLregreso2.setText("");
+        jLciudad2.setText("");
+        jLabeFecha2.setVisible(false);
+        jLRegreso2.setVisible(false);
+        jLTraslado2.setVisible(false);
+        Empleado emp=new Empleado(this.jCBCedulaTrasladoE.getSelectedItem().toString());
+        
+        this.jLEmpleadoTrasladoE.setText(emp.getNombres()+" "+emp.getApellidos());
+        
+        Validar val=new Validar();
+        
+        if(val.cedulaTraslado(emp.getCedula())){
+            Traslado tr=new Traslado(emp.getCedula());
+            jLida2.setText(tr.getIda().toString());
+            jLregreso2.setText(tr.getRegreso().toString());
+            jLciudad2.setText(tr.getCiudad());
+            jLabeFecha2.setVisible(true);
+            jLRegreso2.setVisible(true);
+            jLTraslado2.setVisible(true);
+            jBEliminarTras.setEnabled(true);
+            jBCancelarTras.setEnabled(true);
+            jBBuscarTrasladoE.setEnabled(false);
+            this.jCBCedulaTrasladoE.setEnabled(false);
+          
+        }else{
+            JOptionPane.showMessageDialog(null, "El empleado no tiene ningun traslado registrado");
+            jBEliminarTras.setEnabled(false);
+            jBCancelarTras.setEnabled(false);
+            jBBuscarTrasladoE.setEnabled(true);
+            this.jCBCedulaTrasladoE.setEnabled(true);
+        }
+        
+        
+        
+    }//GEN-LAST:event_jBBuscarTrasladoEActionPerformed
 
     private void jBCancelarJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarJornadaActionPerformed
        jLEmpleadoJornada.setText("");
        jLJornada.setText("");
        this.jBActualizarJornada.setEnabled(false);
         this.jBCancelarJornada.setEnabled(false);
+        jBBuscarJornada.setEnabled(true);
     }//GEN-LAST:event_jBCancelarJornadaActionPerformed
 
     private void jBCancelarDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarDiaActionPerformed
@@ -3171,6 +3268,7 @@ public class JFEmpleados extends javax.swing.JFrame {
         this.jBActualizarDia.setEnabled(false);
         this.jBCancelarDia.setEnabled(false);
         jLEmpleadoDiasLibres.setText("");
+        jBBuscarDia.setEnabled(false);   
     }//GEN-LAST:event_jBCancelarDiaActionPerformed
 
     private void jBDeshabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeshabilitarActionPerformed
@@ -3198,7 +3296,7 @@ public class JFEmpleados extends javax.swing.JFrame {
 
     private void jBEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarEmpleadoActionPerformed
         
-        if(0==JOptionPane.showConfirmDialog(null,"¿Está seguro de que quiere eliminar este empleado?", "Select an Option...",JOptionPane.YES_NO_OPTION)){
+        if(0==JOptionPane.showConfirmDialog(null,"¿Está seguro de que quiere eliminar este empleado?", "confirmación",JOptionPane.YES_NO_OPTION)){
             System.out.println("si");
             Empleado emp=new Empleado(this.jCBCedulaEmpleadoE.getSelectedItem().toString());
             emp.Eliminar();
@@ -3235,6 +3333,59 @@ public class JFEmpleados extends javax.swing.JFrame {
             this.jLSalarioC3.setText("");
             this.jLEstadoC1.setText("");
     }//GEN-LAST:event_jBCancelarEmpActionPerformed
+
+    private void jBCancelarTrasladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarTrasladoActionPerformed
+        jBActualizaTraslado.setEnabled(false);
+        jBCancelarTraslado.setEnabled(false);
+        jLida1.setText("");
+        jLregreso1.setText("");
+        jLciudad1.setText("");
+        jLabeFecha1.setVisible(true);
+        jLRegreso1.setVisible(true);
+        jLTraslado1.setVisible(true);
+        this.jLEmpleadoTrasladoC6.setText("");
+        jDateIda.setDate(null);
+        jDateRegreso.setDate(null);
+        jBBuscarTraslado.setEnabled(true);
+    }//GEN-LAST:event_jBCancelarTrasladoActionPerformed
+
+    private void jBEliminarTrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarTrasActionPerformed
+        if(0==JOptionPane.showConfirmDialog(null,"¿Está seguro de que quiere eliminar este traslado?", "Confirmación",JOptionPane.YES_NO_OPTION)){
+            
+            Traslado tras=new Traslado(this.jCBCedulaEmpleadoE.getSelectedItem().toString());
+            tras.Eliminar();
+            
+            jLida2.setText("");
+            jLregreso2.setText("");
+            jLciudad2.setText("");
+            jLabeFecha2.setVisible(false);
+            jLRegreso2.setVisible(false);
+            jLTraslado2.setVisible(false);
+            
+            jBBuscarTrasladoE.setEnabled(true);
+            jBEliminarTras.setEnabled(false);
+            jBCancelarTras.setEnabled(false);
+            jCBCedulaTrasladoE.setEnabled(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "El traslado NO ha sido eliminado");
+            
+            return;
+        }
+    }//GEN-LAST:event_jBEliminarTrasActionPerformed
+
+    private void jBCancelarTrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarTrasActionPerformed
+        jBEliminarTras.setEnabled(false);
+        jBCancelarTras.setEnabled(false);
+        jBBuscarTrasladoE.setEnabled(true);
+         jLida2.setText("");
+        jLregreso2.setText("");
+        jLciudad2.setText("");
+        jLabeFecha2.setVisible(true);
+        jLRegreso2.setVisible(true);
+        jLTraslado2.setVisible(true);
+        jLEmpleadoTrasladoE.setText("");
+        jCBCedulaTrasladoE.setEnabled(true);
+    }//GEN-LAST:event_jBCancelarTrasActionPerformed
 
     
     public static void rellenarCedulas(JComboBox combox){
@@ -3422,6 +3573,10 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton jBActualizarJornada;
     private javax.swing.JButton jBActualizarSalario;
     private javax.swing.JButton jBActualizarVacaciones;
+    private javax.swing.JButton jBBuscarDia;
+    private javax.swing.JButton jBBuscarJornada;
+    private javax.swing.JButton jBBuscarTraslado;
+    private javax.swing.JButton jBBuscarTrasladoE;
     private javax.swing.JButton jBCAncelarDiaE;
     private javax.swing.JButton jBCancelarDia;
     private javax.swing.JButton jBCancelarEliminarVaca;
@@ -3448,18 +3603,14 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
-    private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
-    private javax.swing.JButton jButton29;
-    private javax.swing.JButton jButton30;
-    private javax.swing.JButton jButton31;
     private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButtonBuscarSalario;
     private javax.swing.JComboBox<String> jCBCedulaDiasLibresC;
     private javax.swing.JComboBox<String> jCBCedulaDiasLibresE;
     private javax.swing.JComboBox<String> jCBCedulaDiasLibresR;
@@ -3478,9 +3629,9 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jCBDiasVacacionesA;
     private javax.swing.JComboBox<String> jCBJornada;
     private javax.swing.JComboBox<String> jCBJornadaA;
+    private javax.swing.JComboBox<String> jCBciudadesA;
     private javax.swing.JComboBox<String> jCBciudadesR;
     private javax.swing.JComboBox<String> jCBciudadesR1;
-    private javax.swing.JComboBox<String> jCBciudadesR2;
     private javax.swing.JComboBox<String> jCNuevaJornada;
     private com.toedter.calendar.JCalendar jCalendar1;
     private com.toedter.calendar.JCalendar jCalendar2;
@@ -3492,9 +3643,9 @@ public class JFEmpleados extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDCregreso;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooserFin;
-    private com.toedter.calendar.JDateChooser jDateChooserFin1;
+    private com.toedter.calendar.JDateChooser jDateIda;
     private com.toedter.calendar.JDateChooser jDateInicio;
-    private com.toedter.calendar.JDateChooser jDateInicio1;
+    private com.toedter.calendar.JDateChooser jDateRegreso;
     private javax.swing.JLabel jLApellidosC;
     private javax.swing.JLabel jLApellidosC2;
     private javax.swing.JLabel jLCantidadC;
@@ -3509,12 +3660,9 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLEmpleadoDiasLibresC;
     private javax.swing.JLabel jLEmpleadoJornada;
     private javax.swing.JLabel jLEmpleadoTrasladoC;
-    private javax.swing.JLabel jLEmpleadoTrasladoC10;
     private javax.swing.JLabel jLEmpleadoTrasladoC6;
-    private javax.swing.JLabel jLEmpleadoTrasladoC8;
-    private javax.swing.JLabel jLEmpleadoTrasladoC9;
+    private javax.swing.JLabel jLEmpleadoTrasladoE;
     private javax.swing.JLabel jLEmpleadoVacacionesA;
-    private javax.swing.JLabel jLEmpleadoVacacionesA1;
     private javax.swing.JLabel jLEmpleadoVacacionesC;
     private javax.swing.JLabel jLEspecialidadC;
     private javax.swing.JLabel jLEspecialidadC1;
@@ -3527,13 +3675,16 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLNombresC2;
     private javax.swing.JLabel jLRegreso;
     private javax.swing.JLabel jLRegreso1;
+    private javax.swing.JLabel jLRegreso2;
     private javax.swing.JLabel jLSalario;
     private javax.swing.JLabel jLSalarioC;
     private javax.swing.JLabel jLSalarioC3;
     private javax.swing.JLabel jLTraslado;
     private javax.swing.JLabel jLTraslado1;
+    private javax.swing.JLabel jLTraslado2;
     private javax.swing.JLabel jLabeFecha;
     private javax.swing.JLabel jLabeFecha1;
+    private javax.swing.JLabel jLabeFecha2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -3611,19 +3762,19 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel83;
     private javax.swing.JLabel jLabel84;
     private javax.swing.JLabel jLabel85;
-    private javax.swing.JLabel jLabel86;
-    private javax.swing.JLabel jLabel87;
-    private javax.swing.JLabel jLabel88;
     private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLciudad;
     private javax.swing.JLabel jLciudad1;
+    private javax.swing.JLabel jLciudad2;
     private javax.swing.JLabel jLida;
     private javax.swing.JLabel jLida1;
+    private javax.swing.JLabel jLida2;
     private javax.swing.JList<String> jList4;
     private javax.swing.JList<String> jListDiasLibres;
     private javax.swing.JLabel jLregreso;
     private javax.swing.JLabel jLregreso1;
+    private javax.swing.JLabel jLregreso2;
     private javax.swing.JPanel jPEmpleadoC;
     private javax.swing.JPanel jPEmpleadoC1;
     private javax.swing.JPanel jPanel1;

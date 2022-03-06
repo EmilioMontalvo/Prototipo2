@@ -106,6 +106,74 @@ public class Traslado {
         
         return true;
     }
+     
+    public void atualizar(String ciudad, Date ida, Date regreso){
+        Conexion conn=new Conexion();
+        PreparedStatement ps;
+        //ResultSet rs;
+        
+        
+        try{
+           ps=conn.getCon().prepareStatement("UPDATE traslado SET fechaIda='"+ida+"',fechaRegreso='"+regreso+"',ciudad='"+ciudad+"' WHERE Empleado_cedula='"+this.cedula+"';");
+                
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Traslado actualizado con éxito"); 
+             this.ciudad=ciudad;
+            
+            this.ciudad = ciudad;
+            this.ida = ida;
+            this.regreso = regreso;
+            
+        }catch(SQLException e){
+            if(Pattern.matches("^Duplicate entry.*", e.getMessage())){
+                JOptionPane.showMessageDialog(null, "Ya existe este traslado");
+            }else{
+                JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+           
+            }
+           
+        }finally{
+            try{
+                if(conn!=null){
+                    conn.getCon().close();
+                }
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Error, reinicie el sistema"); 
+               
+            }
+        }
+    }
+    
+    public void Eliminar(){
+        Conexion conn=new Conexion();
+        PreparedStatement ps;
+        //ResultSet rs;
+        
+        
+        try{
+           ps=conn.getCon().prepareStatement("DELETE FROM traslado WHERE Empleado_cedula='"+cedula+"';");
+                
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Traslado eliminado con éxito"); 
+                      
+            
+        }catch(SQLException e){
+            
+                JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+                      
+        }finally{
+            try{
+                if(conn!=null){
+                    conn.getCon().close();
+                }
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Error, reinicie el sistema"); 
+               
+            }
+        }
+    }
 
     public String getCedula() {
         return cedula;
