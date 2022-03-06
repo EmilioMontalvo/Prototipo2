@@ -69,9 +69,8 @@ public class Vacacion {
         PreparedStatement ps;
         
         
-        
         try{
-           ps=conn.getCon().prepareStatement("UPDATE vacaciones SET fechaInicio='"+dia+"',fechaFin='"+diaFin+"'WHERE Empleado_cedula1='"+cedula+"' AND fechaInicio='"+inicio+"',fechaFin='"+fin+"';");
+           ps=conn.getCon().prepareStatement("UPDATE vacaciones SET fechaInicio='"+dia+"',fechaFin='"+diaFin+"'WHERE Empleado_cedula1='"+cedula+"' AND fechaInicio='"+inicio+"' AND fechaFin='"+fin+"';");
                 
             
             ps.executeUpdate();

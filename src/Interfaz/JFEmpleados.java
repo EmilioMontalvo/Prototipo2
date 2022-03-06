@@ -20,6 +20,7 @@ import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -36,6 +37,10 @@ public class JFEmpleados extends javax.swing.JFrame {
     /**
      * Creates new form JFEmpleados
      */
+    
+    ImageIcon aceptar = new ImageIcon(getClass().getResource("/Iconos/aceptar.png")); 
+
+    ImageIcon deshabilitar = new ImageIcon(getClass().getResource("/Iconos/prohibir-usuario.png")); 
     public JFEmpleados() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -48,33 +53,27 @@ public class JFEmpleados extends javax.swing.JFrame {
         AutoCompleteDecorator.decorate(jCBCedulaDiasLibresR);
         AutoCompleteDecorator.decorate(jCBCedulaVacacionesR);
         AutoCompleteDecorator.decorate(jCBCedulaTrasladoR);
-        rellenarCedulas(jCBCedulaSalario);
-        rellenarCedulas(jCBCedulaDiasLibresR);
-        rellenarCedulas(jCBCedulaVacacionesR);
-        rellenarCedulas(jCBCedulaTrasladoR);                
+                       
         
         AutoCompleteDecorator.decorate(jCBCedulaEmpleadoC);
         AutoCompleteDecorator.decorate(jCBCedulaServiciosC);
         AutoCompleteDecorator.decorate(jCBCedulaDiasLibresC);
         AutoCompleteDecorator.decorate(jCBCedulaVacacionesC);
-        rellenarCedulas(jCBCedulaEmpleadoC);
-        rellenarCedulas(jCBCedulaServiciosC);
-        rellenarCedulas(jCBCedulaDiasLibresC);
-        rellenarCedulas(jCBCedulaVacacionesC);    
+        AutoCompleteDecorator.decorate(jCBCedulaTrasladoC);
+        
         
         AutoCompleteDecorator.decorate(jCBDiasLibreasA);
         AutoCompleteDecorator.decorate(jCBDiasVacacionesA);
         AutoCompleteDecorator.decorate(jCBJornadaA);
-        rellenarCedulas(jCBDiasLibreasA);
-        rellenarCedulas(jCBDiasVacacionesA);
-        rellenarCedulas(jCBJornadaA);    
+        AutoCompleteDecorator.decorate(jCBCedulaTrasladoA);
+        
         
         AutoCompleteDecorator.decorate(jCBCedulaEmpleadoE);
         AutoCompleteDecorator.decorate(jCBCedulaDiasLibresE);
         AutoCompleteDecorator.decorate(jCBCedulaVacacionesE);
-        rellenarCedulas(jCBCedulaEmpleadoE);
-        rellenarCedulas(jCBCedulaDiasLibresE);
-        rellenarCedulas(jCBCedulaVacacionesE);    
+        AutoCompleteDecorator.decorate(jCBCedulaTrasladoE);
+        
+        this.actualizarComboBox();
         
         DefaultTableModel modelo = new DefaultTableModel();
         
@@ -84,14 +83,28 @@ public class JFEmpleados extends javax.swing.JFrame {
         
         this.jTVacaciones.setModel(modelo);
         this.jTVacacionesA.setModel(modelo);
-        
-        
+        this.jTVacacionesE.setModel(modelo);
+                
+               
         this.jBActualizarSalario.setEnabled(false);
         this.jBCancelarSalario.setEnabled(false);
         this.jBActualizarJornada.setEnabled(false);
         this.jBCancelarJornada.setEnabled(false);
-          this.jBActualizarDia.setEnabled(false);
+        this.jBActualizarDia.setEnabled(false);
         this.jBCancelarDia.setEnabled(false);
+        jBActualizaTraslado.setEnabled(false);
+        jBCancelarTraslado.setEnabled(false);
+        jBActualizarVacaciones.setEnabled(false);
+        jBCancelarVacaciones.setEnabled(false);
+        jBDeshabilitar.setEnabled(false);
+        jBEliminarEmpleado.setEnabled(false);
+        jBCancelarEmp.setEnabled(false);
+        jBEliminarTras.setEnabled(false);
+        jBCancelarTras.setEnabled(false);
+        jBEliminarDia.setEnabled(false);
+        jBCAncelarDiaE.setEnabled(false);
+        jBEliminarVaca.setEnabled(false);
+        jBCancelarEliminarVaca.setEnabled(false);
     }
 
     /**
@@ -181,15 +194,16 @@ public class JFEmpleados extends javax.swing.JFrame {
         jButton13 = new javax.swing.JButton();
         jPanel21 = new javax.swing.JPanel();
         jLabel74 = new javax.swing.JLabel();
-        jCBCedulaTrasladoR1 = new javax.swing.JComboBox<>();
-        jButton36 = new javax.swing.JButton();
-        jLabel75 = new javax.swing.JLabel();
+        jCBCedulaTrasladoC = new javax.swing.JComboBox<>();
+        jButton24 = new javax.swing.JButton();
         jLabel76 = new javax.swing.JLabel();
-        jDCida1 = new com.toedter.calendar.JDateChooser();
-        jDCregreso1 = new com.toedter.calendar.JDateChooser();
-        jButton37 = new javax.swing.JButton();
-        jLabel77 = new javax.swing.JLabel();
-        jCBciudadesR2 = new javax.swing.JComboBox<>();
+        jLEmpleadoTrasladoC = new javax.swing.JLabel();
+        jLabeFecha = new javax.swing.JLabel();
+        jLRegreso = new javax.swing.JLabel();
+        jLTraslado = new javax.swing.JLabel();
+        jLida = new javax.swing.JLabel();
+        jLregreso = new javax.swing.JLabel();
+        jLciudad = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
         jCBCedulaDiasLibresC = new javax.swing.JComboBox<>();
@@ -241,6 +255,27 @@ public class JFEmpleados extends javax.swing.JFrame {
         jLEmpleadoJornada = new javax.swing.JLabel();
         jBCancelarJornada = new javax.swing.JButton();
         jButton30 = new javax.swing.JButton();
+        jPanel22 = new javax.swing.JPanel();
+        jLabel78 = new javax.swing.JLabel();
+        jCBCedulaTrasladoA = new javax.swing.JComboBox<>();
+        jButton25 = new javax.swing.JButton();
+        jPanel23 = new javax.swing.JPanel();
+        jLabel39 = new javax.swing.JLabel();
+        jDateInicio1 = new com.toedter.calendar.JDateChooser();
+        jBActualizaTraslado = new javax.swing.JButton();
+        jLabel41 = new javax.swing.JLabel();
+        jDateChooserFin1 = new com.toedter.calendar.JDateChooser();
+        jBCancelarTraslado = new javax.swing.JButton();
+        jCBciudadesR2 = new javax.swing.JComboBox<>();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel81 = new javax.swing.JLabel();
+        jLabeFecha1 = new javax.swing.JLabel();
+        jLRegreso1 = new javax.swing.JLabel();
+        jLTraslado1 = new javax.swing.JLabel();
+        jLida1 = new javax.swing.JLabel();
+        jLregreso1 = new javax.swing.JLabel();
+        jLEmpleadoTrasladoC6 = new javax.swing.JLabel();
+        jLciudad1 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jCBDiasLibreasA = new javax.swing.JComboBox<>();
@@ -276,26 +311,41 @@ public class JFEmpleados extends javax.swing.JFrame {
         jPEmpleadoC1 = new javax.swing.JPanel();
         jCBCedulaEmpleadoE = new javax.swing.JComboBox<>();
         jLabel47 = new javax.swing.JLabel();
-        jPanel17 = new javax.swing.JPanel();
-        jLabel48 = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
-        jLabel50 = new javax.swing.JLabel();
-        jLabel51 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
-        jLabel53 = new javax.swing.JLabel();
-        jLCedulaC1 = new javax.swing.JLabel();
-        jLNombresC1 = new javax.swing.JLabel();
-        jLApellidosC1 = new javax.swing.JLabel();
-        jLCiudadC1 = new javax.swing.JLabel();
-        jLJornadaC1 = new javax.swing.JLabel();
-        jLSalarioC1 = new javax.swing.JLabel();
-        jLabel36 = new javax.swing.JLabel();
-        jLSalarioC2 = new javax.swing.JLabel();
-        jButton21 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        jBCancelarEmp = new javax.swing.JButton();
+        jBEliminarEmpleado = new javax.swing.JButton();
         jButton33 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
+        jBDeshabilitar = new javax.swing.JButton();
+        jPanelEmpleado = new javax.swing.JPanel();
         jLabel73 = new javax.swing.JLabel();
+        jLabel77 = new javax.swing.JLabel();
+        jLabel79 = new javax.swing.JLabel();
+        jLabel80 = new javax.swing.JLabel();
+        jLabel82 = new javax.swing.JLabel();
+        jLabel83 = new javax.swing.JLabel();
+        jLCedulaC2 = new javax.swing.JLabel();
+        jLNombresC2 = new javax.swing.JLabel();
+        jLApellidosC2 = new javax.swing.JLabel();
+        jLCiudadC2 = new javax.swing.JLabel();
+        jLJornadaC2 = new javax.swing.JLabel();
+        jLSalarioC3 = new javax.swing.JLabel();
+        jLabel84 = new javax.swing.JLabel();
+        jLEspecialidadC1 = new javax.swing.JLabel();
+        jLabel89 = new javax.swing.JLabel();
+        jLEstadoC1 = new javax.swing.JLabel();
+        jPanel24 = new javax.swing.JPanel();
+        jLabel75 = new javax.swing.JLabel();
+        jCBCedulaTrasladoE = new javax.swing.JComboBox<>();
+        jButton26 = new javax.swing.JButton();
+        jBEliminarTras = new javax.swing.JButton();
+        jBCancelarTras = new javax.swing.JButton();
+        jLabel85 = new javax.swing.JLabel();
+        jLEmpleadoVacacionesA1 = new javax.swing.JLabel();
+        jLabel86 = new javax.swing.JLabel();
+        jLabel87 = new javax.swing.JLabel();
+        jLEmpleadoTrasladoC8 = new javax.swing.JLabel();
+        jLEmpleadoTrasladoC9 = new javax.swing.JLabel();
+        jLabel88 = new javax.swing.JLabel();
+        jLEmpleadoTrasladoC10 = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
         jLabel59 = new javax.swing.JLabel();
         jCBCedulaDiasLibresE = new javax.swing.JComboBox<>();
@@ -304,8 +354,8 @@ public class JFEmpleados extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jList4 = new javax.swing.JList<>();
         jLabel62 = new javax.swing.JLabel();
-        jButton11 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
+        jBEliminarDia = new javax.swing.JButton();
+        jBCAncelarDiaE = new javax.swing.JButton();
         jButton34 = new javax.swing.JButton();
         jPanel20 = new javax.swing.JPanel();
         jLabel63 = new javax.swing.JLabel();
@@ -314,9 +364,9 @@ public class JFEmpleados extends javax.swing.JFrame {
         jLabel65 = new javax.swing.JLabel();
         jLabel66 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        jButton20 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
+        jTVacacionesE = new javax.swing.JTable();
+        jBCancelarEliminarVaca = new javax.swing.JButton();
+        jBEliminarVaca = new javax.swing.JButton();
         jButton35 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton12 = new javax.swing.JButton();
@@ -918,35 +968,31 @@ public class JFEmpleados extends javax.swing.JFrame {
 
         jLabel74.setText("Ingrese el número de cédula del empleado al que desea trasladar temporalmente");
 
-        jCBCedulaTrasladoR1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBCedulaTrasladoC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/salvar.png"))); // NOI18N
-        jButton36.setText("Registrar");
-        jButton36.addActionListener(new java.awt.event.ActionListener() {
+        jButton24.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
+        jButton24.setText("Buscar");
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton36ActionPerformed(evt);
+                jButton24ActionPerformed(evt);
             }
         });
 
-        jLabel75.setText("Fecha de ida:");
+        jLabel76.setText("Empleado:");
 
-        jLabel76.setText("Fecha de regreso:");
+        jLEmpleadoTrasladoC.setText("****");
 
-        jDCida1.setDateFormatString("dd/MM/yyyy");
+        jLabeFecha.setText("Fecha de ida:");
 
-        jDCregreso1.setDateFormatString("dd/MM/yyyy");
+        jLRegreso.setText("Fecha de regreso:");
 
-        jButton37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
-        jButton37.setText("Cancelar");
-        jButton37.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton37ActionPerformed(evt);
-            }
-        });
+        jLTraslado.setText("Ciudad de Traslado:");
 
-        jLabel77.setText("Ciudad de Traslado:");
+        jLida.setText("****");
 
-        jCBciudadesR2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuenca", "Latacunga" }));
+        jLregreso.setText("****");
+
+        jLciudad.setText("****");
 
         javax.swing.GroupLayout jPanel21Layout = new javax.swing.GroupLayout(jPanel21);
         jPanel21.setLayout(jPanel21Layout);
@@ -960,26 +1006,30 @@ public class JFEmpleados extends javax.swing.JFrame {
                         .addGap(118, 118, 118))
                     .addGroup(jPanel21Layout.createSequentialGroup()
                         .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCBCedulaTrasladoR1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel75)
-                                    .addComponent(jLabel76))
+                                .addComponent(jLabel76)
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jDCida1, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                                    .addComponent(jDCregreso1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jLEmpleadoTrasladoC))
                             .addGroup(jPanel21Layout.createSequentialGroup()
-                                .addComponent(jLabel77)
+                                .addComponent(jCBCedulaTrasladoC, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton24)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel21Layout.createSequentialGroup()
+                        .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addComponent(jLTraslado)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jCBciudadesR2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton36)
-                .addGap(18, 18, 18)
-                .addComponent(jButton37)
-                .addGap(79, 79, 79))
+                                .addComponent(jLciudad))
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addComponent(jLRegreso)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLregreso))
+                            .addGroup(jPanel21Layout.createSequentialGroup()
+                                .addComponent(jLabeFecha)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLida)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -987,24 +1037,26 @@ public class JFEmpleados extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(jLabel74)
                 .addGap(18, 18, 18)
-                .addComponent(jCBCedulaTrasladoR1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel75)
-                    .addComponent(jDCida1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel76)
-                    .addComponent(jDCregreso1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCBCedulaTrasladoC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton24))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel77)
-                    .addComponent(jCBciudadesR2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                    .addComponent(jLabel76)
+                    .addComponent(jLEmpleadoTrasladoC))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton36)
-                    .addComponent(jButton37))
-                .addGap(17, 17, 17))
+                    .addComponent(jLabeFecha)
+                    .addComponent(jLida))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLRegreso)
+                    .addComponent(jLregreso))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLTraslado)
+                    .addComponent(jLciudad))
+                .addContainerGap(151, Short.MAX_VALUE))
         );
 
         jTabbedPane3.addTab("Traslado", new javax.swing.ImageIcon(getClass().getResource("/Iconos/destino.png")), jPanel21); // NOI18N
@@ -1354,6 +1406,11 @@ public class JFEmpleados extends javax.swing.JFrame {
 
         jBCancelarJornada.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
         jBCancelarJornada.setText("Cancelar");
+        jBCancelarJornada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarJornadaActionPerformed(evt);
+            }
+        });
 
         jButton30.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
         jButton30.setText("Buscar");
@@ -1427,6 +1484,186 @@ public class JFEmpleados extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Jornada", new javax.swing.ImageIcon(getClass().getResource("/Iconos/atras-en-el-tiempo.png")), jPanel11); // NOI18N
 
+        jPanel22.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel78.setText("Ingrese el número de cédula del empleado al que desea trasladar temporalmente");
+
+        jCBCedulaTrasladoA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
+        jButton25.setText("Buscar");
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
+
+        jPanel23.setBorder(javax.swing.BorderFactory.createTitledBorder("Traslado"));
+
+        jLabel39.setText("Ida");
+
+        jDateInicio1.setDateFormatString("dd/MM/yyyy");
+
+        jBActualizaTraslado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/actualizar.png"))); // NOI18N
+        jBActualizaTraslado.setText("Actualizar");
+        jBActualizaTraslado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBActualizaTrasladoActionPerformed(evt);
+            }
+        });
+
+        jLabel41.setText("Ciudad");
+
+        jDateChooserFin1.setDateFormatString("dd/MM/yyyy");
+
+        jBCancelarTraslado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
+        jBCancelarTraslado.setText("Cancelar");
+
+        jCBciudadesR2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cuenca", "Latacunga" }));
+
+        jLabel45.setText("Regreso");
+
+        javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
+        jPanel23.setLayout(jPanel23Layout);
+        jPanel23Layout.setHorizontalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel23Layout.createSequentialGroup()
+                        .addComponent(jBActualizaTraslado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addComponent(jBCancelarTraslado)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel23Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addComponent(jLabel39)
+                                .addGap(30, 30, 30))
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addComponent(jLabel41)
+                                .addGap(18, 18, 18))
+                            .addGroup(jPanel23Layout.createSequentialGroup()
+                                .addComponent(jLabel45)
+                                .addGap(18, 18, 18)))
+                        .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCBciudadesR2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jDateInicio1, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                                .addComponent(jDateChooserFin1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(35, 35, 35))))
+        );
+        jPanel23Layout.setVerticalGroup(
+            jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel23Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jDateInicio1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel39))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jDateChooserFin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel45))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCBciudadesR2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel41))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBActualizaTraslado)
+                    .addComponent(jBCancelarTraslado))
+                .addContainerGap())
+        );
+
+        jLabel81.setText("Empleado:");
+
+        jLabeFecha1.setText("Fecha de ida:");
+
+        jLRegreso1.setText("Fecha de regreso:");
+
+        jLTraslado1.setText("Ciudad de Traslado:");
+
+        jLida1.setText("****");
+
+        jLregreso1.setText("****");
+
+        jLEmpleadoTrasladoC6.setText("****");
+
+        jLciudad1.setText("****");
+
+        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
+        jPanel22.setLayout(jPanel22Layout);
+        jPanel22Layout.setHorizontalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addComponent(jLabel78, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(118, 118, 118))
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addComponent(jCBCedulaTrasladoA, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton25)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addComponent(jLabel81)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLEmpleadoTrasladoC6))
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addComponent(jLabeFecha1)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLida1))
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addComponent(jLRegreso1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLregreso1))
+                            .addGroup(jPanel22Layout.createSequentialGroup()
+                                .addComponent(jLTraslado1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLciudad1)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42))))
+        );
+        jPanel22Layout.setVerticalGroup(
+            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel22Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel78)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCBCedulaTrasladoA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton25))
+                .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel81)
+                            .addComponent(jLEmpleadoTrasladoC6))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabeFecha1)
+                            .addComponent(jLida1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLRegreso1)
+                            .addComponent(jLregreso1))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLTraslado1)
+                            .addComponent(jLciudad1)))
+                    .addGroup(jPanel22Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Traslado", new javax.swing.ImageIcon(getClass().getResource("/Iconos/destino.png")), jPanel22); // NOI18N
+
         jPanel12.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel14.setText("Ingrese el número de cédula del empleado que desea actualizar");
@@ -1453,6 +1690,11 @@ public class JFEmpleados extends javax.swing.JFrame {
 
         jBCancelarDia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
         jBCancelarDia.setText("Cancelar");
+        jBCancelarDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarDiaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -1553,7 +1795,7 @@ public class JFEmpleados extends javax.swing.JFrame {
 
         jCBDiasVacacionesA.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel19.setText("Vacaciones");
+        jLabel19.setText("Seleccione un periodo de vacaciones");
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Nuevo Periodo"));
 
@@ -1585,7 +1827,7 @@ public class JFEmpleados extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jBActualizarVacaciones)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBCancelarVacaciones)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
@@ -1653,18 +1895,18 @@ public class JFEmpleados extends javax.swing.JFrame {
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jCBDiasVacacionesA, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                         .addComponent(jButton32))
                     .addGroup(jPanel15Layout.createSequentialGroup()
                         .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel19)
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel15Layout.createSequentialGroup()
                                 .addComponent(jLabel72)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLEmpleadoVacacionesA)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jLEmpleadoVacacionesA))
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29))
         );
         jPanel15Layout.setVerticalGroup(
@@ -1688,7 +1930,7 @@ public class JFEmpleados extends javax.swing.JFrame {
                         .addComponent(jLabel19)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Vacaciones", new javax.swing.ImageIcon(getClass().getResource("/Iconos/vacaciones-de-verano.png")), jPanel15); // NOI18N
@@ -1703,110 +1945,21 @@ public class JFEmpleados extends javax.swing.JFrame {
 
         jLabel47.setText("Cédula");
 
-        jLabel48.setText("Cédula:");
+        jBCancelarEmp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
+        jBCancelarEmp.setText("Cancelar");
+        jBCancelarEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarEmpActionPerformed(evt);
+            }
+        });
 
-        jLabel49.setText("Nombres:");
-
-        jLabel50.setText("Apellidos:");
-
-        jLabel51.setText("Ciudad Permanente de Trabajo:");
-
-        jLabel52.setText("Salario:");
-
-        jLabel53.setText("Jornada:");
-
-        jLCedulaC1.setText("******");
-
-        jLNombresC1.setText("******");
-
-        jLApellidosC1.setText("******");
-
-        jLCiudadC1.setText("******");
-
-        jLJornadaC1.setText("******");
-
-        jLSalarioC1.setText("******");
-
-        jLabel36.setText("Estado: ");
-
-        jLSalarioC2.setText("******");
-
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addComponent(jLabel36)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLSalarioC2))
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addComponent(jLabel52)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLSalarioC1))
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addComponent(jLabel51)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLCiudadC1))
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addComponent(jLabel49)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLNombresC1))
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addComponent(jLabel48)
-                        .addGap(30, 30, 30)
-                        .addComponent(jLCedulaC1))
-                    .addGroup(jPanel17Layout.createSequentialGroup()
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel50)
-                            .addComponent(jLabel53))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLApellidosC1)
-                            .addComponent(jLJornadaC1))))
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel17Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel48)
-                    .addComponent(jLCedulaC1))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel49)
-                    .addComponent(jLNombresC1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel50)
-                    .addComponent(jLApellidosC1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel53)
-                    .addComponent(jLJornadaC1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel51)
-                    .addComponent(jLCiudadC1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel52)
-                    .addComponent(jLSalarioC1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel36)
-                    .addComponent(jLSalarioC2))
-                .addGap(89, 89, 89))
-        );
-
-        jButton21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
-        jButton21.setText("Cancelar");
-
-        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png"))); // NOI18N
-        jButton10.setText("Eliminar");
+        jBEliminarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png"))); // NOI18N
+        jBEliminarEmpleado.setText("Eliminar");
+        jBEliminarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarEmpleadoActionPerformed(evt);
+            }
+        });
 
         jButton33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
         jButton33.setText("Buscar");
@@ -1816,43 +1969,150 @@ public class JFEmpleados extends javax.swing.JFrame {
             }
         });
 
-        jButton23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/prohibir-usuario.png"))); // NOI18N
-        jButton23.setText("Deshabilitar");
+        jBDeshabilitar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/prohibir-usuario.png"))); // NOI18N
+        jBDeshabilitar.setText("Deshabilitar");
+        jBDeshabilitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBDeshabilitarActionPerformed(evt);
+            }
+        });
 
-        jLabel73.setText("Estado:");
+        jPanelEmpleado.setBorder(javax.swing.BorderFactory.createTitledBorder("Empleado Seleccionado"));
+
+        jLabel73.setText("Cédula:");
+
+        jLabel77.setText("Nombres:");
+
+        jLabel79.setText("Apellidos:");
+
+        jLabel80.setText("Ciudad Permanente de Trabajo:");
+
+        jLabel82.setText("Salario:");
+
+        jLabel83.setText("Jornada:");
+
+        jLCedulaC2.setText("******");
+
+        jLNombresC2.setText("******");
+
+        jLApellidosC2.setText("******");
+
+        jLCiudadC2.setText("******");
+
+        jLJornadaC2.setText("******");
+
+        jLSalarioC3.setText("******");
+
+        jLabel84.setText("Especialidad:");
+
+        jLEspecialidadC1.setText("******");
+
+        jLabel89.setText("Estado:");
+
+        jLEstadoC1.setText("******");
+
+        javax.swing.GroupLayout jPanelEmpleadoLayout = new javax.swing.GroupLayout(jPanelEmpleado);
+        jPanelEmpleado.setLayout(jPanelEmpleadoLayout);
+        jPanelEmpleadoLayout.setHorizontalGroup(
+            jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
+                        .addComponent(jLabel84)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLEspecialidadC1))
+                    .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
+                        .addComponent(jLabel80)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLCiudadC2))
+                    .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
+                        .addComponent(jLabel77)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLNombresC2))
+                    .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
+                        .addComponent(jLabel73)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLCedulaC2))
+                    .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
+                        .addGroup(jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel79)
+                            .addComponent(jLabel83))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLApellidosC2)
+                            .addComponent(jLJornadaC2)))
+                    .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
+                        .addGroup(jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel82)
+                            .addComponent(jLabel89))
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLEstadoC1)
+                            .addComponent(jLSalarioC3))))
+                .addContainerGap(36, Short.MAX_VALUE))
+        );
+        jPanelEmpleadoLayout.setVerticalGroup(
+            jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEmpleadoLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel73)
+                    .addComponent(jLCedulaC2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel77)
+                    .addComponent(jLNombresC2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel79)
+                    .addComponent(jLApellidosC2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel83, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLJornadaC2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLCiudadC2)
+                    .addComponent(jLabel80))
+                .addGap(11, 11, 11)
+                .addGroup(jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel84)
+                    .addComponent(jLEspecialidadC1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel82)
+                    .addComponent(jLSalarioC3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelEmpleadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel89)
+                    .addComponent(jLEstadoC1))
+                .addGap(38, 38, 38))
+        );
 
         javax.swing.GroupLayout jPEmpleadoC1Layout = new javax.swing.GroupLayout(jPEmpleadoC1);
         jPEmpleadoC1.setLayout(jPEmpleadoC1Layout);
         jPEmpleadoC1Layout.setHorizontalGroup(
             jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
+                .addGap(49, 49, 49)
                 .addGroup(jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jPanelEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addGroup(jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBEliminarEmpleado)
+                            .addComponent(jBDeshabilitar)
+                            .addComponent(jBCancelarEmp))
+                        .addGap(532, 532, 532))
                     .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
                         .addComponent(jLabel47)
                         .addGap(48, 48, 48)
-                        .addComponent(jCBCedulaEmpleadoE, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jButton33))
-                    .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton23)
-                            .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
-                                .addComponent(jButton10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton21)))))
-                .addContainerGap(13, Short.MAX_VALUE))
-            .addGroup(jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel73)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jCBCedulaEmpleadoE, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jButton33)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPEmpleadoC1Layout.setVerticalGroup(
             jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1860,27 +2120,134 @@ public class JFEmpleados extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
+                        .addComponent(jBDeshabilitar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBEliminarEmpleado)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBCancelarEmp)
+                        .addGap(40, 40, 40))
+                    .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
                         .addGroup(jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jCBCedulaEmpleadoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel47)
                             .addComponent(jButton33))
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel17, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
-                        .addComponent(jButton23)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton10)
-                            .addComponent(jButton21))))
-                .addContainerGap(77, Short.MAX_VALUE))
-            .addGroup(jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel73)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(jPanelEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 297, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
-        jTabbedPane5.addTab("Datos de Empleado", new javax.swing.ImageIcon(getClass().getResource("/Iconos/perfil-del-usuario.png")), jPEmpleadoC1); // NOI18N
+        jTabbedPane5.addTab("Empleado", new javax.swing.ImageIcon(getClass().getResource("/Iconos/perfil-del-usuario.png")), jPEmpleadoC1); // NOI18N
+
+        jPanel24.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel75.setText("Ingrese el número de cédula del empleado al que desea trasladar temporalmente");
+
+        jCBCedulaTrasladoE.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jButton26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
+        jButton26.setText("Buscar");
+        jButton26.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton26ActionPerformed(evt);
+            }
+        });
+
+        jBEliminarTras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png"))); // NOI18N
+        jBEliminarTras.setText("Eliminar");
+
+        jBCancelarTras.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
+        jBCancelarTras.setText("Cancelar");
+
+        jLabel85.setText("Empleado: ");
+
+        jLEmpleadoVacacionesA1.setText("*****");
+
+        jLabel86.setText("Fecha de ida:");
+
+        jLabel87.setText("Fecha de regreso:");
+
+        jLEmpleadoTrasladoC8.setText("****");
+
+        jLEmpleadoTrasladoC9.setText("****");
+
+        jLabel88.setText("Ciudad de Traslado:");
+
+        jLEmpleadoTrasladoC10.setText("****");
+
+        javax.swing.GroupLayout jPanel24Layout = new javax.swing.GroupLayout(jPanel24);
+        jPanel24.setLayout(jPanel24Layout);
+        jPanel24Layout.setHorizontalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel24Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel24Layout.createSequentialGroup()
+                        .addComponent(jLabel75, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(118, 118, 118))
+                    .addGroup(jPanel24Layout.createSequentialGroup()
+                        .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel24Layout.createSequentialGroup()
+                                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jBEliminarTras)
+                                    .addComponent(jCBCedulaTrasladoE, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton26)
+                                    .addComponent(jBCancelarTras)))
+                            .addGroup(jPanel24Layout.createSequentialGroup()
+                                .addComponent(jLabel85)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLEmpleadoVacacionesA1)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel24Layout.createSequentialGroup()
+                        .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel24Layout.createSequentialGroup()
+                                .addComponent(jLabel88)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLEmpleadoTrasladoC10))
+                            .addGroup(jPanel24Layout.createSequentialGroup()
+                                .addComponent(jLabel87)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLEmpleadoTrasladoC8))
+                            .addGroup(jPanel24Layout.createSequentialGroup()
+                                .addComponent(jLabel86)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLEmpleadoTrasladoC9)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jPanel24Layout.setVerticalGroup(
+            jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel24Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel75)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCBCedulaTrasladoE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton26))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel85)
+                    .addComponent(jLEmpleadoVacacionesA1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel86)
+                    .addComponent(jLEmpleadoTrasladoC9))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel87)
+                    .addComponent(jLEmpleadoTrasladoC8))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel88)
+                    .addComponent(jLEmpleadoTrasladoC10))
+                .addGap(64, 64, 64)
+                .addGroup(jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBEliminarTras)
+                    .addComponent(jBCancelarTras))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane5.addTab("Traslado", new javax.swing.ImageIcon(getClass().getResource("/Iconos/destino.png")), jPanel24); // NOI18N
 
         jPanel19.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -1901,11 +2268,11 @@ public class JFEmpleados extends javax.swing.JFrame {
 
         jLabel62.setText("Selecione el día libre a eliminar:");
 
-        jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png"))); // NOI18N
-        jButton11.setText("Eliminar");
+        jBEliminarDia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png"))); // NOI18N
+        jBEliminarDia.setText("Eliminar");
 
-        jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
-        jButton19.setText("Cancelar");
+        jBCAncelarDiaE.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
+        jBCAncelarDiaE.setText("Cancelar");
 
         jButton34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
         jButton34.setText("Buscar");
@@ -1936,10 +2303,10 @@ public class JFEmpleados extends javax.swing.JFrame {
                     .addGroup(jPanel19Layout.createSequentialGroup()
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(81, 81, 81)
-                        .addComponent(jButton11)
+                        .addComponent(jBEliminarDia)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton19)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                        .addComponent(jBCAncelarDiaE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1962,8 +2329,8 @@ public class JFEmpleados extends javax.swing.JFrame {
                     .addGroup(jPanel19Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton11)
-                            .addComponent(jButton19))))
+                            .addComponent(jBEliminarDia)
+                            .addComponent(jBCAncelarDiaE))))
                 .addGap(43, 43, 43))
         );
 
@@ -1981,7 +2348,7 @@ public class JFEmpleados extends javax.swing.JFrame {
 
         jLabel66.setText("Seleccione el periodo de vacaciones a eliminar:");
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTVacacionesE.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -1992,13 +2359,13 @@ public class JFEmpleados extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane6.setViewportView(jTable2);
+        jScrollPane6.setViewportView(jTVacacionesE);
 
-        jButton20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
-        jButton20.setText("Cancelar");
+        jBCancelarEliminarVaca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
+        jBCancelarEliminarVaca.setText("Cancelar");
 
-        jButton22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png"))); // NOI18N
-        jButton22.setText("Eliminar");
+        jBEliminarVaca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png"))); // NOI18N
+        jBEliminarVaca.setText("Eliminar");
 
         jButton35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
         jButton35.setText("Buscar");
@@ -2015,29 +2382,29 @@ public class JFEmpleados extends javax.swing.JFrame {
             .addGroup(jPanel20Layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel66)
                     .addGroup(jPanel20Layout.createSequentialGroup()
-                        .addComponent(jLabel64)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton35)
+                        .addGap(86, 86, 86))
+                    .addGroup(jPanel20Layout.createSequentialGroup()
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel66)
+                            .addGroup(jPanel20Layout.createSequentialGroup()
+                                .addComponent(jLabel64)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel65))
+                            .addGroup(jPanel20Layout.createSequentialGroup()
+                                .addComponent(jLabel63)
+                                .addGap(33, 33, 33)
+                                .addComponent(jCBCedulaVacacionesE, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(jLabel65))
-                    .addGroup(jPanel20Layout.createSequentialGroup()
-                        .addComponent(jLabel63)
-                        .addGap(33, 33, 33)
-                        .addComponent(jCBCedulaVacacionesE, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel20Layout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel20Layout.createSequentialGroup()
-                        .addComponent(jButton22)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton20)
-                        .addGap(81, 81, 81))
-                    .addGroup(jPanel20Layout.createSequentialGroup()
-                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton35)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(86, 86, 86))))
+                        .addComponent(jBEliminarVaca)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBCancelarEliminarVaca)
+                        .addGap(56, 56, 56))))
         );
         jPanel20Layout.setVerticalGroup(
             jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2051,15 +2418,18 @@ public class JFEmpleados extends javax.swing.JFrame {
                 .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel64)
                     .addComponent(jLabel65))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel66)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton20)
-                    .addComponent(jButton22))
-                .addGap(259, 259, 259))
+                .addComponent(jLabel66)
+                .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel20Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel20Layout.createSequentialGroup()
+                        .addGap(134, 134, 134)
+                        .addGroup(jPanel20Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jBEliminarVaca)
+                            .addComponent(jBCancelarEliminarVaca))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane5.addTab("Vacaciones", new javax.swing.ImageIcon(getClass().getResource("/Iconos/vacaciones-de-verano.png")), jPanel20); // NOI18N
@@ -2074,7 +2444,7 @@ public class JFEmpleados extends javax.swing.JFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 428, Short.MAX_VALUE)
+            .addComponent(jTabbedPane5)
         );
 
         jTabbedPane1.addTab("Eliminar", new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png")), jPanel7); // NOI18N
@@ -2098,7 +2468,7 @@ public class JFEmpleados extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(115, Short.MAX_VALUE)
+                .addContainerGap(117, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton12)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 599, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2125,9 +2495,7 @@ public class JFEmpleados extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -2233,20 +2601,7 @@ public class JFEmpleados extends javax.swing.JFrame {
        this.jTFEspecialidad.setText("");
        this.jTFSalario.setText("");
        
-       rellenarCedulas(jCBCedulaSalario);
-        rellenarCedulas(jCBCedulaDiasLibresR);
-        rellenarCedulas(jCBCedulaVacacionesR);
-        rellenarCedulas(jCBCedulaTrasladoR);                
-        rellenarCedulas(jCBCedulaEmpleadoC);
-        rellenarCedulas(jCBCedulaServiciosC);
-        rellenarCedulas(jCBCedulaDiasLibresC);
-        rellenarCedulas(jCBCedulaVacacionesC);   
-        rellenarCedulas(jCBDiasLibreasA);
-        rellenarCedulas(jCBDiasVacacionesA);
-        rellenarCedulas(jCBJornadaA);
-        rellenarCedulas(jCBCedulaEmpleadoE);
-        rellenarCedulas(jCBCedulaDiasLibresE);
-        rellenarCedulas(jCBCedulaVacacionesE);    
+       this.actualizarComboBox();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTFEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFEspecialidadActionPerformed
@@ -2324,7 +2679,7 @@ public class JFEmpleados extends javax.swing.JFrame {
        Date fin=jDCregreso.getDate();
        
        if(fin==null){
-           JOptionPane.showMessageDialog(null, "Ingrese una fecha de final válida", "ERROR!", 0);
+           JOptionPane.showMessageDialog(null, "Ingrese una fecha de regreso válida", "ERROR!", 0);
            jDCregreso.setDate(null);
            return;
        }
@@ -2458,7 +2813,7 @@ public class JFEmpleados extends javax.swing.JFrame {
         Empleado emp=new Empleado(this.jCBCedulaServiciosC.getSelectedItem().toString());
         
         this.jLEmpleadoC.setText(emp.getNombres()+" "+emp.getApellidos());
-        
+        jLCantidadC.setText(""+0);
         
     }//GEN-LAST:event_jButton14ActionPerformed
 
@@ -2468,7 +2823,9 @@ public class JFEmpleados extends javax.swing.JFrame {
         this.jLEmpleadoDiasLibresC.setText(emp.getNombres()+" "+emp.getApellidos());
         
         rellenarLista(this.jListDiasLibres, emp);
-        
+        if(this.jListDiasLibres.getModel().getSize()==0){
+        JOptionPane.showMessageDialog(null, "El empleado no tienen ningun día libre registrado");
+        }
         
     }//GEN-LAST:event_jButton15ActionPerformed
 
@@ -2479,7 +2836,9 @@ public class JFEmpleados extends javax.swing.JFrame {
         
         rellenarTabla(this.jTVacaciones, emp);
         
-        
+        if(this.jTVacaciones.getModel().getRowCount()==0){
+        JOptionPane.showMessageDialog(null, "El empleado no tiene vacaciones registradas");
+        }
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
@@ -2521,9 +2880,14 @@ public class JFEmpleados extends javax.swing.JFrame {
         this.jLEmpleadoDiasLibres.setText(emp.getNombres()+" "+emp.getApellidos());
         
         rellenarLista(this.jLDiasLibresActualizar, emp);
-        
         this.jBActualizarDia.setEnabled(true);
         this.jBCancelarDia.setEnabled(true);
+        if(this.jLDiasLibresActualizar.getModel().getSize()==0){
+        JOptionPane.showMessageDialog(null, "El empleado no tienen ningun día libre registrado");
+        this.jBActualizarDia.setEnabled(false);
+        this.jBCancelarDia.setEnabled(false);
+        }
+        
      
     }//GEN-LAST:event_jButton31ActionPerformed
 
@@ -2533,9 +2897,14 @@ public class JFEmpleados extends javax.swing.JFrame {
         this.jLEmpleadoVacacionesA.setText(emp.getNombres()+" "+emp.getApellidos());
         
         rellenarTabla(this.jTVacacionesA, emp);
-        
         this.jBActualizarVacaciones.setEnabled(true);
         this.jBCancelarVacaciones.setEnabled(true);
+        if(this.jTVacacionesA.getModel().getRowCount()==0){
+        JOptionPane.showMessageDialog(null, "El empleado no tiene vacaciones registradas");
+        this.jBActualizarVacaciones.setEnabled(false);
+        this.jBCancelarVacaciones.setEnabled(false);
+        }
+        
     }//GEN-LAST:event_jButton32ActionPerformed
 
     private void jBActualizarSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActualizarSalarioActionPerformed
@@ -2578,7 +2947,33 @@ public class JFEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCancelarSalarioActionPerformed
 
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
-        // TODO add your handling code here:
+        jPanelEmpleado.setVisible(true);
+        
+        Empleado emp=new Empleado(this.jCBCedulaEmpleadoE.getSelectedItem().toString());
+        
+        this.jLCedulaC2.setText(emp.getCedula());
+        this.jLNombresC2.setText(emp.getNombres());
+        this.jLApellidosC2.setText(emp.getApellidos());
+        this.jLJornadaC2.setText(emp.getJornada());
+        this.jLCiudadC2.setText(emp.getCiudad());
+        this.jLEspecialidadC1.setText(emp.getEspecialidad());
+        this.jLSalarioC3.setText(Float.toString(emp.getSalario()));
+        
+        
+        String hab=emp.getHabilitado();
+        if(hab.equals("A")){
+        this.jLEstadoC1.setText("Habilitado");
+        this.jBDeshabilitar.setText("Deshabilitar");
+        this.jBDeshabilitar.setIcon(deshabilitar);
+        }else{
+        this.jLEstadoC1.setText("Deshabilitado");
+        this.jBDeshabilitar.setText("Habilitar");
+        this.jBDeshabilitar.setIcon(aceptar);
+        }
+        
+        jBDeshabilitar.setEnabled(true);
+        jBEliminarEmpleado.setEnabled(true);
+        jBCancelarEmp.setEnabled(true);
     }//GEN-LAST:event_jButton33ActionPerformed
 
     private void jButton34ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton34ActionPerformed
@@ -2637,7 +3032,7 @@ public class JFEmpleados extends javax.swing.JFrame {
           Validar val=new Validar();
           int r=this.jTVacacionesA.getSelectedRow();
           if(r==-1){
-              JOptionPane.showMessageDialog(null, "Seleccione un periodo de vacaciones válido", "ERROR!", 0);
+              JOptionPane.showMessageDialog(null, "Seleccione un periodo de vacaciones", "ERROR!", 0);
               return;
           }
           
@@ -2650,27 +3045,196 @@ public class JFEmpleados extends javax.swing.JFrame {
           
           SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
         
-        try {
+          
+        
+          try {
+              
             Date diainicioviejo=formato.parse(diainicioviejoS);
             Date diaifinviejo=formato.parse(diafinviejoS);
             
-        } catch (ParseException ex) {
-            Logger.getLogger(JFEmpleados.class.getName()).log(Level.SEVERE, null, ex);
+            //System.out.print(diainicioviejo+" "+diaifinviejo);
+            
+            
+            Date diainicionuevo=this.jDateInicio.getDate();
+            Date diafinnuevo=this.jDateChooserFin.getDate();
+           
+            if(diainicionuevo==null){
+                JOptionPane.showMessageDialog(null, "Seleccione una fecha válida", "ERROR!", 0);
+                this.jDateInicio.setDate(null);
+                return;
+            }
+            
+            if(diafinnuevo==null || !val.validarFechasInicioFin(diainicionuevo, diafinnuevo)){
+                JOptionPane.showMessageDialog(null, "Seleccione una fecha final válida", "ERROR!", 0);
+                this.jDateChooserFin.setDate(null);
+                return;
+            }
+            
+            
+            
+            Vacacion vac=new Vacacion(emp.getCedula(), new java.sql.Date(diainicioviejo.getTime()), new java.sql.Date(diaifinviejo.getTime()));
+            
+            
+             
+            
+            vac.atualizarDia(new java.sql.Date(diainicionuevo.getTime()),new java.sql.Date(diafinnuevo.getTime()));
+            rellenarTabla(jTVacacionesA, emp);
+            this.jDateInicio.setDate(null);
+            this.jDateChooserFin.setDate(null);
+            
+        } catch (Exception ex) {
+              ex.toString();
         }
             
-            Date diainicionuevo=this.jDCinicioVacacion.getDate();
-            Date diafinnuevo=this.jDCFinVacacion.getDate();
             
             
     }//GEN-LAST:event_jBActualizarVacacionesActionPerformed
 
-    private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton36ActionPerformed
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        jLida.setText("");
+        jLregreso.setText("");
+        jLciudad.setText("");
+        jLabeFecha.setVisible(false);
+        jLRegreso.setVisible(false);
+        jLTraslado.setVisible(false);
+        Empleado emp=new Empleado(this.jCBCedulaTrasladoC.getSelectedItem().toString());
+        
+        this.jLEmpleadoTrasladoC.setText(emp.getNombres()+" "+emp.getApellidos());
+        
+        Validar val=new Validar();
+        
+        if(val.cedulaTraslado(emp.getCedula())){
+            Traslado tr=new Traslado(emp.getCedula());
+            jLida.setText(tr.getIda().toString());
+            jLregreso.setText(tr.getRegreso().toString());
+            jLciudad.setText(tr.getCiudad());
+            jLabeFecha.setVisible(true);
+            jLRegreso.setVisible(true);
+            jLTraslado.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "El empleado no tiene ningun traslado registrado");
+        }
+        
+        
+    }//GEN-LAST:event_jButton24ActionPerformed
 
-    private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
+        jLida1.setText("");
+        jLregreso1.setText("");
+        jLciudad1.setText("");
+        jLabeFecha1.setVisible(false);
+        jLRegreso1.setVisible(false);
+        jLTraslado1.setVisible(false);
+        Empleado emp=new Empleado(this.jCBCedulaTrasladoA.getSelectedItem().toString());
+        
+        this.jLEmpleadoTrasladoC6.setText(emp.getNombres()+" "+emp.getApellidos());
+        
+        Validar val=new Validar();
+        
+        if(val.cedulaTraslado(emp.getCedula())){
+            Traslado tr=new Traslado(emp.getCedula());
+            jLida1.setText(tr.getIda().toString());
+            jLregreso1.setText(tr.getRegreso().toString());
+            jLciudad1.setText(tr.getCiudad());
+            jLabeFecha1.setVisible(true);
+            jLRegreso1.setVisible(true);
+            jLTraslado1.setVisible(true);
+            jBActualizaTraslado.setEnabled(true);
+            jBCancelarTraslado.setEnabled(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "El empleado no tiene ningun traslado registrado");
+            jBActualizaTraslado.setEnabled(false);
+            jBCancelarTraslado.setEnabled(false);
+        }
+    }//GEN-LAST:event_jButton25ActionPerformed
+
+    private void jBActualizaTrasladoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBActualizaTrasladoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton37ActionPerformed
+    }//GEN-LAST:event_jBActualizaTrasladoActionPerformed
+
+    private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton26ActionPerformed
+
+    private void jBCancelarJornadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarJornadaActionPerformed
+       jLEmpleadoJornada.setText("");
+       jLJornada.setText("");
+       this.jBActualizarJornada.setEnabled(false);
+        this.jBCancelarJornada.setEnabled(false);
+    }//GEN-LAST:event_jBCancelarJornadaActionPerformed
+
+    private void jBCancelarDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarDiaActionPerformed
+        this.jDCdialibreA.setDate(null);
+        DefaultListModel modelo = new DefaultListModel();
+        modelo.removeAllElements();
+        jLDiasLibresActualizar.setModel(modelo);
+        this.jBActualizarDia.setEnabled(false);
+        this.jBCancelarDia.setEnabled(false);
+        jLEmpleadoDiasLibres.setText("");
+    }//GEN-LAST:event_jBCancelarDiaActionPerformed
+
+    private void jBDeshabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDeshabilitarActionPerformed
+        Empleado emp=new Empleado(this.jLCedulaC2.getText());
+        
+        
+        if(emp.getHabilitado().equals("A")){
+            
+        emp.atualizarEstado("D");
+        this.jLEstadoC1.setText("Habilitado");
+        this.jBDeshabilitar.setText("Habilitar");
+        this.jBDeshabilitar.setIcon(aceptar);
+        
+        jLEstadoC1.setText("Deshabilitado");
+        }else{
+        emp.atualizarEstado("A");
+        this.jLEstadoC1.setText("Deshabilitado");
+        this.jBDeshabilitar.setText("Deshabilitar");
+        this.jBDeshabilitar.setIcon(deshabilitar);
+        jLEstadoC1.setText("Habilitado");
+        }
+        
+        
+    }//GEN-LAST:event_jBDeshabilitarActionPerformed
+
+    private void jBEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarEmpleadoActionPerformed
+        
+        if(0==JOptionPane.showConfirmDialog(null,"¿Está seguro de que quiere eliminar este empleado?", "Select an Option...",JOptionPane.YES_NO_OPTION)){
+            System.out.println("si");
+            Empleado emp=new Empleado(this.jCBCedulaEmpleadoE.getSelectedItem().toString());
+            emp.Eliminar();
+            jBDeshabilitar.setEnabled(false);
+            jBEliminarEmpleado.setEnabled(false);
+            jBCancelarEmp.setEnabled(false);
+            this.jLCedulaC2.setText("");
+            this.jLNombresC2.setText("");
+            this.jLApellidosC2.setText("");
+            this.jLJornadaC2.setText("");
+            this.jLCiudadC2.setText("");
+            this.jLEspecialidadC1.setText("");
+            this.jLSalarioC3.setText("");
+            this.jLEstadoC1.setText("");
+            this.actualizarComboBox();
+        }else{
+            JOptionPane.showMessageDialog(null, "El empleado NO ha sido eliminado");
+            return;
+        }
+        
+        
+    }//GEN-LAST:event_jBEliminarEmpleadoActionPerformed
+
+    private void jBCancelarEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarEmpActionPerformed
+        jBDeshabilitar.setEnabled(false);
+            jBEliminarEmpleado.setEnabled(false);
+            jBCancelarEmp.setEnabled(false);
+            this.jLCedulaC2.setText("");
+            this.jLNombresC2.setText("");
+            this.jLApellidosC2.setText("");
+            this.jLJornadaC2.setText("");
+            this.jLCiudadC2.setText("");
+            this.jLEspecialidadC1.setText("");
+            this.jLSalarioC3.setText("");
+            this.jLEstadoC1.setText("");
+    }//GEN-LAST:event_jBCancelarEmpActionPerformed
 
     
     public static void rellenarCedulas(JComboBox combox){
@@ -2797,6 +3361,26 @@ public class JFEmpleados extends javax.swing.JFrame {
             }
         }
     }
+    
+    public void actualizarComboBox(){
+        rellenarCedulas(jCBCedulaSalario);
+        rellenarCedulas(jCBCedulaDiasLibresR);
+        rellenarCedulas(jCBCedulaVacacionesR);
+        rellenarCedulas(jCBCedulaTrasladoR); 
+        rellenarCedulas(jCBCedulaEmpleadoC);
+        rellenarCedulas(jCBCedulaServiciosC);
+        rellenarCedulas(jCBCedulaDiasLibresC);
+        rellenarCedulas(jCBCedulaVacacionesC); 
+        rellenarCedulas(jCBCedulaTrasladoC); 
+        rellenarCedulas(jCBDiasLibreasA);
+        rellenarCedulas(jCBDiasVacacionesA);
+        rellenarCedulas(jCBJornadaA);    
+        rellenarCedulas(jCBCedulaTrasladoA);    
+        rellenarCedulas(jCBCedulaEmpleadoE);
+        rellenarCedulas(jCBCedulaDiasLibresE);
+        rellenarCedulas(jCBCedulaVacacionesE);   
+        rellenarCedulas(jCBCedulaTrasladoE);  
+    }
     /**
      * @param args the command line arguments
      */
@@ -2833,19 +3417,28 @@ public class JFEmpleados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBActualizaTraslado;
     private javax.swing.JButton jBActualizarDia;
     private javax.swing.JButton jBActualizarJornada;
     private javax.swing.JButton jBActualizarSalario;
     private javax.swing.JButton jBActualizarVacaciones;
+    private javax.swing.JButton jBCAncelarDiaE;
     private javax.swing.JButton jBCancelarDia;
+    private javax.swing.JButton jBCancelarEliminarVaca;
+    private javax.swing.JButton jBCancelarEmp;
     private javax.swing.JButton jBCancelarJornada;
     private javax.swing.JButton jBCancelarSalario;
+    private javax.swing.JButton jBCancelarTras;
+    private javax.swing.JButton jBCancelarTraslado;
     private javax.swing.JButton jBCancelarVacaciones;
+    private javax.swing.JButton jBDeshabilitar;
+    private javax.swing.JButton jBEliminarDia;
+    private javax.swing.JButton jBEliminarEmpleado;
+    private javax.swing.JButton jBEliminarTras;
+    private javax.swing.JButton jBEliminarVaca;
     private javax.swing.JButton jBRegistrarDiaLibre;
     private javax.swing.JButton jBRegistrarVacacion;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
@@ -2853,12 +3446,10 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton20;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
+    private javax.swing.JButton jButton24;
+    private javax.swing.JButton jButton25;
+    private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton27;
     private javax.swing.JButton jButton28;
     private javax.swing.JButton jButton29;
@@ -2868,8 +3459,6 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton35;
-    private javax.swing.JButton jButton36;
-    private javax.swing.JButton jButton37;
     private javax.swing.JButton jButton8;
     private javax.swing.JComboBox<String> jCBCedulaDiasLibresC;
     private javax.swing.JComboBox<String> jCBCedulaDiasLibresE;
@@ -2878,8 +3467,10 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jCBCedulaEmpleadoE;
     private javax.swing.JComboBox<String> jCBCedulaSalario;
     private javax.swing.JComboBox<String> jCBCedulaServiciosC;
+    private javax.swing.JComboBox<String> jCBCedulaTrasladoA;
+    private javax.swing.JComboBox<String> jCBCedulaTrasladoC;
+    private javax.swing.JComboBox<String> jCBCedulaTrasladoE;
     private javax.swing.JComboBox<String> jCBCedulaTrasladoR;
-    private javax.swing.JComboBox<String> jCBCedulaTrasladoR1;
     private javax.swing.JComboBox<String> jCBCedulaVacacionesC;
     private javax.swing.JComboBox<String> jCBCedulaVacacionesE;
     private javax.swing.JComboBox<String> jCBCedulaVacacionesR;
@@ -2897,39 +3488,52 @@ public class JFEmpleados extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDCFinVacacion;
     private com.toedter.calendar.JDateChooser jDCdialibreA;
     private com.toedter.calendar.JDateChooser jDCida;
-    private com.toedter.calendar.JDateChooser jDCida1;
     private com.toedter.calendar.JDateChooser jDCinicioVacacion;
     private com.toedter.calendar.JDateChooser jDCregreso;
-    private com.toedter.calendar.JDateChooser jDCregreso1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooserFin;
+    private com.toedter.calendar.JDateChooser jDateChooserFin1;
     private com.toedter.calendar.JDateChooser jDateInicio;
+    private com.toedter.calendar.JDateChooser jDateInicio1;
     private javax.swing.JLabel jLApellidosC;
-    private javax.swing.JLabel jLApellidosC1;
+    private javax.swing.JLabel jLApellidosC2;
     private javax.swing.JLabel jLCantidadC;
     private javax.swing.JLabel jLCedulaC;
-    private javax.swing.JLabel jLCedulaC1;
+    private javax.swing.JLabel jLCedulaC2;
     private javax.swing.JLabel jLCiudadC;
-    private javax.swing.JLabel jLCiudadC1;
+    private javax.swing.JLabel jLCiudadC2;
     private javax.swing.JList<String> jLDiasLibresActualizar;
     private javax.swing.JLabel jLEmpleado;
     private javax.swing.JLabel jLEmpleadoC;
     private javax.swing.JLabel jLEmpleadoDiasLibres;
     private javax.swing.JLabel jLEmpleadoDiasLibresC;
     private javax.swing.JLabel jLEmpleadoJornada;
+    private javax.swing.JLabel jLEmpleadoTrasladoC;
+    private javax.swing.JLabel jLEmpleadoTrasladoC10;
+    private javax.swing.JLabel jLEmpleadoTrasladoC6;
+    private javax.swing.JLabel jLEmpleadoTrasladoC8;
+    private javax.swing.JLabel jLEmpleadoTrasladoC9;
     private javax.swing.JLabel jLEmpleadoVacacionesA;
+    private javax.swing.JLabel jLEmpleadoVacacionesA1;
     private javax.swing.JLabel jLEmpleadoVacacionesC;
     private javax.swing.JLabel jLEspecialidadC;
+    private javax.swing.JLabel jLEspecialidadC1;
     private javax.swing.JLabel jLEstadoC;
+    private javax.swing.JLabel jLEstadoC1;
     private javax.swing.JLabel jLJornada;
     private javax.swing.JLabel jLJornadaC;
-    private javax.swing.JLabel jLJornadaC1;
+    private javax.swing.JLabel jLJornadaC2;
     private javax.swing.JLabel jLNombresC;
-    private javax.swing.JLabel jLNombresC1;
+    private javax.swing.JLabel jLNombresC2;
+    private javax.swing.JLabel jLRegreso;
+    private javax.swing.JLabel jLRegreso1;
     private javax.swing.JLabel jLSalario;
     private javax.swing.JLabel jLSalarioC;
-    private javax.swing.JLabel jLSalarioC1;
-    private javax.swing.JLabel jLSalarioC2;
+    private javax.swing.JLabel jLSalarioC3;
+    private javax.swing.JLabel jLTraslado;
+    private javax.swing.JLabel jLTraslado1;
+    private javax.swing.JLabel jLabeFecha;
+    private javax.swing.JLabel jLabeFecha1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -2959,23 +3563,19 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
     private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
-    private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
@@ -3002,10 +3602,28 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel75;
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel77;
+    private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
+    private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
+    private javax.swing.JLabel jLabel88;
+    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLciudad;
+    private javax.swing.JLabel jLciudad1;
+    private javax.swing.JLabel jLida;
+    private javax.swing.JLabel jLida1;
     private javax.swing.JList<String> jList4;
     private javax.swing.JList<String> jListDiasLibres;
+    private javax.swing.JLabel jLregreso;
+    private javax.swing.JLabel jLregreso1;
     private javax.swing.JPanel jPEmpleadoC;
     private javax.swing.JPanel jPEmpleadoC1;
     private javax.swing.JPanel jPanel1;
@@ -3016,12 +3634,14 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
+    private javax.swing.JPanel jPanel22;
+    private javax.swing.JPanel jPanel23;
+    private javax.swing.JPanel jPanel24;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -3029,6 +3649,7 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanelEmpleado;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
@@ -3042,12 +3663,12 @@ public class JFEmpleados extends javax.swing.JFrame {
     private javax.swing.JTextField jTFSalarioActualizar;
     private javax.swing.JTable jTVacaciones;
     private javax.swing.JTable jTVacacionesA;
+    private javax.swing.JTable jTVacacionesE;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jtfcedula;
     // End of variables declaration//GEN-END:variables
