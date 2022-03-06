@@ -33,18 +33,7 @@ public class JFServicios extends javax.swing.JFrame {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Conexion conn = new Conexion();
-        //Connection con=conn.getConexion();
-        // try {
-        //   String sql = "SELECT *FROM servicio";
-        //ps = con.prepareStatement(sql);
-        //rs = ps.executeQuery();
-        // while (rs.next()) {
-        //     jCBCodServi.addItem(rs.getString("codigo"));
-        // }
-        // rs.close();
-        // } catch (SQLException ex) {
-        //   System.err.println(ex.toString());
-        // }
+      
 
     }
 
@@ -512,6 +501,11 @@ public class JFServicios extends javax.swing.JFrame {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/basura.png"))); // NOI18N
         jButton2.setText("Eliminar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
         jButton12.setText("Cancelar");
@@ -771,6 +765,10 @@ public class JFServicios extends javax.swing.JFrame {
         txtPrecio.setText("");
     }//GEN-LAST:event_jButton10ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Eliminar();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -832,13 +830,18 @@ public class JFServicios extends javax.swing.JFrame {
         }
     }
 
+    
     void Eliminar() {
         String codigo;
         codigo = jCBCodServi.getItemAt(jCBCodServi.getSelectedIndex());
         try {
-
+            String sql = "delete from servicio where codigo= '" + codigo + "'";
+            connet = con1.getCon();
+            st = connet.createStatement();
+            st.executeUpdate(sql);
+            JOptionPane.showMessageDialog(null, "Servicio eliminado");
         } catch (Exception e) {
-            String sql = "delete from clientes where codigo=" + codigo;
+            JOptionPane.showMessageDialog(null, "Error en la eliminacion" + e);
         }
     }
 
