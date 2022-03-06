@@ -91,4 +91,62 @@ public class Vacacion {
             }
         }
     }
+    
+    public void Eliminar(){
+        Conexion conn=new Conexion();
+        PreparedStatement ps;
+        //ResultSet rs;
+        
+        
+        try{
+           ps=conn.getCon().prepareStatement("DELETE FROM vacaciones WHERE Empleado_cedula1='"+cedula+"' AND fechaInicio='"+inicio+"' AND fechaFin='"+fin+"';");
+                
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Periodo de vacaciones eliminado con éxito"); 
+            this.cedula = "";
+            this.inicio = null;
+            this.fin = null;          
+            
+        }catch(SQLException e){
+            
+                JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+                      
+        }finally{
+            try{
+                if(conn!=null){
+                    conn.getCon().close();
+                }
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Error, reinicie el sistema"); 
+               
+            }
+        }
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public Date getInicio() {
+        return inicio;
+    }
+
+    public void setInicio(Date inicio) {
+        this.inicio = inicio;
+    }
+
+    public Date getFin() {
+        return fin;
+    }
+
+    public void setFin(Date fin) {
+        this.fin = fin;
+    }
+    
+    
 }
