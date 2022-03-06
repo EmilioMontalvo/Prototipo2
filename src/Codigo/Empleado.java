@@ -101,10 +101,10 @@ public class Empleado {
             ps.setString(8, "A");
                     
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Empleado registrado con exito");
+            JOptionPane.showMessageDialog(null, "Empleado registrado con éxito");
         }catch(SQLException e){
            if(Pattern.matches("^Duplicate entry.*", e.getMessage())){
-                JOptionPane.showMessageDialog(null, "Ya existe este empleado");
+                JOptionPane.showMessageDialog(null, "Ya existe un empleado con este número de cédula");
             }else{
                 JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
            
@@ -174,7 +174,7 @@ public class Empleado {
             
         }catch(SQLException e){
             if(Pattern.matches("^Duplicate entry.*", e.getMessage())){
-                JOptionPane.showMessageDialog(null, "Ya existe este día libre");
+                //JOptionPane.showMessageDialog(null, "Ya existe este día libre");
             }else{
                 JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
            
@@ -237,7 +237,7 @@ public class Empleado {
                 
             
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Empleado eliminado con éxito"); 
+            JOptionPane.showMessageDialog(null, "Empleado eliminado exitosamente"); 
                       
             
         }catch(SQLException e){

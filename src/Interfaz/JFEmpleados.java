@@ -2653,6 +2653,7 @@ public class JFEmpleados extends javax.swing.JFrame {
        Validar val=new Validar();
         System.out.println(cedula);
        
+        /*
      if (!val.verificarCedula(cedula)) {
             JOptionPane.showMessageDialog(null, "Ingrese un número de cédula válido", "ERROR!", 0);
            
@@ -2663,7 +2664,7 @@ public class JFEmpleados extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "La cédula no corresponde a ningun empleado", "ERROR!", 0);
            
             return;
-       }
+       }*/
        
        if(diaLibre==null){
            JOptionPane.showMessageDialog(null, "Ingrese una fecha válida", "ERROR!", 0);
@@ -2687,7 +2688,7 @@ public class JFEmpleados extends javax.swing.JFrame {
        String cedula=jCBCedulaTrasladoR.getSelectedItem().toString();
        Validar val=new Validar();
         System.out.println(cedula);
-       
+     /*  
      if (!val.verificarCedula(cedula)) {
             JOptionPane.showMessageDialog(null, "Ingrese un número de cédula válido", "ERROR!", 0);
            
@@ -2698,7 +2699,7 @@ public class JFEmpleados extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "La cédula no corresponde a ningun empleado", "ERROR!", 0);
            
             return;
-       }
+       }*/
        
      Date inicio=jDCida.getDate();
      
@@ -3360,7 +3361,7 @@ public class JFEmpleados extends javax.swing.JFrame {
     private void jBEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarEmpleadoActionPerformed
         
         if(0==JOptionPane.showConfirmDialog(null,"¿Está seguro de que quiere eliminar este empleado?", "confirmación",JOptionPane.YES_NO_OPTION)){
-            System.out.println("si");
+            //System.out.println("si");
             Empleado emp=new Empleado(this.jCBCedulaEmpleadoE.getSelectedItem().toString());
             emp.Eliminar();
             jBDeshabilitar.setEnabled(false);
@@ -3377,7 +3378,7 @@ public class JFEmpleados extends javax.swing.JFrame {
             this.actualizarComboBox();
         }else{
             JOptionPane.showMessageDialog(null, "El empleado NO ha sido eliminado");
-            return;
+            
         }
         
         
