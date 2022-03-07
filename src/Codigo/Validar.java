@@ -111,6 +111,7 @@ public class Validar {
         return empleado;
 
     }
+
     public boolean verificarCliente(String cedula) {
         Conexion conn = new Conexion();
         PreparedStatement ps;
