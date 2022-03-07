@@ -7,6 +7,7 @@ package Codigo;
 
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -27,6 +28,47 @@ public class Traslado {
         this.ida = ida;
         this.regreso = regreso;
     }
+
+    public Traslado(String cedula) {
+        Conexion conn=new Conexion();
+        PreparedStatement ps;
+        ResultSet rs;
+        
+        
+        try{
+           ps=conn.getCon().prepareStatement("SELECT * FROM traslado WHERE Empleado_cedula='"+cedula+"';");
+                
+            
+            rs=ps.executeQuery();
+            
+            while (rs.next())
+            {
+                this.ida=rs.getDate(1);
+                this.regreso=rs.getDate(2);
+                this.ciudad = rs.getString(3);
+                this.cedula=rs.getString(4); 
+                
+                
+            }
+            
+           
+            
+        }catch(SQLException e){
+           JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+           
+        }finally{
+            try{
+                if(conn!=null){
+                    conn.getCon().close();
+                }
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Error, reinicie el sistema"); 
+               
+            }
+        }
+    }
+    
+    
     
      public boolean Registrar(){
         Conexion conn=new Conexion();
@@ -45,7 +87,7 @@ public class Traslado {
             JOptionPane.showMessageDialog(null, "Traslado registrado con éxito");
         }catch(SQLException e){
            if(Pattern.matches("^Duplicate entry.*", e.getMessage())){
-                JOptionPane.showMessageDialog(null, "Ya existe el registro de este traslado");
+                JOptionPane.showMessageDialog(null, "Este empleado ya tienen un traslado registrado");
             }else{
                 JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
            
@@ -64,5 +106,106 @@ public class Traslado {
         
         return true;
     }
+     
+    public void atualizar(String ciudad, Date ida, Date regreso){
+        Conexion conn=new Conexion();
+        PreparedStatement ps;
+        //ResultSet rs;
+        
+        
+        try{
+           ps=conn.getCon().prepareStatement("UPDATE traslado SET fechaIda='"+ida+"',fechaRegreso='"+regreso+"',ciudad='"+ciudad+"' WHERE Empleado_cedula='"+this.cedula+"';");
+                
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Traslado actualizado con éxito"); 
+             this.ciudad=ciudad;
+            
+            this.ciudad = ciudad;
+            this.ida = ida;
+            this.regreso = regreso;
+            
+        }catch(SQLException e){
+            if(Pattern.matches("^Duplicate entry.*", e.getMessage())){
+                JOptionPane.showMessageDialog(null, "Ya existe este traslado");
+            }else{
+                JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+           
+            }
+           
+        }finally{
+            try{
+                if(conn!=null){
+                    conn.getCon().close();
+                }
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Error, reinicie el sistema"); 
+               
+            }
+        }
+    }
     
+    public void Eliminar(){
+        Conexion conn=new Conexion();
+        PreparedStatement ps;
+        //ResultSet rs;
+        
+        
+        try{
+           ps=conn.getCon().prepareStatement("DELETE FROM traslado WHERE Empleado_cedula='"+cedula+"';");
+                
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Traslado eliminado con éxito"); 
+                      
+            
+        }catch(SQLException e){
+            
+                JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+                      
+        }finally{
+            try{
+                if(conn!=null){
+                    conn.getCon().close();
+                }
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Error, reinicie el sistema"); 
+               
+            }
+        }
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public Date getIda() {
+        return ida;
+    }
+
+    public void setIda(Date ida) {
+        this.ida = ida;
+    }
+
+    public Date getRegreso() {
+        return regreso;
+    }
+
+    public void setRegreso(Date regreso) {
+        this.regreso = regreso;
+    }
+    
+     
 }

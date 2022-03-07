@@ -97,6 +97,36 @@ public class DiaLibre {
             }
         }
     }
+     
+     public void Eliminar(){
+        Conexion conn=new Conexion();
+        PreparedStatement ps;
+        //ResultSet rs;
+        
+        
+        try{
+           ps=conn.getCon().prepareStatement("DELETE FROM dia_libre WHERE Empleado_cedula='"+cedulaEmpleado+"' AND dia_Libre ='"+diaLibre+"';");
+                
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Día libre eliminado con éxito"); 
+                      
+            
+        }catch(SQLException e){
+            
+                JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+                      
+        }finally{
+            try{
+                if(conn!=null){
+                    conn.getCon().close();
+                }
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Error, reinicie el sistema"); 
+               
+            }
+        }
+    }
 
     public String getCedulaEmpleado() {
         return cedulaEmpleado;

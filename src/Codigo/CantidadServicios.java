@@ -5,26 +5,18 @@
  */
 package Codigo;
 
-import Interfaz.JFEmpleados;
-import javax.swing.UIManager;
-
 /**
  *
  * @author HP
  */
-public class Main {
+public class CantidadServicios {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-    
-       
-        JFEmpleados emp =new JFEmpleados();
-        emp.setVisible(true);
-       
-        
-        
-        
+       String cedula;
+       int c=0;
     }
+    
 }

@@ -111,6 +111,42 @@ public class Validar {
         return empleado;
 
     }
+    
+    public boolean cedulaTraslado(String cedula) {
+        Conexion conn = new Conexion();
+        PreparedStatement ps;
+        ResultSet rs;
+        boolean empleado = false;
+
+        try {
+            ps = conn.getCon().prepareStatement("SELECT Empleado_cedula FROM traslado;");
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if (rs.getString("Empleado_cedula").equals(cedula)) {
+                    empleado = true;
+                   
+                }
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.getCon().close();
+                    return empleado;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error, problema con la base de datos");
+                return empleado;
+            }
+        }
+        return empleado;
+
+    }
 
     public boolean verificarCliente(String cedula) {
         Conexion conn = new Conexion();
@@ -221,6 +257,94 @@ public class Validar {
     public boolean validarFechasInicioFin(Date inicio, Date fin) {
 
         return inicio.before(fin);
+    }
+    
+    public boolean existeUsuario(String nombre,String tipo,String contrasenia){
+        
+        Conexion conn = new Conexion();
+        PreparedStatement ps;
+        ResultSet rs;
+        boolean existe = false;
+
+        try {
+            ps = conn.getCon().prepareStatement("SELECT * FROM usuarios;");
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if (rs.getString("nombreUsuario").equals(nombre)&&rs.getString("tipo").equals(tipo)&&rs.getString("contrasenia").equals(contrasenia)) {
+                    existe = true;
+                }
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.getCon().close();
+                    return existe;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error, problema con la base de datos");
+                return existe;
+            }
+        }
+        return existe;
+        
+        
+       
+    }
+    
+    public boolean usuarioActivoEsEmpleado(){
+        
+        Conexion conn = new Conexion();
+        PreparedStatement ps;
+        ResultSet rs;
+        boolean empleado = false;
+
+        try {
+            ps = conn.getCon().prepareStatement("SELECT * FROM activo;");
+
+            rs = ps.executeQuery();
+            String activo="";
+
+            while (rs.next()) {
+                activo=rs.getString("Usuarios_nombreUsuario");
+            }
+            //System.out.println(activo);
+            String tipo="";
+            ps = conn.getCon().prepareStatement("SELECT tipo FROM usuarios WHERE nombreUsuario='"+activo+"';");
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                
+                tipo=rs.getString(1);
+                //System.out.println(tipo);
+                if(tipo.equals("E")){
+                    empleado=true;
+                }
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.getCon().close();
+                    return empleado;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error, problema con la base de datos");
+                return empleado;
+            }
+        }
+        return empleado;
+        
+        
+       
     }
 
 }

@@ -101,10 +101,10 @@ public class Empleado {
             ps.setString(8, "A");
                     
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Empleado registrado con exito");
+            JOptionPane.showMessageDialog(null, "Empleado registrado con éxito");
         }catch(SQLException e){
            if(Pattern.matches("^Duplicate entry.*", e.getMessage())){
-                JOptionPane.showMessageDialog(null, "Ya existe este día libre");
+                JOptionPane.showMessageDialog(null, "Ya existe un empleado con este número de cédula");
             }else{
                 JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
            
@@ -174,6 +174,40 @@ public class Empleado {
             
         }catch(SQLException e){
             if(Pattern.matches("^Duplicate entry.*", e.getMessage())){
+                //JOptionPane.showMessageDialog(null, "Ya existe este día libre");
+            }else{
+                JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+           
+            }
+           
+        }finally{
+            try{
+                if(conn!=null){
+                    conn.getCon().close();
+                }
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Error, reinicie el sistema"); 
+               
+            }
+        }
+    }
+    
+    public void atualizarEstado(String estado){
+        Conexion conn=new Conexion();
+        PreparedStatement ps;
+        //ResultSet rs;
+        
+        
+        try{
+           ps=conn.getCon().prepareStatement("UPDATE empleado SET habilitado='"+estado+"' WHERE cedula='"+cedula+"';");
+                
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Estado actualizado exitosamente"); 
+                      
+            
+        }catch(SQLException e){
+            if(Pattern.matches("^Duplicate entry.*", e.getMessage())){
                 JOptionPane.showMessageDialog(null, "Ya existe este día libre");
             }else{
                 JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
@@ -192,6 +226,35 @@ public class Empleado {
         }
     }
     
+    public void Eliminar(){
+        Conexion conn=new Conexion();
+        PreparedStatement ps;
+        //ResultSet rs;
+        
+        
+        try{
+           ps=conn.getCon().prepareStatement("DELETE FROM empleado WHERE cedula='"+cedula+"';");
+                
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Empleado eliminado exitosamente"); 
+                      
+            
+        }catch(SQLException e){
+            
+                JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+                      
+        }finally{
+            try{
+                if(conn!=null){
+                    conn.getCon().close();
+                }
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Error, reinicie el sistema"); 
+               
+            }
+        }
+    }
 
     public String getCedula() {
         return cedula;
