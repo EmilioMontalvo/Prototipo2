@@ -9,8 +9,10 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.regex.Pattern;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -20,33 +22,68 @@ import javax.swing.JOptionPane;
 public class Cita {
 
     private int numero;
-    private Date fecha;
-    private Time hora;
+    private String fecha;
+    private String hora;
     private String cliente_cedula;
     private String empleado_cedula;
     private String servicio_codigo;
-    private Time duracion;
+    private String duracion;
     private String estado;
 
-    public Cita(Date fecha, Time hora, String cliente_cedula, String empleado_cedula, String servicio_codigo, Time duracion) {
+    public Cita(String fecha, String hora, String cliente_cedula, String empleado_cedula, String servicio_codigo, String duracion) {
+
+        this.fecha = fecha;
+        this.hora = hora;
+        this.cliente_cedula = cliente_cedula;
+        this.empleado_cedula = empleado_cedula;
+        this.servicio_codigo = servicio_codigo;
+        this.duracion = duracion;
+        this.estado = "Registrada";
+
+    }
+
+    public Cita() {
+    }
+
+    public void Actualizar(String fecha, String tiempo, String duracion, String cedulaE, String Cservicio, String numero) {
 
         Conexion conn = new Conexion();
         PreparedStatement ps;
-        ResultSet rs;
+        //ResultSet rs;
 
         try {
-            ps = conn.getCon().prepareStatement("SELECT COUNT(*) FROM cita;");
+            ps = conn.getCon().prepareStatement("UPDATE cita SET fecha='" + fecha + "',hora='" + tiempo + "',duracion='" + duracion + "',Empleado_cedula=" + cedulaE + ",Servicio_codigo='" + Cservicio + "' WHERE numero=" + numero + ";");
 
-            rs = ps.executeQuery();
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Cita actualizada exitosamente");
 
-            this.numero = rs.getInt(1);
-            this.fecha = fecha;
-            this.hora = hora;
-            this.cliente_cedula = cliente_cedula;
-            this.empleado_cedula = empleado_cedula;
-            this.servicio_codigo = servicio_codigo;
-            this.duracion = duracion;
-            this.estado = "Registrada";
+        } catch (SQLException e) {
+
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.getCon().close();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error, reinicie el sistema");
+
+            }
+        }
+
+    }
+
+    public void cancelar(String numero) {
+        Conexion conn = new Conexion();
+        PreparedStatement ps;
+        //ResultSet rs;
+
+        try {
+            ps = conn.getCon().prepareStatement("UPDATE cita SET estado = 'Cancelada' WHERE numero=" + numero + ";");
+
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Cita Cancelada exitosamente");
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
@@ -63,43 +100,73 @@ public class Cita {
         }
     }
 
-    public Cita(Date fecha, Time tiempo, String cedulaC, String cedulaE, Time duracion) {
-        
-    }
-    
-    public boolean Registrar(){
-        Conexion conn=new Conexion();
+    public void observaciones(String numero,String observaciones){
+        Conexion conn = new Conexion();
         PreparedStatement ps;
         //ResultSet rs;
-        try{
-            ps=conn.con.prepareStatement("INSERT INTO Cita (numero,fecha,hora,cliente_cedula,empleado_cedula servicio_codigo,duracion,estado) values(?,?,?,?,?,?,?,?)");
+
+        try {
+            ps = conn.getCon().prepareStatement("Insert into observaciones values(?,?);");
             
-            ps.setInt(1,numero);
-            ps.setDate(2,fecha);
-            ps.setTime(3,hora);
-            ps.setString(4,cliente_cedula);
-            ps.setString(5,empleado_cedula);
-            ps.setString(6,servicio_codigo);
-            ps.setTime(7, duracion);
-            ps.setString(8, "Registrada");
-                    
+            ps.setString(1, observaciones);
+            ps.setString(2, numero);
+
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Cita registrado con exito");
-        }catch(SQLException e){
-           JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
-           return false;
-        }finally{
-            try{
-                if(conn!=null){
-                    conn.con.close();
+            JOptionPane.showMessageDialog(null, "Observacion ingresada exitosamente");
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.getCon().close();
                 }
-            }catch(Exception e){
-               JOptionPane.showMessageDialog(null, "Error, intentelo de nuevo"); 
-               return false;
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error, reinicie el sistema");
+
             }
         }
-        
+    }
+    public boolean Registrar() {
+        Conexion conn = new Conexion();
+        PreparedStatement ps;
+        //ResultSet rs;
+        try {
+            ps = conn.con.prepareStatement("INSERT INTO Cita values(?,?,?,?,?,?,?,?)");
+
+            ps.setInt(1, numero);
+            ps.setString(2, fecha);
+            ps.setString(3, hora);
+            ps.setString(4, empleado_cedula);
+            ps.setString(5, servicio_codigo);
+            ps.setString(6, "Registrada");
+            ps.setString(7, cliente_cedula);
+            ps.setString(8, duracion);
+
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Cita registrado con exito");
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+            return false;
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.con.close();
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error, intentelo de nuevo");
+                return false;
+            }
+        }
+
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Cita{" + "numero=" + numero + ", fecha=" + fecha + ", hora=" + hora + ", cliente_cedula=" + cliente_cedula + ", empleado_cedula=" + empleado_cedula + ", servicio_codigo=" + servicio_codigo + ", duracion=" + duracion + ", estado=" + estado + '}';
     }
 
 }

@@ -111,12 +111,11 @@ public class Validar {
         return empleado;
 
     }
-    
     public boolean verificarCliente(String cedula) {
         Conexion conn = new Conexion();
         PreparedStatement ps;
         ResultSet rs;
-        boolean empleado = false;
+        boolean cliente = false;
 
         try {
             ps = conn.getCon().prepareStatement("SELECT cedula FROM cliente;");
@@ -125,7 +124,7 @@ public class Validar {
 
             while (rs.next()) {
                 if (rs.getString("cedula").equals(cedula)) {
-                    empleado = true;
+                    cliente = true;
                 }
             }
 
@@ -136,17 +135,17 @@ public class Validar {
             try {
                 if (conn != null) {
                     conn.getCon().close();
-                    return empleado;
+                    return cliente;
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error, problema con la base de datos");
-                return empleado;
+                return cliente;
             }
         }
-        return empleado;
+        return cliente;
 
     }
-    
+
     public boolean verificarEmpleado(String cedula) {
         Conexion conn = new Conexion();
         PreparedStatement ps;
@@ -181,21 +180,21 @@ public class Validar {
         return empleado;
 
     }
-    
+
     public boolean verificarServicio(String codigo) {
         Conexion conn = new Conexion();
         PreparedStatement ps;
         ResultSet rs;
-        boolean empleado = false;
+        boolean servicio = false;
 
         try {
-            ps = conn.getCon().prepareStatement("SELECT cedula FROM servicio;");
+            ps = conn.getCon().prepareStatement("SELECT codigo FROM servicio;");
 
             rs = ps.executeQuery();
 
             while (rs.next()) {
                 if (rs.getString("codigo").equals(codigo)) {
-                    empleado = true;
+                    servicio = true;
                 }
             }
 
@@ -206,14 +205,14 @@ public class Validar {
             try {
                 if (conn != null) {
                     conn.getCon().close();
-                    return empleado;
+                    return servicio;
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error, problema con la base de datos");
-                return empleado;
+                return servicio;
             }
         }
-        return empleado;
+        return servicio;
 
     }
     
