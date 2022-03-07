@@ -105,6 +105,15 @@ public class JFEmpleados extends javax.swing.JFrame {
         jBCAncelarDiaE.setEnabled(false);
         jBEliminarVaca.setEnabled(false);
         jBCancelarEliminarVaca.setEnabled(false);
+        
+        
+        Validar val=new Validar();
+        
+        if(val.usuarioActivoEsEmpleado()){
+            System.out.println("aaaaaa");
+            jTabbedPane1.setSelectedIndex(1);
+            jTabbedPane1.setEnabled(false);
+        }
     }
 
     /**
