@@ -427,10 +427,20 @@ public class JFEmpleados extends javax.swing.JFrame {
                 jtfcedulaActionPerformed(evt);
             }
         });
+        jtfcedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfcedulaKeyTyped(evt);
+            }
+        });
 
         jTFNombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFNombresActionPerformed(evt);
+            }
+        });
+        jTFNombres.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFNombresKeyTyped(evt);
             }
         });
 
@@ -439,10 +449,20 @@ public class JFEmpleados extends javax.swing.JFrame {
                 jTFApellidosActionPerformed(evt);
             }
         });
+        jTFApellidos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFApellidosKeyTyped(evt);
+            }
+        });
 
         jTFSalario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFSalarioActionPerformed(evt);
+            }
+        });
+        jTFSalario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFSalarioKeyTyped(evt);
             }
         });
 
@@ -471,6 +491,11 @@ public class JFEmpleados extends javax.swing.JFrame {
         jTFEspecialidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFEspecialidadActionPerformed(evt);
+            }
+        });
+        jTFEspecialidad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFEspecialidadKeyTyped(evt);
             }
         });
 
@@ -1295,6 +1320,12 @@ public class JFEmpleados extends javax.swing.JFrame {
         jLabel10.setText("Nuevo Salario:");
 
         jLSalario.setText("*****");
+
+        jTFSalarioActualizar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFSalarioActualizarKeyTyped(evt);
+            }
+        });
 
         jBActualizarSalario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/actualizar.png"))); // NOI18N
         jBActualizarSalario.setText("Actualizar");
@@ -3562,6 +3593,48 @@ public class JFEmpleados extends javax.swing.JFrame {
        this.jBCancelarEliminarVaca.setEnabled(false);
        
     }//GEN-LAST:event_jBCancelarEliminarVacaActionPerformed
+
+    private void jtfcedulaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfcedulaKeyTyped
+         if(jtfcedula.getText().length() >= 10)
+            {
+                evt.consume();
+            }
+    }//GEN-LAST:event_jtfcedulaKeyTyped
+
+    private void jTFNombresKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombresKeyTyped
+        if(jTFNombres.getText().length() >= 60)
+            {
+                evt.consume();
+            }
+    }//GEN-LAST:event_jTFNombresKeyTyped
+
+    private void jTFApellidosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFApellidosKeyTyped
+         if(jTFApellidos.getText().length() >= 60)
+            {
+                evt.consume();
+            }
+    }//GEN-LAST:event_jTFApellidosKeyTyped
+
+    private void jTFEspecialidadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFEspecialidadKeyTyped
+        if(jTFEspecialidad.getText().length() >= 60)
+            {
+                evt.consume();
+            }
+    }//GEN-LAST:event_jTFEspecialidadKeyTyped
+
+    private void jTFSalarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFSalarioKeyTyped
+       if(jTFSalario.getText().length() >= 10)
+            {
+                evt.consume();
+            }
+    }//GEN-LAST:event_jTFSalarioKeyTyped
+
+    private void jTFSalarioActualizarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFSalarioActualizarKeyTyped
+        if(jTFSalarioActualizar.getText().length() >= 10)
+            {
+                evt.consume();
+            }
+    }//GEN-LAST:event_jTFSalarioActualizarKeyTyped
 
     
     public static void rellenarCedulas(JComboBox combox){

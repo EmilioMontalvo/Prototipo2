@@ -295,21 +295,25 @@
                     <Component class="javax.swing.JTextField" name="jtfcedula">
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jtfcedulaActionPerformed"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jtfcedulaKeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTFNombres">
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFNombresActionPerformed"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFNombresKeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTFApellidos">
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFApellidosActionPerformed"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFApellidosKeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTFSalario">
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFSalarioActionPerformed"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFSalarioKeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton1">
@@ -360,6 +364,7 @@
                     <Component class="javax.swing.JTextField" name="jTFEspecialidad">
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTFEspecialidadActionPerformed"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFEspecialidadKeyTyped"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="jCBciudadesR1">
@@ -1842,6 +1847,9 @@
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTFSalarioActualizar">
+                      <Events>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTFSalarioActualizarKeyTyped"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="jBActualizarSalario">
                       <Properties>
