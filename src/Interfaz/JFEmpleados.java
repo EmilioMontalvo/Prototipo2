@@ -47,7 +47,7 @@ public class JFEmpleados extends javax.swing.JFrame {
         this.setResizable(false);
         
         
-        
+       
         
         AutoCompleteDecorator.decorate(jCBCedulaSalario);
         AutoCompleteDecorator.decorate(jCBCedulaDiasLibresR);
@@ -113,6 +113,26 @@ public class JFEmpleados extends javax.swing.JFrame {
             System.out.println("aaaaaa");
             jTabbedPane1.setSelectedIndex(1);
             jTabbedPane1.setEnabled(false);
+        }
+        
+         if(jCBCedulaTrasladoR.getSelectedIndex()==-1){
+            jButton27.setEnabled(false);
+            jBRegistrarDiaLibre.setEnabled(false);
+            jBRegistrarVacacion.setEnabled(false);
+            jButton13.setEnabled(false);
+            jButton24.setEnabled(false);
+            jButton15.setEnabled(false);
+            jButton16.setEnabled(false);
+            jButton14.setEnabled(false);
+            jButtonBuscarSalario.setEnabled(false);
+            jBBuscarJornada.setEnabled(false);
+            jBBuscarTraslado.setEnabled(false);
+            jBBuscarDia.setEnabled(false);
+            jBuscarVacA.setEnabled(false);
+            jButton33.setEnabled(false);
+            jBBuscarTrasladoE.setEnabled(false);
+            jBDiasE.setEnabled(false);
+            jBBuscarVacacionE.setEnabled(false);
         }
     }
 
@@ -2680,6 +2700,23 @@ public class JFEmpleados extends javax.swing.JFrame {
        this.jTFSalario.setText("");
        
        this.actualizarComboBox();
+       jButton27.setEnabled(true);
+            jBRegistrarDiaLibre.setEnabled(true);
+            jBRegistrarVacacion.setEnabled(true);
+            jButton13.setEnabled(true);
+            jButton24.setEnabled(true);
+            jButton15.setEnabled(true);
+            jButton16.setEnabled(true);
+            jButton14.setEnabled(true);
+            jButtonBuscarSalario.setEnabled(true);
+            jBBuscarJornada.setEnabled(true);
+            jBBuscarTraslado.setEnabled(true);
+            jBBuscarDia.setEnabled(true);
+            jBuscarVacA.setEnabled(true);
+            jButton33.setEnabled(true);
+            jBBuscarTrasladoE.setEnabled(true);
+            jBDiasE.setEnabled(true);
+            jBBuscarVacacionE.setEnabled(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTFEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFEspecialidadActionPerformed
@@ -2869,6 +2906,12 @@ public class JFEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        
+        
+        if(this.jCBCedulaEmpleadoC.getSelectedIndex()==-1){
+            return;
+        }
+                
         Empleado emp=new Empleado(this.jCBCedulaEmpleadoC.getSelectedItem().toString());
         
         this.jLCedulaC.setText(emp.getCedula());
@@ -2921,6 +2964,12 @@ public class JFEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButtonBuscarSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarSalarioActionPerformed
+        
+        if(this.jCBCedulaSalario.getSelectedItem().toString()==""){
+            return;
+        }
+        
+        
         Empleado emp=new Empleado(this.jCBCedulaSalario.getSelectedItem().toString());
         
         this.jLEmpleado.setText(emp.getNombres()+" "+emp.getApellidos());
@@ -3226,6 +3275,9 @@ public class JFEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_jBActualizarVacacionesActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+    
+
+
         jLida.setText("");
         jLregreso.setText("");
         jLciudad.setText("");
