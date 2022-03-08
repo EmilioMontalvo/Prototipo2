@@ -943,7 +943,7 @@ public class JFClientes extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane5.addTab("Teléfono", jPanel10);
+        jTabbedPane5.addTab("Teléfono", new javax.swing.ImageIcon(getClass().getResource("/Iconos/telefono.png")), jPanel10); // NOI18N
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -1502,7 +1502,7 @@ public class JFClientes extends javax.swing.JFrame {
                     jButton7.setEnabled(false);
                     jButton16.setEnabled(false);
                     jTextField9.setEnabled(false);
-                    jCBActualizarClienteDireccion.setSelectedIndex(0);
+                    
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error de actualizacion" + e);
