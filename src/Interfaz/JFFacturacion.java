@@ -883,7 +883,8 @@ public class JFFacturacion extends javax.swing.JFrame {
                 }
             }
         }catch(Exception e){
-            System.out.println("Error al ingresar datos en la base de datos");
+            
+            System.out.println(e.getMessage());
         }
         
     }//GEN-LAST:event_crearFacturaButton1ActionPerformed
