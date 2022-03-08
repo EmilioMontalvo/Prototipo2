@@ -27,6 +27,14 @@ public class Validar {
         return Pattern.matches("[0-9]*", numero);
     }
 
+    public boolean validarCodigo(String codigo) {
+        return Pattern.matches("[0-9][0-9][.][0-9][0-9]", codigo);
+    }
+
+    public boolean validarPrecio(String codigo) {
+        return Pattern.matches("[0-9][0-9][0-9][.][0-9][0-9]", codigo);
+    }
+
     public boolean verificarCedula(String cedula) {
         int total = 0;
         int tamanoLongitudCedula = 10;
@@ -90,6 +98,76 @@ public class Validar {
 
             while (rs.next()) {
                 if (rs.getString("cedula").equals(cedula)) {
+                    empleado = true;
+                }
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.getCon().close();
+                    return empleado;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error, problema con la base de datos");
+                return empleado;
+            }
+        }
+        return empleado;
+
+    }
+
+    public boolean cedulaPerteneceCliente(String cedula) {
+        Conexion conn = new Conexion();
+        PreparedStatement ps;
+        ResultSet rs;
+        boolean empleado = false;
+
+        try {
+            ps = conn.getCon().prepareStatement("SELECT cedula FROM cliente;");
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if (rs.getString("cedula").equals(cedula)) {
+                    empleado = true;
+                }
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.getCon().close();
+                    return empleado;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error, problema con la base de datos");
+                return empleado;
+            }
+        }
+        return empleado;
+
+    }
+
+    public boolean descuentoPerteneceCliente(String cedula, String codigo) {
+        Conexion conn = new Conexion();
+        PreparedStatement ps;
+        ResultSet rs;
+        boolean empleado = false;
+
+        try {
+            ps = conn.getCon().prepareStatement("SELECT Cliente_cedula, Servicio_codigo FROM descuento_cliente;");
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if (rs.getString("Cliente_cedula").equals(cedula) && rs.getString("Servicio_codigo").equals(codigo)) {
                     empleado = true;
                 }
             }
@@ -339,41 +417,6 @@ public class Validar {
             }
         }
         return empleado;
-
-    }
-
-    public boolean verificarDisponibilidad(String cedulaE) {
-        Conexion conn = new Conexion();
-        PreparedStatement ps;
-        ResultSet rs;
-        boolean disponibilidad = false;
-
-        try {
-            ps = conn.getCon().prepareStatement("SELECT * FROM empleado where cedula ='" + cedulaE + "';");
-
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                if (rs.getString("cedula").equals(cedulaE)) {
-                    disponibilidad = true;
-                }
-            }
-
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
-
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.getCon().close();
-                    return disponibilidad;
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error, problema con la base de datos");
-                return disponibilidad;
-            }
-        }
-        return disponibilidad;
 
     }
 
