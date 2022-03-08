@@ -1066,6 +1066,11 @@ public class JFEmpleados extends javax.swing.JFrame {
         jLabel37.setText("Cédula");
 
         jCBCedulaDiasLibresC.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBCedulaDiasLibresC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBCedulaDiasLibresCActionPerformed(evt);
+            }
+        });
 
         jLabel40.setText("Empleado:");
 
@@ -3552,6 +3557,10 @@ public class JFEmpleados extends javax.swing.JFrame {
        this.jBCancelarEliminarVaca.setEnabled(false);
        
     }//GEN-LAST:event_jBCancelarEliminarVacaActionPerformed
+
+    private void jCBCedulaDiasLibresCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBCedulaDiasLibresCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCBCedulaDiasLibresCActionPerformed
 
     
     public static void rellenarCedulas(JComboBox combox){
