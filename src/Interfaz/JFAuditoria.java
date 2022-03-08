@@ -72,6 +72,12 @@ public class JFAuditoria extends javax.swing.JFrame {
 
         jLabel6.setText("Nombre de Usuario");
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,6 +128,10 @@ public class JFAuditoria extends javax.swing.JFrame {
         rellenarTabla(this.jTable1, nombreUsuario);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -163,7 +173,7 @@ public class JFAuditoria extends javax.swing.JFrame {
         ResultSet rs;
 
         DefaultTableModel modelo = new DefaultTableModel();
-
+             
         modelo.addColumn("nombreUsuario");
         modelo.addColumn("fecha");
         modelo.addColumn("operacion");
@@ -201,6 +211,11 @@ public class JFAuditoria extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Error, reinicie el sistema");
 
             }
+        }
+        
+        int filas=modelo.getRowCount();
+        if(filas==0){
+            JOptionPane.showMessageDialog(null, "Usuario no Registrado");
         }
     }
 
