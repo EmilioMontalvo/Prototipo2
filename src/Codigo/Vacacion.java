@@ -103,7 +103,7 @@ public class Vacacion {
                 
             
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Periodo de vacaciones eliminado con éxito"); 
+            JOptionPane.showMessageDialog(null, "Periodo de vacaciones eliminado exitosamente"); 
             this.cedula = "";
             this.inicio = null;
             this.fin = null;          
