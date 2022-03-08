@@ -37,16 +37,16 @@ public class JFServicios extends javax.swing.JFrame {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Conexion conn = new Conexion();
-        Validar val=new Validar();
-        
-        if(val.usuarioActivoEsEmpleado()){
+        Validar val = new Validar();
+
+        if (val.usuarioActivoEsEmpleado()) {
             System.out.println("aaaaaa");
             jTabbedPane1.setSelectedIndex(1);
             jTabbedPane1.setEnabled(false);
             jTabbedPane7.setEnabled(false);
             jTabbedPane4.setEnabled(false);
             jTabbedPane6.setEnabled(false);
-                    
+
         }
         LlenarServicios(jCBCodServi);
         LlenarServicios(jCBServDesc);
@@ -833,7 +833,7 @@ public class JFServicios extends javax.swing.JFrame {
             String codigo = txtCodigo.getText();
             String nombre = txtNombre.getText();
             String precio1 = txtPrecio.getText();
-            float precio=Float.valueOf(precio1);
+            float precio = Float.valueOf(precio1);
             if (!val.validarCodigo(codigo) || nombre.length() == 0 || precio1.length() == 0 || !val.validarSalario(precio)) {
                 JOptionPane.showMessageDialog(null, "Datos erróneos-revisar y repetir", "ERROR!", 0);
             } else {
@@ -899,7 +899,7 @@ public class JFServicios extends javax.swing.JFrame {
             float precio = Float.valueOf(precio1);
             String codigo = jCBCodAct.getSelectedItem().toString();
             try {
-                if (precio1.equals("") || !val.validarSalario(precio))  {
+                if (precio1.equals("") || !val.validarSalario(precio)) {
                     JOptionPane.showMessageDialog(null, "Error de actualización-precio mal ingresado", "ERROR!", 0);
                 } else {
                     String sql = "update servicio set precio ='" + precio + "' where codigo= '" + codigo + "'";
@@ -994,7 +994,7 @@ public class JFServicios extends javax.swing.JFrame {
             String porcentaje = jComboBox9.getSelectedItem().toString();
             int descuento = Integer.parseInt(porcentaje);
             if (codigo == "" || codigo == " " || codigo == null) {
-                JOptionPane.showMessageDialog(null, "Error en la consulta","ERROR!",0);
+                JOptionPane.showMessageDialog(null, "Error en la consulta", "ERROR!", 0);
             } else {
                 try {
                     String sql = "insert into descuento_servicio(descuento, Servicio_Codigo) values ('" + descuento + "','" + codigo + "')";
@@ -1005,13 +1005,13 @@ public class JFServicios extends javax.swing.JFrame {
                     jCBCodDescAsg.setSelectedIndex(0);
                     jComboBox9.setSelectedIndex(0);
                 } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null, "Error en el registro","ERROR!",0);
+                    JOptionPane.showMessageDialog(null, "Error en el registro", "ERROR!", 0);
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Error en el registro","ERROR!",0);
+                    JOptionPane.showMessageDialog(null, "Error en el registro", "ERROR!", 0);
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en el registro","ERROR!",0);
+            JOptionPane.showMessageDialog(null, "Error en el registro", "ERROR!", 0);
 
         }
     }//GEN-LAST:event_jButton15ActionPerformed
