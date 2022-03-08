@@ -2173,19 +2173,18 @@ public class JFEmpleados extends javax.swing.JFrame {
                     .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jPanelEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addGroup(jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBEliminarEmpleado)
-                            .addComponent(jBDeshabilitar)
-                            .addComponent(jBCancelarEmp))
-                        .addGap(532, 532, 532))
+                        .addGap(28, 28, 28))
                     .addGroup(jPEmpleadoC1Layout.createSequentialGroup()
                         .addComponent(jLabel47)
                         .addGap(48, 48, 48)
                         .addComponent(jCBCedulaEmpleadoE, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(jButton33)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBEliminarEmpleado)
+                    .addComponent(jBDeshabilitar)
+                    .addComponent(jBCancelarEmp)
+                    .addComponent(jButton33))
+                .addGap(532, 532, 532))
         );
         jPEmpleadoC1Layout.setVerticalGroup(
             jPEmpleadoC1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3136,7 +3135,7 @@ public class JFEmpleados extends javax.swing.JFrame {
         jCBCedulaDiasLibresE.setEnabled(false); 
         
         if(this.jListaDiasE.getModel().getSize()==0){
-        JOptionPane.showMessageDialog(null, "El empleado no tienen ningun día libre registrado");
+        JOptionPane.showMessageDialog(null, "El empleado no tiene ningún día libre registrado");
         this.jBEliminarDia.setEnabled(false);
         this.jBCAncelarDiaE.setEnabled(false);
         jBDiasE.setEnabled(true); 
@@ -3196,6 +3195,11 @@ public class JFEmpleados extends javax.swing.JFrame {
             this.jDCdialibreA.setDate(null);
             return;
         }
+        
+        if(dianuevo.before(new Date(System.currentTimeMillis()))){
+           JOptionPane.showMessageDialog(null, "Ingrese una fecha válida", "ERROR!", 0);
+           return;
+       }
             DiaLibre day=new DiaLibre(emp.getCedula(),new java.sql.Date(diaviejo.getTime()));
             day.atualizarDia(new java.sql.Date(dianuevo.getTime()));
             rellenarLista(this.jLDiasLibresActualizar, emp);
@@ -3252,6 +3256,11 @@ public class JFEmpleados extends javax.swing.JFrame {
                 return;
             }
             
+            if(diainicionuevo.before(new Date(System.currentTimeMillis()))){
+            JOptionPane.showMessageDialog(null, "Seleccione una fecha válida", "ERROR!", 0);
+            return;
+            }
+            
             if(diafinnuevo==null || !val.validarFechasInicioFin(diainicionuevo, diafinnuevo)){
                 JOptionPane.showMessageDialog(null, "Seleccione una fecha final válida", "ERROR!", 0);
                 this.jDateChooserFin.setDate(null);
@@ -3303,7 +3312,7 @@ public class JFEmpleados extends javax.swing.JFrame {
             jLRegreso.setVisible(true);
             jLTraslado.setVisible(true);
         }else{
-            JOptionPane.showMessageDialog(null, "El empleado no tiene ningun traslado registrado");
+            JOptionPane.showMessageDialog(null, "El empleado no tiene ningún traslado registrado");
         }
         
         
@@ -3334,7 +3343,7 @@ public class JFEmpleados extends javax.swing.JFrame {
             jBCancelarTraslado.setEnabled(true);
             jBBuscarTraslado.setEnabled(false);
         }else{
-            JOptionPane.showMessageDialog(null, "El empleado no tiene ningun traslado registrado");
+            JOptionPane.showMessageDialog(null, "El empleado no tiene ningún traslado registrado");
             jBActualizaTraslado.setEnabled(false);
             jBCancelarTraslado.setEnabled(false);
             jBBuscarTraslado.setEnabled(true);
@@ -3357,7 +3366,7 @@ public class JFEmpleados extends javax.swing.JFrame {
         }
             
         if(regreso==null || !val.validarFechasInicioFin(ida, regreso)){
-             JOptionPane.showMessageDialog(null, "Seleccione una fecha final válida", "ERROR!", 0);
+             JOptionPane.showMessageDialog(null, "Seleccione una fecha de regreso válida", "ERROR!", 0);
              this.jDateRegreso.setDate(null);
              return;
         }
@@ -3474,6 +3483,27 @@ public class JFEmpleados extends javax.swing.JFrame {
             this.jLSalarioC3.setText("");
             this.jLEstadoC1.setText("");
             this.actualizarComboBox();
+            
+            if(jCBCedulaTrasladoR.getSelectedIndex()==-1){
+            jButton27.setEnabled(false);
+            jBRegistrarDiaLibre.setEnabled(false);
+            jBRegistrarVacacion.setEnabled(false);
+            jButton13.setEnabled(false);
+            jButton24.setEnabled(false);
+            jButton15.setEnabled(false);
+            jButton16.setEnabled(false);
+            jButton14.setEnabled(false);
+            jButtonBuscarSalario.setEnabled(false);
+            jBBuscarJornada.setEnabled(false);
+            jBBuscarTraslado.setEnabled(false);
+            jBBuscarDia.setEnabled(false);
+            jBuscarVacA.setEnabled(false);
+            jButton33.setEnabled(false);
+            jBBuscarTrasladoE.setEnabled(false);
+            jBDiasE.setEnabled(false);
+            jBBuscarVacacionE.setEnabled(false);
+        }
+            
         }else{
             JOptionPane.showMessageDialog(null, "El empleado NO ha sido eliminado");
             
@@ -3560,6 +3590,8 @@ public class JFEmpleados extends javax.swing.JFrame {
             return;
         }
         
+        if(0==JOptionPane.showConfirmDialog(null,"¿Está seguro de que quiere eliminar este día libre?", "Confirmación",JOptionPane.YES_NO_OPTION)){
+        
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         try {
             Date diaviejo=formato.parse(dia);
@@ -3578,6 +3610,9 @@ public class JFEmpleados extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un día primero", "ERROR!", 0);
             
         }
+        }else{
+            JOptionPane.showMessageDialog(null, "El día NO ha sido eliminado");
+        }
         
     }//GEN-LAST:event_jBEliminarDiaActionPerformed
 
@@ -3593,7 +3628,9 @@ public class JFEmpleados extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCAncelarDiaEActionPerformed
 
     private void jBEliminarVacaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarVacaActionPerformed
-         Empleado emp=new Empleado(this.jCBCedulaVacacionesE.getSelectedItem().toString());
+         
+         if(0==JOptionPane.showConfirmDialog(null,"¿Está seguro de que quiere eliminar este periodo de vacaciones?", "Confirmación",JOptionPane.YES_NO_OPTION)){
+        Empleado emp=new Empleado(this.jCBCedulaVacacionesE.getSelectedItem().toString());
           
           int r=this.jTVacacionesE.getSelectedRow();
           if(r==-1){
@@ -3631,6 +3668,9 @@ public class JFEmpleados extends javax.swing.JFrame {
         } catch (Exception ex) {
               ex.toString();
         }
+         }else{
+             JOptionPane.showMessageDialog(null, "El periodo de vacaciones NO ha sido eliminado");
+         }
     }//GEN-LAST:event_jBEliminarVacaActionPerformed
 
     private void jBCancelarVacacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarVacacionesActionPerformed
