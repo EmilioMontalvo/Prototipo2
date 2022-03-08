@@ -615,6 +615,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
         jLabel67.setText("Hora de Inicio");
 
+        txthoradeinicio1.setEditable(false);
         txthoradeinicio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txthoradeinicioActionPerformed(evt);
@@ -631,6 +632,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
         jLabel70.setText("Duración");
 
+        txtduracionC1.setEditable(false);
         txtduracionC1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtduracionCActionPerformed(evt);
@@ -640,6 +642,8 @@ public class JFAgendamiento extends javax.swing.JFrame {
         jLabel71.setText("Servicio");
 
         jLabel72.setText("Estado");
+
+        txtEstado1.setEditable(false);
 
         javax.swing.GroupLayout jPanel13Layout = new javax.swing.GroupLayout(jPanel13);
         jPanel13.setLayout(jPanel13Layout);
@@ -846,6 +850,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
         jLabel62.setText("Observaciones");
 
+        jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane4.setViewportView(jTextArea2);
