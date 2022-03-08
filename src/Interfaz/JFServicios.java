@@ -37,7 +37,17 @@ public class JFServicios extends javax.swing.JFrame {
         PreparedStatement ps = null;
         ResultSet rs = null;
         Conexion conn = new Conexion();
-
+        Validar val=new Validar();
+        
+        if(val.usuarioActivoEsEmpleado()){
+            System.out.println("aaaaaa");
+            jTabbedPane1.setSelectedIndex(1);
+            jTabbedPane1.setEnabled(false);
+            jTabbedPane7.setEnabled(false);
+            jTabbedPane4.setEnabled(false);
+            jTabbedPane6.setEnabled(false);
+                    
+        }
         LlenarServicios(jCBCodServi);
         LlenarServicios(jCBServDesc);
         LlenarServicios(jCBCodAct);
@@ -47,7 +57,7 @@ public class JFServicios extends javax.swing.JFrame {
         jTextField7.setEnabled(false);
         jButton5.setEnabled(false);
         jButton4.setEnabled(false);
-        
+
     }
 
     /**
@@ -185,9 +195,9 @@ public class JFServicios extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 527, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(68, 68, 68)
                         .addComponent(jButton10))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +206,7 @@ public class JFServicios extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPrecio)
+                            .addComponent(txtPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
                             .addComponent(txtNombre)
                             .addComponent(txtCodigo))))
                 .addContainerGap())
@@ -794,9 +804,7 @@ public class JFServicios extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton11)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel10)))
@@ -820,26 +828,30 @@ public class JFServicios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Validar val = new Validar();
-        String codigo = txtCodigo.getText();
-        if (val.validarCodigo(codigo)) {
-            Registrar();
-
-            jCBCodServi.removeAllItems();
-            jCBServDesc.removeAllItems();
-            jCBCodAct.removeAllItems();
-            jCBServEli.removeAllItems();
-            jCBDescEli.removeAllItems();
-            jCBCodDescAsg.removeAllItems();
-
-            LlenarServicios(jCBCodServi);
-            LlenarServicios(jCBServDesc);
-            LlenarServicios(jCBCodAct);
-            LlenarServicios(jCBServEli);
-            LlenarServicios(jCBDescEli);
-            LlenarServicios(jCBCodDescAsg);
-        } else {
-            JOptionPane.showMessageDialog(null, "Código erroneo", "ERROR!", 0);
+        try {
+            Validar val = new Validar();
+            String codigo = txtCodigo.getText();
+            String nombre = txtNombre.getText();
+            String precio1 = txtPrecio.getText();
+            if (!val.validarCodigo(codigo) || nombre.length() == 0 || precio1.length() == 0 || !val.validarPrecio(precio1)) {
+                JOptionPane.showMessageDialog(null, "Datos erróneos-revisar y repetir", "ERROR!", 0);
+            } else {
+                Registrar();
+                jCBCodServi.removeAllItems();
+                jCBServDesc.removeAllItems();
+                jCBCodAct.removeAllItems();
+                jCBServEli.removeAllItems();
+                jCBDescEli.removeAllItems();
+                jCBCodDescAsg.removeAllItems();
+                LlenarServicios(jCBCodServi);
+                LlenarServicios(jCBServDesc);
+                LlenarServicios(jCBCodAct);
+                LlenarServicios(jCBServEli);
+                LlenarServicios(jCBDescEli);
+                LlenarServicios(jCBCodDescAsg);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Datos erróneos-revisar y repetir", "ERROR!", 0);
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -881,11 +893,12 @@ public class JFServicios extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
+            Validar val = new Validar();
             String precio = jTextField7.getText();
             String codigo = jCBCodAct.getSelectedItem().toString();
             try {
-                if (precio.equals("")) {
-                    JOptionPane.showMessageDialog(null, "Faltan ingresar datos");
+                if (precio.equals("") || !val.validarPrecio(precio))  {
+                    JOptionPane.showMessageDialog(null, "Error de actualización-precio mal ingresado", "ERROR!", 0);
                 } else {
                     String sql = "update servicio set precio ='" + precio + "' where codigo= '" + codigo + "'";
                     connet = con1.getCon();
@@ -902,10 +915,10 @@ public class JFServicios extends javax.swing.JFrame {
                     jButton4.setEnabled(false);
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error de actualizacion" + e);
+                JOptionPane.showMessageDialog(null, "Error de actualización, precio mal ingresado", "ERROR!", 0);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error de actualizacion" + e);
+            JOptionPane.showMessageDialog(null, "Error de actualización, precio mal ingresado", "ERROR!", 0);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -927,7 +940,7 @@ public class JFServicios extends javax.swing.JFrame {
                     jTextField7.setEnabled(true);
                     jButton5.setEnabled(true);
                     jButton4.setEnabled(true);
-                    JOptionPane.showMessageDialog(null, "Servicio encontrado con Exito");
+                    JOptionPane.showMessageDialog(null, "Servicio encontrado con Éxito");
                 } catch (SQLException e) {
                     JOptionPane.showMessageDialog(null, "Error en la consulta ");
                 } catch (Exception e) {
@@ -979,24 +992,24 @@ public class JFServicios extends javax.swing.JFrame {
             String porcentaje = jComboBox9.getSelectedItem().toString();
             int descuento = Integer.parseInt(porcentaje);
             if (codigo == "" || codigo == " " || codigo == null) {
-                JOptionPane.showMessageDialog(null, "Error en la consulta ");
+                JOptionPane.showMessageDialog(null, "Error en la consulta","ERROR!",0);
             } else {
                 try {
                     String sql = "insert into descuento_servicio(descuento, Servicio_Codigo) values ('" + descuento + "','" + codigo + "')";
                     connet = con1.getCon();
                     st = connet.createStatement();
                     st.executeUpdate(sql);
-                    JOptionPane.showMessageDialog(null, "Descuento Registrado con Exito");
+                    JOptionPane.showMessageDialog(null, "Descuento Registrado con Éxito");
                     jCBCodDescAsg.setSelectedIndex(0);
                     jComboBox9.setSelectedIndex(0);
                 } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null, "Error en el registro");
+                    JOptionPane.showMessageDialog(null, "Error en el registro","ERROR!",0);
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Error en el registro");
+                    JOptionPane.showMessageDialog(null, "Error en el registro","ERROR!",0);
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en el registro");
+            JOptionPane.showMessageDialog(null, "Error en el registro","ERROR!",0);
 
         }
     }//GEN-LAST:event_jButton15ActionPerformed
@@ -1046,8 +1059,9 @@ public class JFServicios extends javax.swing.JFrame {
                 }
                 modelo.addRow(filas);
             }
+            JOptionPane.showMessageDialog(null, "Servicio encontrado.");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en la consulta");
+            JOptionPane.showMessageDialog(null, "Error en la consulta", "ERROR!", 0);
         }
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -1088,7 +1102,7 @@ public class JFServicios extends javax.swing.JFrame {
                     connet = con1.getCon();
                     st = connet.createStatement();
                     st.executeUpdate(sql);
-                    JOptionPane.showMessageDialog(null, "Descuento eliminado con Exito");
+                    JOptionPane.showMessageDialog(null, "Descuento eliminado con Éxito");
                     jCBDescEli.setSelectedIndex(0);
                     jCBDescEli.removeAllItems();
                     LlenarServicios(jCBDescEli);
@@ -1099,7 +1113,7 @@ public class JFServicios extends javax.swing.JFrame {
                 }
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error en el registro " + e);
+            JOptionPane.showMessageDialog(null, "Error en el registro");
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -1154,13 +1168,14 @@ public class JFServicios extends javax.swing.JFrame {
                 connet = con1.getCon();
                 st = connet.createStatement();
                 st.executeUpdate(sql);
+                JOptionPane.showMessageDialog(null, "Servicio Registrado con Éxito");
             }
-            JOptionPane.showMessageDialog(null, "Servicio Registrado con Exito");
+
             txtCodigo.setText("");
             txtNombre.setText("");
             txtPrecio.setText("");
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error de registro" + e);
+            JOptionPane.showMessageDialog(null, "Error de registro");
         }
     }
 
@@ -1177,13 +1192,13 @@ public class JFServicios extends javax.swing.JFrame {
                 st.executeUpdate(sql);
                 JOptionPane.showMessageDialog(null, "Servicio eliminado");
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error en la eliminacion" + e);
+                JOptionPane.showMessageDialog(null, "Error en la eliminacion");
             }
         }
     }
 
     public void LlenarServicios(JComboBox cliente) {
-        
+
         String sql = "SELECT codigo FROM servicio";
         try {
             connet = con1.getCon();

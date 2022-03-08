@@ -1212,7 +1212,6 @@
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                               <StringArray count="0"/>
                             </Property>
-                            <Property name="selectedIndex" type="int" value="-1"/>
                           </Properties>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -1556,8 +1555,8 @@
             <Container class="javax.swing.JTabbedPane" name="jTabbedPane7">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Asignar Descuento">
-                    <Property name="tabTitle" type="java.lang.String" value="Asignar Descuento"/>
+                  <JTabbedPaneConstraints tabName="Registrar Descuento">
+                    <Property name="tabTitle" type="java.lang.String" value="Registrar Descuento"/>
                     <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Iconos/salario.png"/>
                     </Property>
