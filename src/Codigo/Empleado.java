@@ -203,7 +203,7 @@ public class Empleado {
                 
             
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Estado actualizado exitosamente"); 
+            //JOptionPane.showMessageDialog(null, "Estado actualizado exitosamente"); 
                       
             
         }catch(SQLException e){

@@ -3192,7 +3192,7 @@ public class JFEmpleados extends javax.swing.JFrame {
             Date dianuevo=this.jDCdialibreA.getDate();
         
         if(dianuevo==null){
-            JOptionPane.showMessageDialog(null, "Seleccione una fecha válida", "ERROR!", 0);
+            JOptionPane.showMessageDialog(null, "Ingrese una fecha válida", "ERROR!", 0);
             this.jDCdialibreA.setDate(null);
             return;
         }
@@ -3443,12 +3443,14 @@ public class JFEmpleados extends javax.swing.JFrame {
         this.jBDeshabilitar.setIcon(aceptar);
         
         jLEstadoC1.setText("Deshabilitado");
+        JOptionPane.showMessageDialog(null, "El empleado ha sido deshabilitado"); 
         }else{
         emp.atualizarEstado("A");
         this.jLEstadoC1.setText("Deshabilitado");
         this.jBDeshabilitar.setText("Deshabilitar");
         this.jBDeshabilitar.setIcon(deshabilitar);
         jLEstadoC1.setText("Habilitado");
+        JOptionPane.showMessageDialog(null, "El empleado ha sido habilitado"); 
         }
         
         
