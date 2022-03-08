@@ -354,7 +354,7 @@ public class Validar {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                if (rs.getString("cedula").equals(cedulaE)) {
+                if (rs.getString("habilitado").equals("A")) {
                     disponibilidad = true;
                 }
             }
