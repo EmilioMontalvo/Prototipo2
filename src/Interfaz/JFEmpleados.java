@@ -3136,7 +3136,7 @@ public class JFEmpleados extends javax.swing.JFrame {
         jCBCedulaDiasLibresE.setEnabled(false); 
         
         if(this.jListaDiasE.getModel().getSize()==0){
-        JOptionPane.showMessageDialog(null, "El empleado no tienen ningun día libre registrado");
+        JOptionPane.showMessageDialog(null, "El empleado no tiene ningún día libre registrado");
         this.jBEliminarDia.setEnabled(false);
         this.jBCAncelarDiaE.setEnabled(false);
         jBDiasE.setEnabled(true); 
@@ -3303,7 +3303,7 @@ public class JFEmpleados extends javax.swing.JFrame {
             jLRegreso.setVisible(true);
             jLTraslado.setVisible(true);
         }else{
-            JOptionPane.showMessageDialog(null, "El empleado no tiene ningun traslado registrado");
+            JOptionPane.showMessageDialog(null, "El empleado no tiene ningún traslado registrado");
         }
         
         
@@ -3334,7 +3334,7 @@ public class JFEmpleados extends javax.swing.JFrame {
             jBCancelarTraslado.setEnabled(true);
             jBBuscarTraslado.setEnabled(false);
         }else{
-            JOptionPane.showMessageDialog(null, "El empleado no tiene ningun traslado registrado");
+            JOptionPane.showMessageDialog(null, "El empleado no tiene ningún traslado registrado");
             jBActualizaTraslado.setEnabled(false);
             jBCancelarTraslado.setEnabled(false);
             jBBuscarTraslado.setEnabled(true);
@@ -3357,7 +3357,7 @@ public class JFEmpleados extends javax.swing.JFrame {
         }
             
         if(regreso==null || !val.validarFechasInicioFin(ida, regreso)){
-             JOptionPane.showMessageDialog(null, "Seleccione una fecha final válida", "ERROR!", 0);
+             JOptionPane.showMessageDialog(null, "Seleccione una fecha de regreso válida", "ERROR!", 0);
              this.jDateRegreso.setDate(null);
              return;
         }
@@ -3560,6 +3560,8 @@ public class JFEmpleados extends javax.swing.JFrame {
             return;
         }
         
+        if(0==JOptionPane.showConfirmDialog(null,"¿Está seguro de que quiere eliminar este día libre?", "Confirmación",JOptionPane.YES_NO_OPTION)){
+        
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         try {
             Date diaviejo=formato.parse(dia);
@@ -3577,6 +3579,9 @@ public class JFEmpleados extends javax.swing.JFrame {
         } catch (ParseException ex) {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un día primero", "ERROR!", 0);
             
+        }
+        }else{
+            JOptionPane.showMessageDialog(null, "El día NO ha sido eliminado");
         }
         
     }//GEN-LAST:event_jBEliminarDiaActionPerformed
