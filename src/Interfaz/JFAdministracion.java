@@ -2119,7 +2119,7 @@ public class JFAdministracion extends javax.swing.JFrame {
 
         try{
             if(newUser.equals("") || newUser.length()>20){
-                            JOptionPane.showMessageDialog(null, "Nombre de  Usuario no válido - repita", "ERROR!", 0);
+                            JOptionPane.showMessageDialog(null, "Nombre de Usuario no válido - repita", "ERROR!", 0);
                             txtUsuarioAdmAct.setText("");
                         }else{
                             if(newCont.equals("") || newCont.length()>20){
