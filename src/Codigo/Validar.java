@@ -455,5 +455,38 @@ public class Validar {
 
     }
     
+    public boolean existeActivo(){
+         Conexion conn = new Conexion();
+        PreparedStatement ps;
+        ResultSet rs;
+        boolean bandera = false;
+        
+
+        try {
+            ps = conn.getCon().prepareStatement("SELECT * FROM activo;");
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                bandera = true;
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.getCon().close();
+                    return bandera;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error, problema con la base de datos");
+                return bandera;
+            }
+        }
+        return bandera;
+    }
+    
 
 }
