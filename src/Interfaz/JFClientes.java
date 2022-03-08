@@ -56,6 +56,12 @@ public class JFClientes extends javax.swing.JFrame {
         LlenarClientes(jCBNumCedAsigDesc);
         LlenarServicios(jCBCodServEliminarDescuentoCliente);
         LlenarServicios(jCBCodServAsigDesc);
+        jButton7.setEnabled(false);
+        jButton16.setEnabled(false);
+        jTextField9.setEnabled(false);
+        jButton22.setEnabled(false);
+        jButton21.setEnabled(false);
+        jTextField1.setEnabled(false);
     }
 
     /**
@@ -815,7 +821,7 @@ public class JFClientes extends javax.swing.JFrame {
 
         jLabel41.setText("Número de Cédula:");
 
-        jCBActualizarClienteTelefono.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        jCBActualizarClienteTelefono.setSelectedIndex(-1);
 
         jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
         jButton19.setText("Cancelar");
@@ -919,12 +925,12 @@ public class JFClientes extends javax.swing.JFrame {
                     .addComponent(jLabel42)
                     .addComponent(jLabel45))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel43)
                     .addComponent(jLabel46))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel44)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel44, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel47))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1101,7 +1107,7 @@ public class JFClientes extends javax.swing.JFrame {
 
         jLabel16.setText("Porcentaje del descuento (%):");
 
-        jCBPorcentajeDescuento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "25", "50", "75", "100" }));
+        jCBPorcentajeDescuento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "25", "50", "75", "100" }));
 
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
         jButton12.setText("Cancelar");
@@ -1159,7 +1165,7 @@ public class JFClientes extends javax.swing.JFrame {
 
         jTabbedPane7.addTab("Descuentos a un Cliente", new javax.swing.ImageIcon(getClass().getResource("/Iconos/salario.png")), jPanel7); // NOI18N
 
-        jTabbedPane2.addTab("Asignar", new javax.swing.ImageIcon(getClass().getResource("/Iconos/salario.png")), jTabbedPane7); // NOI18N
+        jTabbedPane2.addTab("Asignar Descuento", new javax.swing.ImageIcon(getClass().getResource("/Iconos/salario.png")), jTabbedPane7); // NOI18N
 
         btnAtrasClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/atras.png"))); // NOI18N
         btnAtrasClientes.setBorderPainted(false);
@@ -1268,6 +1274,7 @@ public class JFClientes extends javax.swing.JFrame {
                                 LlenarClientes(jCBNumeroCedulaClienteCitasC);
                                 LlenarClientes(jCBNumeroCedulaClienteDescuentos);
                                 LlenarClientes(jCBActualizarClienteDireccion);
+
                                 LlenarClientes(jCBNumeroCedulaEliminarCliente);
                                 LlenarClientes(jCBNumCedEliminarDescuentoCliente);
                                 LlenarClientes(jCBNumCedAsigDesc);
@@ -1402,7 +1409,7 @@ public class JFClientes extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         try {
             String cedula = jCBNumeroCedulaCliente.getSelectedItem().toString();
-            if (cedula == "" || jCBNumeroCedulaCliente.getSelectedIndex() == 0 || cedula == " " || cedula == null) {
+            if (cedula == "" || cedula == " " || cedula == null) {
                 JOptionPane.showMessageDialog(null, "Error en la consulta ");
             } else {
                 try {
@@ -1433,14 +1440,20 @@ public class JFClientes extends javax.swing.JFrame {
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         jCBActualizarClienteDireccion.setSelectedIndex(0);
-
+        jButton7.setEnabled(false);
+        jButton16.setEnabled(false);
+        jTextField9.setEnabled(false);
+        jLabel37.setText("***********");
+        jLabel38.setText("***********");
+        jLabel40.setText("***********");
+        jTextField9.setText("");
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         try {
             String cedula = jCBActualizarClienteDireccion.getSelectedItem().toString();
-            if (cedula == "" || jCBActualizarClienteDireccion.getSelectedIndex() == 0 || cedula == " " || cedula == null) {
+            if (cedula == "" || cedula == " " || cedula == null) {
                 JOptionPane.showMessageDialog(null, "Error en la consulta ");
             } else {
                 try {
@@ -1452,6 +1465,9 @@ public class JFClientes extends javax.swing.JFrame {
                     jLabel37.setText(rs.getString("nombres"));
                     jLabel38.setText(rs.getString("apellidos"));
                     jLabel40.setText(rs.getString("direccion"));
+                    jButton7.setEnabled(true);
+                    jButton16.setEnabled(true);
+                    jTextField9.setEnabled(true);
                     JOptionPane.showMessageDialog(null, "Cliente encontrado con Exito");
                 } catch (SQLException e) {
                     JOptionPane.showMessageDialog(null, "Error en la consulta ");
@@ -1483,6 +1499,10 @@ public class JFClientes extends javax.swing.JFrame {
                     jLabel40.setText("***********");
                     jTextField9.setText("");
                     jCBActualizarClienteDireccion.setSelectedIndex(0);
+                    jButton7.setEnabled(false);
+                    jButton16.setEnabled(false);
+                    jTextField9.setEnabled(false);
+                    jCBActualizarClienteDireccion.setSelectedIndex(0);
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error de actualizacion" + e);
@@ -1498,6 +1518,9 @@ public class JFClientes extends javax.swing.JFrame {
         jLabel40.setText("***********");
         jTextField9.setText("");
         jCBActualizarClienteDireccion.setSelectedIndex(0);
+        jButton7.setEnabled(false);
+        jButton16.setEnabled(false);
+        jTextField9.setEnabled(false);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton16ActionPerformed
@@ -1505,7 +1528,7 @@ public class JFClientes extends javax.swing.JFrame {
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
         try {
             String cedula = jCBActualizarClienteTelefono.getSelectedItem().toString();
-            if (cedula == "" || jCBActualizarClienteTelefono.getSelectedIndex() == 0 || cedula == " " || cedula == null) {
+            if (cedula == "" || cedula == " " || cedula == null) {
                 JOptionPane.showMessageDialog(null, "Error en la consulta ");
             } else {
                 try {
@@ -1517,6 +1540,9 @@ public class JFClientes extends javax.swing.JFrame {
                     jLabel45.setText(rs.getString("nombres"));
                     jLabel46.setText(rs.getString("apellidos"));
                     jLabel47.setText(rs.getString("telefono"));
+                    jButton22.setEnabled(true);
+                    jButton21.setEnabled(true);
+                    jTextField1.setEnabled(true);
                     JOptionPane.showMessageDialog(null, "Cliente encontrado con Exito");
                 } catch (SQLException e) {
                     JOptionPane.showMessageDialog(null, "Error en la consulta ");
@@ -1548,6 +1574,9 @@ public class JFClientes extends javax.swing.JFrame {
                     jLabel47.setText("***********");
                     jTextField1.setText("");
                     jCBActualizarClienteTelefono.setSelectedIndex(0);
+                    jButton22.setEnabled(false);
+                    jButton21.setEnabled(false);
+                    jTextField1.setEnabled(false);
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error de actualizacion" + e);
@@ -1559,6 +1588,13 @@ public class JFClientes extends javax.swing.JFrame {
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         jCBActualizarClienteTelefono.setSelectedIndex(0);
+        jLabel45.setText("***********");
+        jLabel46.setText("***********");
+        jLabel47.setText("***********");
+        jTextField1.setText("");
+        jButton22.setEnabled(false);
+        jButton21.setEnabled(false);
+        jTextField1.setEnabled(false);
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton21ActionPerformed
@@ -1567,6 +1603,10 @@ public class JFClientes extends javax.swing.JFrame {
         jLabel46.setText("***********");
         jLabel47.setText("***********");
         jTextField1.setText("");
+        jButton22.setEnabled(false);
+        jButton21.setEnabled(false);
+        jTextField1.setEnabled(false);
+
     }//GEN-LAST:event_jButton21ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
@@ -1580,10 +1620,8 @@ public class JFClientes extends javax.swing.JFrame {
             String codigo = jCBCodServAsigDesc.getSelectedItem().toString();
             String descuento1 = jCBPorcentajeDescuento.getSelectedItem().toString();
             int descuento = Integer.parseInt(descuento1);
-            if (cedula == "" || jCBNumCedAsigDesc.getSelectedIndex() == 0
-                    || cedula == " " || cedula == null || codigo == ""
-                    || jCBCodServAsigDesc.getSelectedIndex() == 0 || codigo == " " || codigo == null
-                    || jCBPorcentajeDescuento.getSelectedIndex() == 0) {
+            if (cedula == "" || cedula == " " || cedula == null || codigo == ""
+                    || codigo == " " || codigo == null) {
                 JOptionPane.showMessageDialog(null, "Error en la consulta ");
             } else {
                 try {
@@ -1605,8 +1643,6 @@ public class JFClientes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error en el registro");
 
         }
-
-
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
@@ -1619,9 +1655,8 @@ public class JFClientes extends javax.swing.JFrame {
         try {
             String cedula = jCBNumCedEliminarDescuentoCliente.getSelectedItem().toString();
             String codigo = jCBCodServEliminarDescuentoCliente.getSelectedItem().toString();
-            if (cedula == "" || jCBNumCedAsigDesc.getSelectedIndex() == 0
-                    || cedula == " " || cedula == null || codigo == ""
-                    || jCBCodServAsigDesc.getSelectedIndex() == 0 || codigo == " " || codigo == null) {
+            if (cedula == "" || cedula == " " || cedula == null || codigo == ""
+                    || codigo == " " || codigo == null) {
                 JOptionPane.showMessageDialog(null, "Error en la consulta ");
             } else {
                 try {
@@ -1657,6 +1692,7 @@ public class JFClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
+        jCBNumeroCedulaClienteCitasC.setSelectedIndex(0);
         jTable1.removeAll();
     }//GEN-LAST:event_jButton23ActionPerformed
 
@@ -1695,6 +1731,7 @@ public class JFClientes extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
+        jCBNumeroCedulaClienteDescuentos.setSelectedIndex(0);
         jTable2.removeAll();
     }//GEN-LAST:event_jButton24ActionPerformed
 
@@ -1711,7 +1748,7 @@ public class JFClientes extends javax.swing.JFrame {
             int cantidadColumnas = rsMd.getColumnCount();
             modelo.addColumn("Descuento");
             modelo.addColumn("Cliente cédula");
-            modelo.addColumn("Servicio del código");           
+            modelo.addColumn("Servicio del código");
             while (rs.next()) {
                 Object[] filas = new Object[cantidadColumnas];
                 for (int i = 0; i < cantidadColumnas; i++) {
@@ -1790,7 +1827,7 @@ public class JFClientes extends javax.swing.JFrame {
 
         String cedula;
         cedula = jCBNumeroCedulaEliminarCliente.getItemAt(jCBNumeroCedulaEliminarCliente.getSelectedIndex());
-        if (jCBNumeroCedulaEliminarCliente.getSelectedIndex() == 0 || cedula == " " || cedula == null || cedula == "") {
+        if (cedula == " " || cedula == null || cedula == "") {
             JOptionPane.showMessageDialog(null, "Error en la eliminación");
         } else {
             try {
@@ -1806,7 +1843,7 @@ public class JFClientes extends javax.swing.JFrame {
     }
 
     public void LlenarClientes(JComboBox cliente) {
-        cliente.insertItemAt("", 0);
+
         String sql = "SELECT cedula FROM cliente";
         try {
             connet = con1.getCon();
@@ -1821,7 +1858,7 @@ public class JFClientes extends javax.swing.JFrame {
     }
 
     public void LlenarServicios(JComboBox cliente) {
-        cliente.insertItemAt("", 0);
+
         String sql = "SELECT codigo FROM servicio";
         try {
             connet = con1.getCon();

@@ -1174,14 +1174,14 @@
                                       <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel43" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel46" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel44" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel47" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -1207,10 +1207,9 @@
                         <Component class="javax.swing.JComboBox" name="jCBActualizarClienteTelefono">
                           <Properties>
                             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                              <StringArray count="1">
-                                <StringItem index="0" value=""/>
-                              </StringArray>
+                              <StringArray count="0"/>
                             </Property>
+                            <Property name="selectedIndex" type="int" value="-1"/>
                           </Properties>
                           <AuxValues>
                             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -1554,8 +1553,8 @@
             <Container class="javax.swing.JTabbedPane" name="jTabbedPane7">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                  <JTabbedPaneConstraints tabName="Asignar">
-                    <Property name="tabTitle" type="java.lang.String" value="Asignar"/>
+                  <JTabbedPaneConstraints tabName="Asignar Descuento">
+                    <Property name="tabTitle" type="java.lang.String" value="Asignar Descuento"/>
                     <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Iconos/salario.png"/>
                     </Property>
@@ -1664,12 +1663,11 @@
                     <Component class="javax.swing.JComboBox" name="jCBPorcentajeDescuento">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="5">
-                            <StringItem index="0" value=""/>
-                            <StringItem index="1" value="25"/>
-                            <StringItem index="2" value="50"/>
-                            <StringItem index="3" value="75"/>
-                            <StringItem index="4" value="100"/>
+                          <StringArray count="4">
+                            <StringItem index="0" value="25"/>
+                            <StringItem index="1" value="50"/>
+                            <StringItem index="2" value="75"/>
+                            <StringItem index="3" value="100"/>
                           </StringArray>
                         </Property>
                       </Properties>

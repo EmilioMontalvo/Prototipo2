@@ -27,6 +27,10 @@ public class Validar {
         return Pattern.matches("[0-9]*", numero);
     }
 
+    public boolean validarCodigo(String codigo) {
+        return Pattern.matches("[0-9][0-9][.][0-9][0-9]",codigo);
+    }
+
     public boolean verificarCedula(String cedula) {
         int total = 0;
         int tamanoLongitudCedula = 10;
@@ -111,7 +115,7 @@ public class Validar {
         return empleado;
 
     }
-    
+
     public boolean cedulaTraslado(String cedula) {
         Conexion conn = new Conexion();
         PreparedStatement ps;
@@ -126,7 +130,7 @@ public class Validar {
             while (rs.next()) {
                 if (rs.getString("Empleado_cedula").equals(cedula)) {
                     empleado = true;
-                   
+
                 }
             }
 
@@ -152,9 +156,9 @@ public class Validar {
 
         return inicio.before(fin);
     }
-    
-    public boolean existeUsuario(String nombre,String tipo,String contrasenia){
-        
+
+    public boolean existeUsuario(String nombre, String tipo, String contrasenia) {
+
         Conexion conn = new Conexion();
         PreparedStatement ps;
         ResultSet rs;
@@ -166,7 +170,7 @@ public class Validar {
             rs = ps.executeQuery();
 
             while (rs.next()) {
-                if (rs.getString("nombreUsuario").equals(nombre)&&rs.getString("tipo").equals(tipo)&&rs.getString("contrasenia").equals(contrasenia)) {
+                if (rs.getString("nombreUsuario").equals(nombre) && rs.getString("tipo").equals(tipo) && rs.getString("contrasenia").equals(contrasenia)) {
                     existe = true;
                 }
             }
@@ -186,13 +190,11 @@ public class Validar {
             }
         }
         return existe;
-        
-        
-       
+
     }
-    
-    public boolean usuarioActivoEsEmpleado(){
-        
+
+    public boolean usuarioActivoEsEmpleado() {
+
         Conexion conn = new Conexion();
         PreparedStatement ps;
         ResultSet rs;
@@ -202,22 +204,22 @@ public class Validar {
             ps = conn.getCon().prepareStatement("SELECT * FROM activo;");
 
             rs = ps.executeQuery();
-            String activo="";
+            String activo = "";
 
             while (rs.next()) {
-                activo=rs.getString("Usuarios_nombreUsuario");
+                activo = rs.getString("Usuarios_nombreUsuario");
             }
             //System.out.println(activo);
-            String tipo="";
-            ps = conn.getCon().prepareStatement("SELECT tipo FROM usuarios WHERE nombreUsuario='"+activo+"';");
+            String tipo = "";
+            ps = conn.getCon().prepareStatement("SELECT tipo FROM usuarios WHERE nombreUsuario='" + activo + "';");
             rs = ps.executeQuery();
-            
+
             while (rs.next()) {
-                
-                tipo=rs.getString(1);
+
+                tipo = rs.getString(1);
                 //System.out.println(tipo);
-                if(tipo.equals("E")){
-                    empleado=true;
+                if (tipo.equals("E")) {
+                    empleado = true;
                 }
             }
 
@@ -236,9 +238,7 @@ public class Validar {
             }
         }
         return empleado;
-        
-        
-       
+
     }
 
 }
