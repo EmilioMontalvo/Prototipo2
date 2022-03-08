@@ -121,10 +121,10 @@ public class Cita {
             ps.setString(2, numero);
 
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Observacion ingresada exitosamente");
+            JOptionPane.showMessageDialog(null, "Observación ingresada exitosamente");
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Ya está registrada una observación en la Cita");
 
         } finally {
             try {
@@ -145,8 +145,6 @@ public class Cita {
 
         try {
             ps = conn.con.prepareStatement("INSERT INTO Cita values(?,?,?,?,?,?,?,?)");
-            
-            
 
             ps.setInt(1, numero);
             ps.setString(2, fecha);
@@ -158,7 +156,7 @@ public class Cita {
             ps.setString(8, duracion);
 
             ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Cita registrado con exito");
+            JOptionPane.showMessageDialog(null, "Cita registrada con éxito");
 
             try {
                 String sql1 = "SELECT count(*) FROM cita;";
@@ -175,7 +173,7 @@ public class Cita {
             }
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Hora de inicio o Duracion no valida");
             return false;
         } finally {
             try {
