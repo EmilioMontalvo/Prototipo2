@@ -152,6 +152,112 @@ public class Validar {
 
     }
 
+    public boolean verificarCliente(String cedula) {
+        Conexion conn = new Conexion();
+        PreparedStatement ps;
+        ResultSet rs;
+        boolean cliente = false;
+
+        try {
+            ps = conn.getCon().prepareStatement("SELECT cedula FROM cliente;");
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if (rs.getString("cedula").equals(cedula)) {
+                    cliente = true;
+                }
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.getCon().close();
+                    return cliente;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error, problema con la base de datos");
+                return cliente;
+            }
+        }
+        return cliente;
+
+    }
+
+    public boolean verificarEmpleado(String cedula) {
+        Conexion conn = new Conexion();
+        PreparedStatement ps;
+        ResultSet rs;
+        boolean empleado = false;
+
+        try {
+            ps = conn.getCon().prepareStatement("SELECT cedula FROM empleado;");
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if (rs.getString("cedula").equals(cedula)) {
+                    empleado = true;
+                }
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.getCon().close();
+                    return empleado;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error, problema con la base de datos");
+                return empleado;
+            }
+        }
+        return empleado;
+
+    }
+
+    public boolean verificarServicio(String codigo) {
+        Conexion conn = new Conexion();
+        PreparedStatement ps;
+        ResultSet rs;
+        boolean servicio = false;
+
+        try {
+            ps = conn.getCon().prepareStatement("SELECT codigo FROM servicio;");
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if (rs.getString("codigo").equals(codigo)) {
+                    servicio = true;
+                }
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.getCon().close();
+                    return servicio;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error, problema con la base de datos");
+                return servicio;
+            }
+        }
+        return servicio;
+
+    }
+    
+
     public boolean validarFechasInicioFin(Date inicio, Date fin) {
 
         return inicio.before(fin);
