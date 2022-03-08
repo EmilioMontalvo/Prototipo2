@@ -191,6 +191,7 @@ public class JFLogin extends javax.swing.JFrame {
         
         JFMenu jf=new JFMenu();
         jf.setVisible(true);
+        this.setVisible(false);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
