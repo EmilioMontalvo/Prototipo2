@@ -202,7 +202,7 @@ public class JFPrimerUsuario extends javax.swing.JFrame {
         
         agregarUsuario(nombreA,apellidoA,cedAdm,usuarioAdm,contrAdm1,contrAdm2,"A");
         
-        
+        iniciarActivo();
         JFLogin jf=new JFLogin();
         jf.setVisible(true);
         this.setVisible(false);
