@@ -10,6 +10,9 @@ holaaaaaaaaaaa
  */
 package Interfaz;
 
+import Codigo.Validar;
+import java.awt.event.KeyEvent;
+
 /*DSADSADSASADA*/
 /**
  * ***********************************************
@@ -31,6 +34,15 @@ public class JFMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.setResizable(false);
         //System.out.println(this.size());
+        
+        Validar val=new Validar();
+        //this.jAuditoria.setEnabled(false);
+        if(val.usuarioActivoEsEmpleado()){
+            System.out.println("aaaaaa");
+            this.jBAdministracion.setVisible(false);
+            this.jAuditoria.setVisible(false);
+            
+        }
 
     }
 
@@ -53,6 +65,7 @@ public class JFMenu extends javax.swing.JFrame {
         jBAdministracion = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jBEmpleados1 = new javax.swing.JButton();
+        jAuditoria = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("S-Brush");
@@ -60,6 +73,11 @@ public class JFMenu extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPanel2KeyPressed(evt);
+            }
+        });
 
         jPanel3.setBackground(new java.awt.Color(255, 204, 204));
 
@@ -148,6 +166,16 @@ public class JFMenu extends javax.swing.JFrame {
             }
         });
 
+        jAuditoria.setBackground(new java.awt.Color(255, 255, 255));
+        jAuditoria.setMnemonic(KeyEvent.VK_A);
+        jAuditoria.setBorderPainted(false);
+        jAuditoria.setContentAreaFilled(false);
+        jAuditoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jAuditoriaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -163,18 +191,24 @@ public class JFMenu extends javax.swing.JFrame {
                         .addGap(106, 106, 106)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jBAdministracion)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 346, Short.MAX_VALUE)
-                                .addComponent(jButton12)
-                                .addGap(101, 101, 101))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jBAgendamiento)
                                     .addComponent(jBFacturacion)
-                                    .addComponent(jBClientes)
                                     .addComponent(jBEmpleados)
                                     .addComponent(jBEmpleados1))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                .addContainerGap(420, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jBAdministracion)
+                                            .addComponent(jAuditoria, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jButton12))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jBClientes)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(79, 79, 79))))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,23 +218,24 @@ public class JFMenu extends javax.swing.JFrame {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(64, 64, 64)
                 .addComponent(jBClientes)
+                .addGap(18, 18, 18)
+                .addComponent(jBEmpleados1)
+                .addGap(18, 18, 18)
+                .addComponent(jBEmpleados)
+                .addGap(18, 18, 18)
+                .addComponent(jBAgendamiento)
+                .addGap(18, 18, 18)
+                .addComponent(jBFacturacion)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(387, 387, 387)
-                        .addComponent(jButton12))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBEmpleados1)
-                        .addGap(26, 26, 26)
-                        .addComponent(jBEmpleados)
-                        .addGap(28, 28, 28)
-                        .addComponent(jBAgendamiento)
-                        .addGap(30, 30, 30)
-                        .addComponent(jBFacturacion)
-                        .addGap(18, 18, 18)
                         .addComponent(jBAdministracion)
-                        .addGap(25, 25, 25)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                        .addComponent(jAuditoria))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton12)))
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -218,7 +253,9 @@ public class JFMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        System.exit(EXIT_ON_CLOSE);
+        JFLogin jf =new JFLogin();
+        jf.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jBEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEmpleadosActionPerformed
@@ -257,6 +294,16 @@ public class JFMenu extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jBEmpleados1ActionPerformed
 
+    private void jPanel2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPanel2KeyPressed
+
+    private void jAuditoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAuditoriaActionPerformed
+       JFAuditoria jf=new JFAuditoria();
+       jf.setVisible(true);
+       this.setVisible(false);
+    }//GEN-LAST:event_jAuditoriaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -293,6 +340,7 @@ public class JFMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jAuditoria;
     private javax.swing.JButton jBAdministracion;
     private javax.swing.JButton jBAgendamiento;
     private javax.swing.JButton jBClientes;

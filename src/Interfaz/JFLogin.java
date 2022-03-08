@@ -5,6 +5,11 @@
  */
 package Interfaz;
 
+import Codigo.Conexion;
+import Codigo.Validar;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,6 +37,7 @@ public class JFLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPasswordField1 = new javax.swing.JPasswordField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JTextField();
@@ -42,6 +48,8 @@ public class JFLogin extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         cmbTusuario = new javax.swing.JComboBox<>();
+
+        jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Login");
@@ -83,7 +91,6 @@ public class JFLogin extends javax.swing.JFrame {
 
         cmbTusuario.setBackground(new java.awt.Color(255, 204, 204));
         cmbTusuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Empleado" }));
-        cmbTusuario.setSelectedIndex(-1);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -162,52 +169,64 @@ public class JFLogin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         String contraseña = new String(txtConstraseña.getPassword());
-        System.out.print(contraseña);
-
-        switch (cmbTusuario.getSelectedIndex()) {
-            case 0:
-                if (txtUsuario.getText().equals("administrador")) {
-                    if (contraseña.equals("1234")) {
-                        JOptionPane.showMessageDialog(null, "Bienvenido al S-Brush");
-                        JFMenu fjmenu = new JFMenu();
-                        fjmenu.setVisible(true);
-                        this.setVisible(false);
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Credenciales equivocadas", "ERROR!", 0);
-                    }
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "Credenciales equivocadas", "ERROR!", 0);
-                }
-                break;
-            case 1:
-                if (txtUsuario.getText().equals("empleado")) {
-                    if (contraseña.equals("4321")) {
-                        JOptionPane.showMessageDialog(null, "Bienvenido al S-Brush");
-                        JFMenu fjmenu = new JFMenu();
-                        fjmenu.setVisible(true);
-                        this.setVisible(false);
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Credenciales equivocadas", "ERROR!", 0);
-                    }
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "Credenciales equivocadas", "ERROR!", 0);
-                }
-                break;
+        String usuario=txtUsuario.getText();
+        Validar val=new Validar();
+        String tipo="";
+        if(this.cmbTusuario.getSelectedIndex()==0){
+            tipo="A";
+        }else{
+            tipo="E";
         }
-
-        txtUsuario.setText(null);
-        txtConstraseña.setText(null);
-
+        
+        
+        
+        if(usuario.equals("")||contraseña.equals("")||!val.existeUsuario(usuario, tipo, contraseña)){
+            JOptionPane.showMessageDialog(null, "Credenciales equivocadas", "ERROR!", 0);
+            txtUsuario.setText("");
+            txtConstraseña.setText("");
+            return;        
+        }
+        
+        iniciarSesion(usuario);
+        
+        JFMenu jf=new JFMenu();
+        jf.setVisible(true);
+        this.setVisible(false);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    public static void iniciarSesion(String usuario){
+        Conexion conn=new Conexion();
+        PreparedStatement ps;
+                
+        try{
+           ps=conn.getCon().prepareStatement("UPDATE activo SET Usuarios_nombreUsuario='"+usuario+"' WHERE idActivo=1;");
+                
+            
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Bienvenido a S-Brush"); 
+                      
+            
+        }catch(SQLException e){
+            if(Pattern.matches("^Duplicate entry.*", e.getMessage())){
+                JOptionPane.showMessageDialog(null, "Ya existe este día libre");
+            }else{
+                JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+           
+            }
+           
+           
+        }finally{
+            try{
+                if(conn!=null){
+                    conn.getCon().close();
+                }
+            }catch(Exception e){
+               JOptionPane.showMessageDialog(null, "Error, reinicie el sistema"); 
+               
+            }
+        }
+    }
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -254,6 +273,7 @@ public class JFLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JPasswordField txtConstraseña;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
