@@ -5,6 +5,7 @@
  */
 
 package Interfaz;
+import Codigo.CantidadServicios;
 import Codigo.Conexion;
 import Codigo.DiaLibre;
 import Codigo.Empleado;
@@ -2935,7 +2936,10 @@ public class JFEmpleados extends javax.swing.JFrame {
         Empleado emp=new Empleado(this.jCBCedulaServiciosC.getSelectedItem().toString());
         
         this.jLEmpleadoC.setText(emp.getNombres()+" "+emp.getApellidos());
-        jLCantidadC.setText(""+0);
+        
+        CantidadServicios cs=new CantidadServicios(emp.getCedula());
+        
+        jLCantidadC.setText(""+cs.getCantidad());
         
     }//GEN-LAST:event_jButton14ActionPerformed
 

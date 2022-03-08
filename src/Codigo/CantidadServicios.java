@@ -5,6 +5,7 @@
  */
 package Codigo;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -17,24 +18,30 @@ import javax.swing.JOptionPane;
  */
 public class CantidadServicios {
 
-    String cedula;
-    int c=0;
+    private String cedula;
+    private int cantidad=0;
 
+    public CantidadServicios() {
+    }
+
+    
+    
     public CantidadServicios(String cedula) {
        Conexion conn=new Conexion();
         PreparedStatement ps;
         ResultSet rs;
         
-        
+        this.cedula=cedula;
         try{
-           ps=conn.getCon().prepareStatement("SELECT * FROM empleado WHERE cedula='"+cedula+"';");
+           ps=conn.getCon().prepareStatement("SELECT cantidad FROM serviciosRealizado WHERE Empleado_cedula='"+cedula+"' AND dia=CURDATE();");
                 
             
             rs=ps.executeQuery();
             
             while (rs.next())
             {
-                this.cedula=rs.getString(1); 
+                cantidad=rs.getInt(1); 
+                
               
             }
             
@@ -55,6 +62,24 @@ public class CantidadServicios {
         }
         
     }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+    
+    
    
     
     
