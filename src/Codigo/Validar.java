@@ -419,5 +419,41 @@ public class Validar {
         return empleado;
 
     }
+    
+    public boolean verificarDisponibilidad(String cedulaE) {
+        Conexion conn = new Conexion();
+        PreparedStatement ps;
+        ResultSet rs;
+        boolean disponibilidad = false;
+
+        try {
+            ps = conn.getCon().prepareStatement("SELECT * FROM empleado where cedula ='" + cedulaE + "';");
+
+            rs = ps.executeQuery();
+
+            while (rs.next()) {
+                if (rs.getString("habilitado").equals("A")) {
+                    disponibilidad = true;
+                }
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error de conexión:" + e.getMessage());
+
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.getCon().close();
+                    return disponibilidad;
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error, problema con la base de datos");
+                return disponibilidad;
+            }
+        }
+        return disponibilidad;
+
+    }
+    
 
 }

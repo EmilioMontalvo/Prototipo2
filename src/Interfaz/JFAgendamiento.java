@@ -373,6 +373,11 @@ public class JFAgendamiento extends javax.swing.JFrame {
                 jTextField10ActionPerformed(evt);
             }
         });
+        jTextField10.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField10KeyReleased(evt);
+            }
+        });
 
         jLabel16.setText("Nombre del Servicio");
 
@@ -393,6 +398,12 @@ public class JFAgendamiento extends javax.swing.JFrame {
         jTextField14.setEditable(false);
 
         jLabel1.setText("Nº de cita");
+
+        jTextField15.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField15KeyTyped(evt);
+            }
+        });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar.png"))); // NOI18N
         jButton1.setText("Buscar");
@@ -528,6 +539,12 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
         jTextField17.setEditable(false);
 
+        jTextField18.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField18KeyTyped(evt);
+            }
+        });
+
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar.png"))); // NOI18N
         jButton4.setText("Buscar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -596,6 +613,12 @@ public class JFAgendamiento extends javax.swing.JFrame {
         jTabbedPane1.addTab(" Cancelar Cita", new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png")), jPanel3); // NOI18N
 
         jLabel64.setText("Nº de cita");
+
+        txtNcita1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNcita1KeyTyped(evt);
+            }
+        });
 
         jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar.png"))); // NOI18N
         jButton15.setText("Buscar");
@@ -754,6 +777,12 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
         jLabel55.setText("Nº de cita");
 
+        jTextField44.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField44KeyTyped(evt);
+            }
+        });
+
         jLabel56.setText("Nombre del Cliente");
 
         jTextField45.setEditable(false);
@@ -772,6 +801,11 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextArea1KeyTyped(evt);
+            }
+        });
         jScrollPane3.setViewportView(jTextArea1);
 
         jLabel58.setText("Observaciones");
@@ -839,6 +873,12 @@ public class JFAgendamiento extends javax.swing.JFrame {
         jTabbedPane5.addTab("Agregar", new javax.swing.ImageIcon(getClass().getResource("/Iconos/salvar.png")), jPanel11); // NOI18N
 
         jLabel59.setText("Nº de cita");
+
+        jTextField47.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextField47KeyTyped(evt);
+            }
+        });
 
         jLabel60.setText("Nombre del Cliente");
 
@@ -1042,7 +1082,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Cita encontrado con Exito");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en la consulta");
+            JOptionPane.showMessageDialog(null, "Error, la cita no existe o es incorrecta");
         }
 
     }//GEN-LAST:event_jButton13ActionPerformed
@@ -1099,7 +1139,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Cita encontrado con Exito");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en la consulta");
+            JOptionPane.showMessageDialog(null, "Error, la cita no existe o es incorrecta");
         }
 
     }//GEN-LAST:event_jButton11ActionPerformed
@@ -1154,7 +1194,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Cita encontrado con Exito");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en la consulta");
+            JOptionPane.showMessageDialog(null, "Error, la cita no existe o es incorrecta");
         }
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -1165,7 +1205,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
         String numero = jTextField15.getText();
 
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String fecha = simpleDateFormat.format(jDateChooser2.getDate());
 
         String tiempo = jTextField9.getText();
@@ -1175,7 +1215,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
         String cedulaE = this.jTextField13.getText();
 
         if (!val.verificarCedula(cedulaE)) {
-            JOptionPane.showMessageDialog(null, "Ingrese un número de empleado de cliente válido", "ERROR!", 0);
+            JOptionPane.showMessageDialog(null, "Ingrese un número de empleado válido", "ERROR!", 0);
             this.jTextField13.setText("");
             return;
         }
@@ -1183,6 +1223,12 @@ public class JFAgendamiento extends javax.swing.JFrame {
         if (!val.verificarEmpleado(cedulaE)) {
             JOptionPane.showMessageDialog(null, "El empleado no se encuentra Registrado", "ERROR!", 0);
             this.jTextField13.setText("");
+            return;
+        }
+
+        if (!val.verificarDisponibilidad(cedulaE)) {
+            JOptionPane.showMessageDialog(null, "El empleado no se encuentra Habilitado", "ERROR!", 0);
+            this.txtCEmpleado.setText("");
             return;
         }
 
@@ -1239,7 +1285,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
             } catch (SQLException e) {
             }
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en la consulta3");
+            JOptionPane.showMessageDialog(null, "Error, la cita no existe o es incorrecta");
 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -1290,6 +1336,11 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
         if (!val.verificarEmpleado(cedulaE)) {
             JOptionPane.showMessageDialog(null, "El empleado no se encuentra Registrado", "ERROR!", 0);
+            this.txtCEmpleado.setText("");
+            return;
+        }
+        if (!val.verificarDisponibilidad(cedulaE)) {
+            JOptionPane.showMessageDialog(null, "El empleado no se encuentra Habilitado", "ERROR!", 0);
             this.txtCEmpleado.setText("");
             return;
         }
@@ -1407,6 +1458,66 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
+        String numero = txtNcita1.getText();
+
+        try {
+            String sql = "SELECT * FROM cita where numero= " + numero + ";";
+            connet = con1.getCon();
+            st = connet.createStatement();
+            rs = st.executeQuery(sql);
+            rs.next();
+            String cedulacliente = rs.getString("cliente_cedula");
+            String cservicio = rs.getString("servicio_codigo");
+            dtcFechaC1.setDate(rs.getDate("fecha"));
+            txthoradeinicio1.setText(rs.getString("hora"));
+            String cedulaempleado = rs.getString("empleado_cedula");
+            txtduracionC1.setText(rs.getString("duracion"));
+            txtEstado1.setText(rs.getString("estado"));
+
+            try {
+                String sql1 = "SELECT nombres,apellidos FROM cliente where cedula= '" + cedulacliente + "';";
+                connet = con1.getCon();
+                st = connet.createStatement();
+                rs = st.executeQuery(sql1);
+                rs.next();
+
+                txtnombreC1.setText(rs.getString("nombres") + " " + rs.getString("apellidos"));
+
+            } catch (SQLException e) {
+
+            }
+            try {
+                String sql1 = "SELECT nombres,apellidos FROM empleado where cedula= '" + cedulaempleado + "';";
+                connet = con1.getCon();
+                st = connet.createStatement();
+                rs = st.executeQuery(sql1);
+                rs.next();
+
+                txtnombreEm1.setText(rs.getString("nombres") + " " + rs.getString("apellidos"));
+
+            } catch (SQLException e) {
+
+            }
+            try {
+                String sql2 = "SELECT nombre FROM servicio where codigo= '" + cservicio + "';";
+                connet = con1.getCon();
+                st = connet.createStatement();
+                rs = st.executeQuery(sql2);
+                rs.next();
+
+                jTextField41.setText(rs.getString("nombre"));
+
+            } catch (SQLException e) {
+
+            }
+
+            JOptionPane.showMessageDialog(null, "Cita encontrado con Exito");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error, la cita no existe o es incorrecta");
+
+        }
+
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void txtCservicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCservicioActionPerformed
@@ -1432,6 +1543,69 @@ public class JFAgendamiento extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_txtCservicioKeyReleased
+
+    private void jTextField10KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField10KeyReleased
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            String cservicio = this.jTextField10.getText();
+
+            try {
+                String sql2 = "SELECT nombre FROM servicio where codigo= '" + cservicio + "';";
+                connet = con1.getCon();
+                st = connet.createStatement();
+                rs = st.executeQuery(sql2);
+                rs.next();
+
+                jTextField11.setText(rs.getString("nombre"));
+
+            } catch (SQLException e) {
+
+            }
+        }
+    }//GEN-LAST:event_jTextField10KeyReleased
+
+    private void jTextArea1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyTyped
+        // TODO add your handling code here:
+
+        if (jTextArea1.getText().length() >= 200) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTextArea1KeyTyped
+
+    private void jTextField44KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField44KeyTyped
+        // TODO add your handling code here:
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9'))
+            evt.consume();
+    }//GEN-LAST:event_jTextField44KeyTyped
+
+    private void jTextField47KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField47KeyTyped
+        // TODO add your handling code here:
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9'))
+            evt.consume();
+    }//GEN-LAST:event_jTextField47KeyTyped
+
+    private void txtNcita1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNcita1KeyTyped
+        // TODO add your handling code here:
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9'))
+            evt.consume();
+    }//GEN-LAST:event_txtNcita1KeyTyped
+
+    private void jTextField18KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField18KeyTyped
+        // TODO add your handling code here:
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9'))
+            evt.consume();
+    }//GEN-LAST:event_jTextField18KeyTyped
+
+    private void jTextField15KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField15KeyTyped
+        // TODO add your handling code here:
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9'))
+            evt.consume();
+    }//GEN-LAST:event_jTextField15KeyTyped
 
     /**
      * @param args the command line arguments
@@ -1474,7 +1648,6 @@ public class JFAgendamiento extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser dtcFechaC;
     private com.toedter.calendar.JDateChooser dtcFechaC1;
     private com.toedter.calendar.JDateChooser dteFecha;
     private javax.swing.JButton jButton1;
@@ -1487,7 +1660,6 @@ public class JFAgendamiento extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton8;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1508,15 +1680,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel44;
-    private javax.swing.JLabel jLabel45;
-    private javax.swing.JLabel jLabel46;
-    private javax.swing.JLabel jLabel47;
-    private javax.swing.JLabel jLabel48;
-    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel50;
-    private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel55;
     private javax.swing.JLabel jLabel56;
     private javax.swing.JLabel jLabel57;
@@ -1526,7 +1690,6 @@ public class JFAgendamiento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel60;
     private javax.swing.JLabel jLabel61;
     private javax.swing.JLabel jLabel62;
-    private javax.swing.JLabel jLabel63;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JLabel jLabel66;
@@ -1548,7 +1711,6 @@ public class JFAgendamiento extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -1566,7 +1728,6 @@ public class JFAgendamiento extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField17;
     private javax.swing.JTextField jTextField18;
     private javax.swing.JTextField jTextField19;
-    private javax.swing.JTextField jTextField40;
     private javax.swing.JTextField jTextField41;
     private javax.swing.JTextField jTextField44;
     private javax.swing.JTextField jTextField45;
@@ -1580,20 +1741,14 @@ public class JFAgendamiento extends javax.swing.JFrame {
     private javax.swing.JTextField txtCcliente;
     private javax.swing.JTextField txtCservicio;
     private javax.swing.JTextField txtDuracion;
-    private javax.swing.JTextField txtEstado;
     private javax.swing.JTextField txtEstado1;
     private javax.swing.JTextField txtHora;
-    private javax.swing.JTextField txtNcita;
     private javax.swing.JTextField txtNcita1;
     private javax.swing.JTextField txtNcliente;
     private javax.swing.JTextField txtNempleado;
-    private javax.swing.JTextField txtduracionC;
     private javax.swing.JTextField txtduracionC1;
-    private javax.swing.JTextField txthoradeinicio;
     private javax.swing.JTextField txthoradeinicio1;
-    private javax.swing.JTextField txtnombreC;
     private javax.swing.JTextField txtnombreC1;
-    private javax.swing.JTextField txtnombreEm;
     private javax.swing.JTextField txtnombreEm1;
     // End of variables declaration//GEN-END:variables
 }
