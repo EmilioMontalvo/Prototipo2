@@ -833,7 +833,8 @@ public class JFServicios extends javax.swing.JFrame {
             String codigo = txtCodigo.getText();
             String nombre = txtNombre.getText();
             String precio1 = txtPrecio.getText();
-            if (!val.validarCodigo(codigo) || nombre.length() == 0 || precio1.length() == 0 || !val.validarPrecio(precio1)) {
+            float precio=Float.valueOf(precio1);
+            if (!val.validarCodigo(codigo) || nombre.length() == 0 || precio1.length() == 0 || !val.validarSalario(precio)) {
                 JOptionPane.showMessageDialog(null, "Datos erróneos-revisar y repetir", "ERROR!", 0);
             } else {
                 Registrar();
@@ -894,10 +895,11 @@ public class JFServicios extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
             Validar val = new Validar();
-            String precio = jTextField7.getText();
+            String precio1 = jTextField7.getText();
+            float precio = Float.valueOf(precio1);
             String codigo = jCBCodAct.getSelectedItem().toString();
             try {
-                if (precio.equals("") || !val.validarPrecio(precio))  {
+                if (precio1.equals("") || !val.validarSalario(precio))  {
                     JOptionPane.showMessageDialog(null, "Error de actualización-precio mal ingresado", "ERROR!", 0);
                 } else {
                     String sql = "update servicio set precio ='" + precio + "' where codigo= '" + codigo + "'";
