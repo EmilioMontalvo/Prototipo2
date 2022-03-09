@@ -311,9 +311,9 @@ public class JFFacturacion extends javax.swing.JFrame {
                             .addComponent(jLabel22))
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel13Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
+                                .addGap(7, 7, 7)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(13, 13, 13)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -775,9 +775,9 @@ public class JFFacturacion extends javax.swing.JFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(384, 384, 384)
+                .addGap(381, 381, 381)
                 .addComponent(jLabel44)
-                .addContainerGap(407, Short.MAX_VALUE))
+                .addContainerGap(410, Short.MAX_VALUE))
             .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE))
         );
@@ -895,10 +895,16 @@ public class JFFacturacion extends javax.swing.JFrame {
 
     private void buscarClienteButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarClienteButton1ActionPerformed
         String numCita = cbxNumCita.getSelectedItem().toString();
-        if(numCita!=""){
-            consultarCita(Integer.parseInt(numCita));
-        }else{
+        textoFact="";
+        textoTotal="";
+        textoServ="";
+        total=0;
+        nServ=0;
+        if(numCita=="" || numCita==" "){
             JOptionPane.showMessageDialog(null, "Número de cita no válido - repita", "ERROR!", 0);
+        }else{
+            
+            consultarCita(Integer.parseInt(numCita));
         }
         
         
