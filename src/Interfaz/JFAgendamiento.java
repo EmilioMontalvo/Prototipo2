@@ -52,6 +52,8 @@ public class JFAgendamiento extends javax.swing.JFrame {
         modelo.addColumn("Estado");
         modelo.addColumn("Cliente_cedula");
         modelo.addColumn("Duracion");
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
 
     }
 

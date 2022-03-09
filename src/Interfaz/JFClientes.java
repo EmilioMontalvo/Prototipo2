@@ -64,7 +64,7 @@ public class JFClientes extends javax.swing.JFrame {
         jTextField1.setEnabled(false);
         Validar val=new Validar();
         
-        if(val.usuarioActivoEsEmpleado()){
+       if(val.usuarioActivoEsEmpleado()){
             System.out.println("aaaaaa");
             jTabbedPane1.setSelectedIndex(1);
             jTabbedPane5.setEnabled(false);
@@ -1625,9 +1625,9 @@ public class JFClientes extends javax.swing.JFrame {
                     jCBCodServAsigDesc.setSelectedIndex(0);
                     jCBPorcentajeDescuento.setSelectedIndex(0);
                 } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null, "Error en el registro-descuento ya registrado", "ERROR!", 0);
+                    JOptionPane.showMessageDialog(null, "Error en el registro descuento ya registrado"+e, "ERROR!", 0);
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Error en el registro-descuento ya registrado", "ERROR!", 0);
+                    JOptionPane.showMessageDialog(null, "Error en el registro-descuento ya registrado"+e, "ERROR!", 0);
                 }
             }
         } catch (Exception e) {

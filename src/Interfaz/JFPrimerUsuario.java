@@ -30,8 +30,9 @@ public class JFPrimerUsuario extends javax.swing.JFrame {
     
     public JFPrimerUsuario() {
         initComponents();
+        
         this.setLocationRelativeTo(null);
-       
+        this.setResizable(false);
         
         
     }
