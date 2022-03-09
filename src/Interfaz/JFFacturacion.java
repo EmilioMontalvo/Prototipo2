@@ -912,8 +912,9 @@ public class JFFacturacion extends javax.swing.JFrame {
 
     private void añadirServicioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirServicioButton1ActionPerformed
         String cod = txtCod.getText();
+        Validar val4 =new Validar();
         float desc = Float.parseFloat(txtDesc.getText());
-        if(cod.equals("")|| cod.length()>5 || cod.length()<5){
+        if(cod.equals("")|| cod.length()>5 || cod.length()<5 || !val4.validarCodigo(cod)){
             JOptionPane.showMessageDialog(null, "Código de servicio no válido - repita", "ERROR!", 0);
             txtCod.setText("");
             txtDesc.setText("0");

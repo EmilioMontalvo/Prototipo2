@@ -1650,7 +1650,7 @@ public class JFAdministracion extends javax.swing.JFrame {
         int resp =0;
         int valor=0;
         try{
-            if(parametro.equals("")){
+            if(parametro.equals("") || parametro.equals(" ")){
                 JOptionPane.showMessageDialog(null, "Parámetro no válido - repita", "ERROR!", 0);
                 cbxParam3.setSelectedIndex(-1);
                 txtValor3.setText("");
