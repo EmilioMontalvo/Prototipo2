@@ -16,6 +16,8 @@ public class JFDatos extends javax.swing.JFrame {
      */
     public JFDatos() {
         initComponents();
+         this.setLocationRelativeTo(null);
+        this.setResizable(false);
     }
 
     /**
