@@ -87,6 +87,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
         txtNcliente = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         dteFecha = new com.toedter.calendar.JDateChooser();
+        jButton6 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
@@ -109,6 +110,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         jTextField16 = new javax.swing.JTextField();
+        jButton7 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -153,6 +155,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jLabel58 = new javax.swing.JLabel();
         jButton12 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jLabel59 = new javax.swing.JLabel();
         jTextField47 = new javax.swing.JTextField();
@@ -206,6 +209,11 @@ public class JFAgendamiento extends javax.swing.JFrame {
         jLabel9.setText("Código del Servicio");
 
         jTextField7.setEditable(false);
+        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField7ActionPerformed(evt);
+            }
+        });
 
         jLabel11.setText("Nombre del Servicio");
 
@@ -257,6 +265,14 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
         dteFecha.setDateFormatString("dd/MM/yyyy");
 
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
+        jButton6.setText("Cancelar");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -302,7 +318,9 @@ public class JFAgendamiento extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addGap(152, 152, 152))
+                .addGap(38, 38, 38)
+                .addComponent(jButton6)
+                .addGap(41, 41, 41))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -346,7 +364,9 @@ public class JFAgendamiento extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
-                .addComponent(jButton3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton6))
                 .addContainerGap(87, Short.MAX_VALUE))
         );
 
@@ -399,13 +419,18 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
         jLabel1.setText("Nº de cita");
 
+        jTextField15.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField15ActionPerformed(evt);
+            }
+        });
         jTextField15.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTextField15KeyTyped(evt);
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
         jButton1.setText("Buscar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -424,6 +449,14 @@ public class JFAgendamiento extends javax.swing.JFrame {
         jLabel20.setText("Nombre del Cliente");
 
         jTextField16.setEditable(false);
+
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
+        jButton7.setText("Cancelar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -477,9 +510,12 @@ public class JFAgendamiento extends javax.swing.JFrame {
                     .addComponent(jTextField10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(26, 26, 26)
+                        .addComponent(jButton7))
                     .addComponent(jButton1))
-                .addContainerGap(173, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -527,7 +563,9 @@ public class JFAgendamiento extends javax.swing.JFrame {
                             .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel17))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton7))
                 .addGap(122, 122, 122))
         );
 
@@ -545,7 +583,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
         jButton4.setText("Buscar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -587,7 +625,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(223, 223, 223)
                         .addComponent(jButton5)))
-                .addContainerGap(225, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -607,7 +645,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
                     .addComponent(jLabel23))
                 .addGap(131, 131, 131)
                 .addComponent(jButton5)
-                .addContainerGap(199, Short.MAX_VALUE))
+                .addContainerGap(205, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab(" Cancelar Cita", new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png")), jPanel3); // NOI18N
@@ -620,7 +658,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
             }
         });
 
-        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar.png"))); // NOI18N
+        jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png"))); // NOI18N
         jButton15.setText("Buscar");
         jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -712,7 +750,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
                             .addGroup(jPanel13Layout.createSequentialGroup()
                                 .addGap(105, 105, 105)
                                 .addComponent(jLabel71)))))
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
         jPanel13Layout.setVerticalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -753,7 +791,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel72)
                     .addComponent(txtEstado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Nº Cita", new javax.swing.ImageIcon(getClass().getResource("/Iconos/cita.png")), jPanel13); // NOI18N
@@ -773,7 +811,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Consultar", new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar.png")), jPanel4); // NOI18N
+        jTabbedPane1.addTab("Consultar", new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png")), jPanel4); // NOI18N
 
         jLabel55.setText("Nº de cita");
 
@@ -810,10 +848,19 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
         jLabel58.setText("Observaciones");
 
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/salvar.png"))); // NOI18N
         jButton12.setText("Guardar");
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
+            }
+        });
+
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/cancelar.png"))); // NOI18N
+        jButton8.setText("Cancelar");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed1(evt);
             }
         });
 
@@ -826,7 +873,9 @@ public class JFAgendamiento extends javax.swing.JFrame {
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton12)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(142, 142, 142))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton8)
+                .addGap(23, 23, 23))
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addGap(74, 74, 74)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -848,7 +897,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addContainerGap(18, Short.MAX_VALUE)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel55)
                     .addComponent(jTextField44, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -866,7 +915,9 @@ public class JFAgendamiento extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton12)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton12)
+                    .addComponent(jButton8))
                 .addGap(61, 61, 61))
         );
 
@@ -971,7 +1022,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Observaciones", new javax.swing.ImageIcon(getClass().getResource("/Iconos/lupa.png")), jPanel7); // NOI18N
+        jTabbedPane1.addTab("Observaciones", new javax.swing.ImageIcon(getClass().getResource("/Iconos/buscar.png")), jPanel7); // NOI18N
 
         jLabel24.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         jLabel24.setText("Agendamiento");
@@ -1096,6 +1147,11 @@ public class JFAgendamiento extends javax.swing.JFrame {
         String observaciones = jTextArea1.getText();
 
         cita.observaciones(numero, observaciones);
+
+        jTextField44.setText(null);
+        jTextField45.setText(null);
+        jTextField46.setText(null);
+        jTextArea1.setText(null);
 
     }//GEN-LAST:event_jButton12ActionPerformed
 
@@ -1239,7 +1295,21 @@ public class JFAgendamiento extends javax.swing.JFrame {
             return;
         }
 
+        jTextField15.setEditable(true);
+
         cita.Actualizar(fecha, tiempo, duracion, cedulaE, Cservicio, numero);
+
+        jDateChooser2.setDate(null);
+        jTextField15.setText(null);
+        jTextField16.setText(null);
+        jTextField9.setText(null);
+        jTextField13.setText(null);
+        jTextField14.setText(null);
+        jTextField10.setText(null);
+        jTextField11.setText(null);
+        jTextField12.setText(null);
+
+        jTextField15.setEditable(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1260,7 +1330,10 @@ public class JFAgendamiento extends javax.swing.JFrame {
             String cedulaempleado = rs.getString("empleado_cedula");
             jTextField13.setText(rs.getString("empleado_cedula"));
             jTextField12.setText(rs.getString("duracion"));
+            String cservicio = rs.getString("servicio_codigo");
             jTextField10.setText(rs.getString("servicio_codigo"));
+
+            jTextField15.setEditable(false);
 
             try {
                 String sql1 = "SELECT nombres,apellidos FROM cliente where cedula= '" + cedulacliente + "';";
@@ -1280,9 +1353,22 @@ public class JFAgendamiento extends javax.swing.JFrame {
                 rs = st.executeQuery(sql2);
                 rs.next();
 
-                jTextField16.setText(rs.getString("nombres") + " " + rs.getString("apellidos"));
+                jTextField14.setText(rs.getString("nombres") + " " + rs.getString("apellidos"));
 
             } catch (SQLException e) {
+            }
+
+            try {
+                String sql2 = "SELECT nombre FROM servicio where codigo= '" + cservicio + "';";
+                connet = con1.getCon();
+                st = connet.createStatement();
+                rs = st.executeQuery(sql2);
+                rs.next();
+
+                jTextField11.setText(rs.getString("nombre"));
+
+            } catch (SQLException e) {
+
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error, la cita no existe o es incorrecta");
@@ -1359,6 +1445,15 @@ public class JFAgendamiento extends javax.swing.JFrame {
         System.out.println(cita.toString());
         try {
             cita.Registrar();
+            dteFecha.setDate(null);
+            txtHora.setText(null);
+            txtCcliente.setText(null);
+            txtNcliente.setText(null);
+            txtCEmpleado.setText(null);
+            txtNempleado.setText(null);
+            txtCservicio.setText(null);
+            jTextField7.setText(null);
+            txtDuracion.setText(null);
         } catch (ParseException ex) {
             Logger.getLogger(JFAgendamiento.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1607,6 +1702,54 @@ public class JFAgendamiento extends javax.swing.JFrame {
             evt.consume();
     }//GEN-LAST:event_jTextField15KeyTyped
 
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:}
+
+        dteFecha.setDate(null);
+        txtHora.setText(null);
+        txtCcliente.setText(null);
+        txtNcliente.setText(null);
+        txtCEmpleado.setText(null);
+        txtNempleado.setText(null);
+        txtCservicio.setText(null);
+        jTextField7.setText(null);
+        txtDuracion.setText(null);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+
+        jDateChooser2.setDate(null);
+        jTextField15.setText(null);
+        jTextField16.setText(null);
+        jTextField9.setText(null);
+        jTextField13.setText(null);
+        jTextField14.setText(null);
+        jTextField10.setText(null);
+        jTextField11.setText(null);
+        jTextField12.setText(null);
+
+        jTextField15.setEditable(true);
+
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jTextField15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField15ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField15ActionPerformed
+
+    private void jButton8ActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed1
+        // TODO add your handling code here:
+
+        jTextField44.setText(null);
+        jTextField45.setText(null);
+        jTextField46.setText(null);
+        jTextArea1.setText(null);
+    }//GEN-LAST:event_jButton8ActionPerformed1
+
     /**
      * @param args the command line arguments
      */
@@ -1660,6 +1803,9 @@ public class JFAgendamiento extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
