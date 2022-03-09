@@ -1148,6 +1148,11 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
         cita.observaciones(numero, observaciones);
 
+        jTextField44.setText(null);
+        jTextField45.setText(null);
+        jTextField46.setText(null);
+        jTextArea1.setText(null);
+
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
@@ -1289,10 +1294,22 @@ public class JFAgendamiento extends javax.swing.JFrame {
             this.jTextField10.setText("");
             return;
         }
-        
+
         jTextField15.setEditable(true);
 
         cita.Actualizar(fecha, tiempo, duracion, cedulaE, Cservicio, numero);
+
+        jDateChooser2.setDate(null);
+        jTextField15.setText(null);
+        jTextField16.setText(null);
+        jTextField9.setText(null);
+        jTextField13.setText(null);
+        jTextField14.setText(null);
+        jTextField10.setText(null);
+        jTextField11.setText(null);
+        jTextField12.setText(null);
+
+        jTextField15.setEditable(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1315,7 +1332,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
             jTextField12.setText(rs.getString("duracion"));
             String cservicio = rs.getString("servicio_codigo");
             jTextField10.setText(rs.getString("servicio_codigo"));
-            
+
             jTextField15.setEditable(false);
 
             try {
@@ -1428,6 +1445,15 @@ public class JFAgendamiento extends javax.swing.JFrame {
         System.out.println(cita.toString());
         try {
             cita.Registrar();
+            dteFecha.setDate(null);
+            txtHora.setText(null);
+            txtCcliente.setText(null);
+            txtNcliente.setText(null);
+            txtCEmpleado.setText(null);
+            txtNempleado.setText(null);
+            txtCservicio.setText(null);
+            jTextField7.setText(null);
+            txtDuracion.setText(null);
         } catch (ParseException ex) {
             Logger.getLogger(JFAgendamiento.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1682,7 +1708,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:}
-        
+
         dteFecha.setDate(null);
         txtHora.setText(null);
         txtCcliente.setText(null);
@@ -1696,7 +1722,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        
+
         jDateChooser2.setDate(null);
         jTextField15.setText(null);
         jTextField16.setText(null);
@@ -1706,7 +1732,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
         jTextField10.setText(null);
         jTextField11.setText(null);
         jTextField12.setText(null);
-        
+
         jTextField15.setEditable(true);
 
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -1717,7 +1743,7 @@ public class JFAgendamiento extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed1(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed1
         // TODO add your handling code here:
-        
+
         jTextField44.setText(null);
         jTextField45.setText(null);
         jTextField46.setText(null);
