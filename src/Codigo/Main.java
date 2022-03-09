@@ -6,6 +6,8 @@
 package Codigo;
 
 import Interfaz.JFEmpleados;
+import Interfaz.JFLogin;
+import Interfaz.JFPrimerUsuario;
 import javax.swing.UIManager;
 
 /**
@@ -19,11 +21,15 @@ public class Main {
      */
     public static void main(String[] args) {
     
+       Validar val=new Validar();
        
-        JFEmpleados emp =new JFEmpleados();
-        emp.setVisible(true);
-       
-        
+        if(val.existeActivo()){
+            JFLogin jf=new JFLogin();
+            jf.setVisible(true);
+        }else{
+            JFPrimerUsuario jf=new JFPrimerUsuario();
+            jf.setVisible(true);
+        }
         
         
     }
