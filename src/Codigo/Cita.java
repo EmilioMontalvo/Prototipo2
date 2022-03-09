@@ -124,7 +124,7 @@ public class Cita {
             JOptionPane.showMessageDialog(null, "Observación ingresada exitosamente");
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Ya está registrada una observación en la Cita");
+            JOptionPane.showMessageDialog(null, "Ya está registrada una observación en la Cita"+e);
 
         } finally {
             try {
