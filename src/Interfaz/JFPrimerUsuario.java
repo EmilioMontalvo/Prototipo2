@@ -199,13 +199,10 @@ public class JFPrimerUsuario extends javax.swing.JFrame {
         String contrAdm1 = new String(txtContAdm1.getPassword());
         String contrAdm2 = new String(txtContAdm2.getPassword());
 
-        
+       
         agregarUsuario(nombreA,apellidoA,cedAdm,usuarioAdm,contrAdm1,contrAdm2,"A");
         
-        iniciarActivo();
-        JFLogin jf=new JFLogin();
-        jf.setVisible(true);
-        this.setVisible(false);
+        
      
     }//GEN-LAST:event_btnRegistrarAdmActionPerformed
 
@@ -228,34 +225,35 @@ public class JFPrimerUsuario extends javax.swing.JFrame {
         try{
             if(nombreUser.equals("") || nombreUser.length()>60 || !val2.validarNombres(nombreUser)){
                 JOptionPane.showMessageDialog(null, "Nombres no válidos - repita", "ERROR!", 0);
-                txtNombreAdm.setText("");
+                //txtNombreAdm.setText("");
                 
             }else{
                 if(apellidoUser.equals("") || apellidoUser.length()>60 || !val2.validarNombres(apellidoUser)){
                     JOptionPane.showMessageDialog(null, "Apellidos no válidos - repita", "ERROR!", 0); 
-                    txtApellidosAdm.setText("");
+                    //txtApellidosAdm.setText("");
                     
                 }else{
                     if (cedUser.equals("") || !val2.verificarCedula(cedUser)){
                         JOptionPane.showMessageDialog(null, "Cédula no válida - repita", "ERROR!", 0);
-                        txtCedulaAdm.setText("");
+                        //txtCedulaAdm.setText("");
                        
                     }else{
                         if(usuarioUser.equals("") || usuarioUser.length()>20){
                             JOptionPane.showMessageDialog(null, "Nombre de  Usuario no válido - repita", "ERROR!", 0);
-                            txtUsuarioAdm.setText("");
+                            //txtUsuarioAdm.setText("");
                             
                         }else{
                             if(contraseniaUser1.equals("") || contraseniaUser1.length()>20 || contraseniaUser2.equals("") || contraseniaUser2.length()>20){
                                 JOptionPane.showMessageDialog(null, "Contraseña no válida - repita", "ERROR!", 0);
-                                txtContAdm1.setText("");
-                                txtContAdm2.setText("");
+                                //txtContAdm1.setText("");
+                                //txtContAdm2.setText("");
+                                System.out.print(usuarioUser);
                                
                             }else{
                                 if(!contraseniaUser1.equals(contraseniaUser2)){
                                     JOptionPane.showMessageDialog(null, "No coinciden las contraseñas - repita", "ERROR!", 0);
-                                    txtContAdm1.setText("");
-                                    txtContAdm2.setText("");
+                                    //txtContAdm1.setText("");
+                                    //txtContAdm2.setText("");
                                     
                                 }else{
                                 
@@ -267,14 +265,19 @@ public class JFPrimerUsuario extends javax.swing.JFrame {
                                 if(tipo.equals("A")){
                                     JOptionPane.showMessageDialog(null, "Nuevo Administrador registrado exitosamente");
                                     
-                                    txtNombreAdm.setText("");
-                                    txtApellidosAdm.setText("");
-                                    txtCedulaAdm.setText("");
-                                    txtUsuarioAdm.setText("");
-                                    txtContAdm1.setText("");
-                                    txtContAdm2.setText("");
+                                    //txtNombreAdm.setText("");
+                                    //txtApellidosAdm.setText("");
+                                    //txtCedulaAdm.setText("");
+                                    //txtUsuarioAdm.setText("");
+                                    //txtContAdm1.setText("");
+                                    //txtContAdm2.setText("");
+                                    iniciarActivo();
+                                    JFLogin jf=new JFLogin();
+                                    jf.setVisible(true);
+                                    this.setVisible(false);
                                 }else{
                                     JOptionPane.showMessageDialog(null, "Nuevo Usuario Empleado registrado exitosamente");
+                                    
                                    
                                 }
                                 }   
@@ -284,7 +287,7 @@ public class JFPrimerUsuario extends javax.swing.JFrame {
                 }
             }
         } catch(Exception e){
-            
+            System.out.print(e.getMessage());
         }      
     }
     
