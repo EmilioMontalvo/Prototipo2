@@ -62,15 +62,23 @@ public class JFClientes extends javax.swing.JFrame {
         jButton22.setEnabled(false);
         jButton21.setEnabled(false);
         jTextField1.setEnabled(false);
-        Validar val=new Validar();
-        
-       if(val.usuarioActivoEsEmpleado()){
-            System.out.println("aaaaaa");
-            jTabbedPane1.setSelectedIndex(1);
+        Validar val = new Validar();
+
+        if (val.usuarioActivoEsEmpleado()) {
             jTabbedPane5.setEnabled(false);
             jTabbedPane6.setEnabled(false);
-            jTabbedPane7.setEnabled(false);          
-                    
+            jTabbedPane7.setEnabled(false);
+            jButton17.setEnabled(false);
+            jButton18.setEnabled(false);
+            jCBActualizarClienteDireccion.setEnabled(false);
+            jCBNumeroCedulaEliminarCliente.setEnabled(false);
+            jButton9.setEnabled(false);
+            jButton14.setEnabled(false);
+            jButton2.setEnabled(false);
+            jButton12.setEnabled(false);
+            jCBNumCedAsigDesc.setEnabled(false);
+            jCBCodServAsigDesc.setEnabled(false);
+            jCBPorcentajeDescuento.setEnabled(false);
         }
     }
 
@@ -1625,9 +1633,9 @@ public class JFClientes extends javax.swing.JFrame {
                     jCBCodServAsigDesc.setSelectedIndex(0);
                     jCBPorcentajeDescuento.setSelectedIndex(0);
                 } catch (SQLException e) {
-                    JOptionPane.showMessageDialog(null, "Error en el registro descuento ya registrado"+e, "ERROR!", 0);
+                    JOptionPane.showMessageDialog(null, "Error en el registro descuento ya registrado" + e, "ERROR!", 0);
                 } catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, "Error en el registro-descuento ya registrado"+e, "ERROR!", 0);
+                    JOptionPane.showMessageDialog(null, "Error en el registro-descuento ya registrado" + e, "ERROR!", 0);
                 }
             }
         } catch (Exception e) {
@@ -1748,7 +1756,7 @@ public class JFClientes extends javax.swing.JFrame {
                     filas[i] = rs.getObject(i + 1);
                 }
                 modelo.addRow(filas);
-                 JOptionPane.showMessageDialog(null, "Descuentos encontrados.");
+                JOptionPane.showMessageDialog(null, "Descuentos encontrados.");
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en la consulta");

@@ -40,12 +40,25 @@ public class JFServicios extends javax.swing.JFrame {
         Validar val = new Validar();
 
         if (val.usuarioActivoEsEmpleado()) {
-            System.out.println("aaaaaa");
-            
-            jTabbedPane1.setEnabled(false);
-            jTabbedPane7.setEnabled(false);
-            jTabbedPane4.setEnabled(false);
-            jTabbedPane6.setEnabled(false);
+        jTabbedPane1.setEnabled(false);
+        jTabbedPane7.setEnabled(false);
+        jTabbedPane4.setEnabled(false);
+        jTabbedPane6.setEnabled(false);
+        txtCodigo.setEnabled(false);
+        txtNombre.setEnabled(false);
+        txtPrecio.setEnabled(false);
+        jButton1.setEnabled(false);
+        jButton10.setEnabled(false);
+        Consultar.setEnabled(false);
+        jButton3.setEnabled(false);
+        jCBCodAct.setEnabled(false);
+        jButton2.setEnabled(false);
+        jButton12.setEnabled(false);
+        jCBServEli.setEnabled(false);
+        jCBCodDescAsg.setEnabled(false);
+        jComboBox9.setEnabled(false);
+        jButton15.setEnabled(false);
+        jButton16.setEnabled(false);                
         }
         LlenarServicios(jCBCodServi);
         LlenarServicios(jCBServDesc);
